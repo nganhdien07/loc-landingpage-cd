@@ -6,7 +6,7 @@
 <title>LOC Vietnam — Sàn gỗ định nghĩa không gian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#0D2E56;
@@ -26,6 +26,7 @@
 
     --serif:'Cormorant Garamond', 'Times New Roman', serif;
     --sans:'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+    --title:'Montserrat', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0; padding:0}
@@ -51,7 +52,7 @@
   }
   .eyebrow .dot{display:inline-block; width:5px; height:5px; border-radius:50%;
     background:var(--gold); vertical-align:middle; margin:0 12px 3px 0}
-  h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:-.01em}
+  h1,h2,h3,h4{font-family:var(--title); font-weight:500; margin:0; letter-spacing:0}
   .h-display{font-size:96px; line-height:.98; font-weight:400; letter-spacing:-.025em}
   .h-section{font-size:64px; line-height:1.02; font-weight:400; letter-spacing:-.02em}
   .h-sub{font-size:42px; line-height:1.1; font-weight:400}
@@ -61,7 +62,7 @@
   .lede{font-size:20px; line-height:1.55; color:var(--ink-60); max-width:56ch; font-weight:400}
   .body{font-size:16px; line-height:1.65; color:var(--ink-60)}
   .num{font-family:var(--serif); font-weight:300; letter-spacing:-.03em}
-  em.serif{font-style:italic; font-family:var(--serif); font-weight:400}
+  em.serif{font-style:inherit; font-family:inherit; font-weight:inherit}
 
   /* ====================  LAYOUT  ==================== */
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter)}
@@ -140,7 +141,7 @@
   .hero-eyebrow{color:rgba(250,248,245,.7)}
   .hero-eyebrow .dot{background:var(--gold)}
   .hero h1{color:var(--warm); margin:36px 0 32px; max-width:14ch}
-  .hero h1 em{font-style:italic; color:var(--gold-soft); font-weight:400}
+  .hero h1 em{font-style:normal; color:var(--gold-soft); font-weight:500; font-family:inherit}
   .hero-lede{font-size:20px; line-height:1.6; color:rgba(250,248,245,.78);
     max-width:52ch; font-weight:400; margin:0 0 48px}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap}
@@ -561,11 +562,45 @@
   .foot-col li{font-size:14px; color:var(--ink-60); line-height:1.4}
   .foot-col li strong{display:block; color:var(--ink); font-size:15px; font-weight:600; margin-bottom:3px}
   .foot-col li a:hover{color:var(--ink)}
+  .foot-contact-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:2px}
+  .foot-contact-btn{width:42px; height:42px; border:1px solid var(--line); background:var(--warm-2);
+    color:var(--ink); display:inline-grid; place-items:center; font-size:14px; font-weight:700;
+    transition:border-color .18s, color .18s, background .18s}
+  .foot-contact-btn:hover{border-color:var(--gold); color:var(--gold); background:#fff}
+  .foot-contact-btn .phone-ico{font-size:18px; line-height:1}
+  .foot-contact-btn .zalo-ico{font-size:11px; letter-spacing:.02em; line-height:1}
 
   .foot-bot{display:flex; justify-content:space-between; align-items:center; padding-top:32px;
     font-size:12px; color:var(--ink-40)}
   .foot-bot .social-links{display:flex; gap:24px}
   .foot-bot .social-links a{font-size:12px; letter-spacing:.06em; color:var(--ink-60)}
+
+  /* ====================  CONTACT FORM MODAL  ==================== */
+  .contact-modal{position:fixed; inset:0; z-index:1100; display:none; padding:28px;
+    background:rgba(10,18,32,.78); backdrop-filter:blur(8px); opacity:0; transition:opacity .22s}
+  .contact-modal.open{display:flex; align-items:center; justify-content:center; opacity:1}
+  .contact-dialog{width:min(560px,100%); background:var(--warm); color:var(--ink);
+    border:1px solid rgba(201,168,76,.32); box-shadow:0 28px 80px rgba(10,18,32,.28); position:relative}
+  .contact-close{position:absolute; top:16px; right:16px; width:38px; height:38px;
+    border:1px solid var(--line); background:transparent; color:var(--ink); cursor:pointer;
+    font-family:var(--serif); font-size:24px; line-height:1; display:grid; place-items:center}
+  .contact-close:hover{border-color:var(--gold); color:var(--gold)}
+  .contact-head{padding:42px 44px 20px}
+  .contact-kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; display:block; margin-bottom:14px}
+  .contact-head h3{font-family:var(--serif); font-size:36px; line-height:1.1; font-weight:400; margin:0}
+  .contact-head p{font-size:14px; color:var(--ink-60); line-height:1.6; margin:14px 0 0; max-width:44ch}
+  .contact-form{padding:8px 44px 44px; display:flex; flex-direction:column; gap:18px}
+  .contact-field{display:flex; flex-direction:column; gap:8px}
+  .contact-field label{font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-60); font-weight:600}
+  .contact-field input,.contact-field textarea{width:100%; border:1px solid var(--line);
+    background:rgba(255,255,255,.48); color:var(--ink); padding:14px 16px;
+    font:15px/1.45 var(--sans); outline:none; transition:border-color .18s, background .18s}
+  .contact-field textarea{min-height:132px; resize:vertical}
+  .contact-field input:focus,.contact-field textarea:focus{border-color:var(--gold); background:#fff}
+  .contact-submit{margin-top:4px; border:0; cursor:pointer}
+  .contact-note{min-height:20px; font-size:13px; color:var(--gold); margin:0}
 
   /* ====================  MOODBOARD (S3 new)  ==================== */
   .moodboard{margin-top:80px; padding-top:80px; border-top:1px solid var(--line)}
@@ -702,7 +737,7 @@
   .post-cta-step .n{font-family:var(--serif); font-size:24px; font-weight:400; color:var(--gold); width:24px}
   .post-cta-sep{color:var(--line-2); font-family:var(--serif); font-size:18px}
 
-  /* ====================  S6 — VI TABS + PRICE TIER + ACCESSORIES  ==================== */
+  /* ====================  S6 — VE TABS + PRICE TIER + ACCESSORIES  ==================== */
   .vi-tabs-h{display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
     border-bottom:1px solid var(--ink); margin-bottom:0}
   .vi-tabs-h .label{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-60); font-weight:600; padding-bottom:14px}
@@ -758,6 +793,55 @@
   .nav.open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
   .nav.open .nav-toggle span:nth-child(2){opacity:0}
   .nav.open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  /* Montserrat headings for clearer title readability */
+  .h-display,
+  .h-section,
+  .h-sub,
+  .h-card,
+  .auth-claim .claim-h,
+  .swatch-name,
+  .spec-callout h3,
+  .step h3,
+  .test-quote,
+  .show-content h2,
+  .vi-what h3,
+  .log-cell .log-h,
+  .range-name,
+  .proj-name,
+  .triple-col h3,
+  .contact-head h3,
+  .mood-head h3,
+  .mood-title,
+  .lb-name,
+  .ba-head h3,
+  .warranty h3,
+  .price-tier-h h3,
+  .acc-pack h3{
+    font-family:var(--title);
+    letter-spacing:0;
+  }
+  .h-display,
+  .h-section,
+  .h-sub,
+  .show-content h2,
+  .mood-head h3,
+  .ba-head h3,
+  .warranty h3,
+  .triple-col h3,
+  .contact-head h3{
+    font-weight:500;
+  }
+  .h-display em,
+  .h-section em,
+  .h-sub em,
+  .mood-head h3 em,
+  .ba-head h3 em,
+  .warranty h3 em,
+  .acc-pack h3 em{
+    font-family:inherit;
+    font-style:normal;
+  }
 
   /* ====================  RESPONSIVE — 768px tablet  ==================== */
   @media (max-width: 1100px){
@@ -1003,13 +1087,13 @@
       <span class="brand-by">Unilin Group · Belgium</span>
     </div>
     <div class="nav-links">
-      <a href="#mau-ma">Mẫu mã</a>
-      <a href="#chu-du-an">Chủ đầu tư</a>
+      <a href="#authority">Về chúng tôi</a>
+      <a href="#mau-ma">Sản phẩm</a>
       <a href="#showroom">Showroom</a>
-      <a href="#thong-so">Kỹ thuật &amp; VI</a>
+      <a href="#thong-so">Kỹ thuật &amp; VE</a>
       <a href="#du-an">Dự án</a>
     </div>
-    <a href="#hop-tac" class="nav-cta">Hợp tác <span style="font-family:var(--serif); font-weight:300; font-size:16px">→</span></a>
+    <a href="#tu-van" class="nav-cta" data-contact-open>Tư vấn <span style="font-family:var(--serif); font-weight:300; font-size:16px">→</span></a>
     <button class="nav-toggle" aria-label="Menu" id="navToggle">
       <span></span><span></span><span></span>
     </button>
@@ -1025,11 +1109,11 @@
   <div class="hero-grain"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow hero-eyebrow"><span class="dot"></span>Unilin Group · Belgium · cùng nhà máy Quick-Step</div>
-    <h1 class="h-display">Sàn gỗ định nghĩa <em>không gian.</em></h1>
-    <p class="hero-lede">LOC Floor — thuộc Unilin Group, Bỉ. Cùng nhà máy, cùng dây chuyền, cùng tiêu chuẩn EN 13329 với Quick-Step. Hai dòng laminate: Elite &amp; Plus. Phân phối chính thức tại Việt Nam.</p>
+    <h1 class="h-display">Bề mặt gỗ cho <em>không gian có chiều sâu.</em></h1>
+    <p class="hero-lede">LOC Floor thuộc hệ sinh thái Unilin Group tại Bỉ, nơi kỹ thuật laminate, sắc độ gỗ và tiêu chuẩn hoàn thiện được đặt trong cùng một nền tảng. Hai dòng Elite và Plus mở ra những lựa chọn khác nhau cho cùng một tinh thần vật liệu: rõ nguồn gốc, đẹp trong phối cảnh và ổn định khi đi vào công trình.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="#mau-ma">Xem bộ sưu tập mẫu <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#thong-so">Nhận tư vấn kỹ thuật <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#mau-ma">Xem sản phẩm <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#thong-so">Đối chiếu kỹ thuật <span class="arr">→</span></a>
     </div>
   </div>
   <div class="hero-meta">
@@ -1050,10 +1134,10 @@
     <div class="sec-head">
       <div class="left">
         <span class="ix">02 — Thẩm quyền thương hiệu</span>
-        <h2 class="h-section">Cùng nhà máy. <em class="serif">Khác giá thành.</em></h2>
+        <h2 class="h-section">Từ nền tảng Unilin. <em class="serif">Đến bề mặt hoàn thiện.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">LOC do tập đoàn Unilin Group sản xuất tại Bỉ — cùng nhà máy, cùng dây chuyền với Quick-Step. Spec sheet trùng khớp, chứng nhận EN 13329 Class 32 trùng khớp. Khác biệt ở định vị thương hiệu, không ở chất lượng sản phẩm.</p>
+        <p class="lede">LOC được phát triển trong hệ sinh thái Unilin Group tại Bỉ, với bộ tiêu chuẩn kỹ thuật, chứng nhận và hồ sơ sản phẩm đủ rõ để đi cùng quá trình chọn mẫu, trình duyệt vật liệu và triển khai hoàn thiện tại Việt Nam.</p>
       </div>
     </div>
 
@@ -1086,20 +1170,20 @@
         </div>
         <div class="auth-stat-row">
           <span class="n">1<span style="font-family:var(--sans); font-weight:400; font-size:36px">/</span>3</span>
-          <span class="l">chi phí so với Quick-Step Impressive — cùng spec Unilin Belgium</span>
+          <span class="l">mức đầu tư tham chiếu khi đối chiếu trong cùng hệ tiêu chuẩn Unilin Belgium</span>
         </div>
       </div>
 
       <div class="auth-claim">
         <div class="num-mk">— 01</div>
-        <div class="claim-h">"Cùng nhà máy Unilin Belgium với Quick-Step. Cùng EN 13329, Class 32, Uniclic®. Khác biệt ở định vị thương hiệu."</div>
-        <div class="claim-p">Unilin Group Belgium là nhà sản xuất gốc của cả LOC và Quick-Step. Spec sheet, chứng nhận EN 13329, hệ thống khóa Uniclic® độc quyền và CO/CQ đều xuất từ cùng một nhà máy tại Bỉ.</div>
+        <div class="claim-h">"Một lựa chọn laminate đẹp không chỉ nằm ở vân gỗ. Nó còn nằm ở nguồn gốc, hồ sơ kỹ thuật và khả năng giữ nhịp khi đi từ bản vẽ đến mặt sàn thực tế."</div>
+        <div class="claim-p">Từ mẫu màu, chứng nhận EN 13329, hệ khóa Uniclic® đến CO/CQ, LOC được trình bày như một hệ vật liệu có thể kiểm chứng, phù hợp cho các hồ sơ cần sự rõ ràng trước khi bước vào thi công.</div>
       </div>
     </div>
 
     <div class="stock-callout">
       <span class="badge">Mới · v2.0</span>
-      <p>Mã sản phẩm trong catalog được <strong>đảm bảo tồn kho tối thiểu 12 tháng</strong> — đặc tả vào hồ sơ thiết kế mà không lo đứt nguồn cung.</p>
+      <p>Các mã trong catalog được <strong>duy trì nguồn cung tối thiểu 12 tháng</strong>, giúp hồ sơ thiết kế và kế hoạch vật tư có thêm độ ổn định khi dự án bước qua nhiều giai đoạn.</p>
     </div>
   </div>
 </section>
@@ -1114,10 +1198,10 @@
     <div class="sec-head">
       <div class="left">
         <span class="ix">03 — Cho Kiến trúc sư &amp; Thiết kế</span>
-        <h2 class="h-section">Xu hướng mới. <em class="serif">File map sẵn sàng.</em></h2>
+        <h2 class="h-section">Bảng màu có chiều sâu. <em class="serif">Tư liệu sẵn sàng.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">Lọc theo tông màu, phong cách, kích thước thanh và độ bóng. Mọi mẫu đều đi kèm texture map 4K — sẵn sàng đưa vào file 3D ngay trong buổi pitch.</p>
+        <p class="lede">Các mã màu được sắp xếp theo tông, phong cách, bề rộng thanh và độ hoàn thiện bề mặt. Texture map 4K đi kèm giúp vật liệu được đọc đúng trong phối cảnh, ánh sáng và moodboard.</p>
       </div>
     </div>
 
@@ -1347,21 +1431,21 @@
     <!-- Spec / download callout -->
     <div class="spec-callout">
       <div>
-        <h3>Catalog PDF · 96 trang.<br>Texture Map .ZIP · 4K seamless.</h3>
-        <p>Toàn bộ texture map được render từ bản gốc nhà máy — không phải ảnh chụp swatch. Tile seamless, có normal/roughness map đi kèm.</p>
+        <h3>Hồ sơ chứng chỉ LOC.<br>TDS · COCQ · Bảo hành · EPD.</h3>
+        <p>Bộ tài liệu đối chiếu nguồn gốc, chất lượng và thông số kỹ thuật của LOC Floor: sản xuất tại Bỉ, hệ hèm Uniclic, Class 32, chứng nhận hợp quy tại Việt Nam và các tiêu chuẩn môi trường liên quan.</p>
       </div>
       <div>
-        <div class="file-tag">PNG 4096×4096 · tương thích 3ds Max · SketchUp · Lumion · Enscape</div>
+        <div class="file-tag">Quality Letter · COCQ · TDS Elite/Plus · Warranty · ISO · EPD · A+</div>
         <div class="acts">
-          <a class="btn btn-primary" href="#download">Download Catalog PDF <span class="arr">↓</span></a>
-          <a class="btn btn-outline" href="#download">Texture Map 3D (.zip) <span class="arr">↓</span></a>
+          <a class="btn btn-primary" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ LOC <span class="arr">↓</span></a>
+          <a class="btn btn-outline" href="assets/loc-certificates/loc-cocq.pdf" target="_blank" rel="noopener">Xem COCQ LOC Floor <span class="arr">↓</span></a>
         </div>
       </div>
     </div>
 
     <div class="stock-promise">
       <div class="mark">12<small>tháng tồn kho</small></div>
-      <p>Mọi mã trong catalog được <em>cam kết có hàng tối thiểu 12 tháng</em>. Đặc tả vào hồ sơ thiết kế — không lo lệch màu giao thực tế, không lo phải đổi mã giữa dự án.</p>
+      <p>Các mã trong catalog được <em>duy trì nguồn cung tối thiểu 12 tháng</em>, giúp hồ sơ thiết kế, bước trình mẫu và kế hoạch giao hàng giữ được sự liền mạch giữa bản vẽ và hiện trường.</p>
     </div>
   </div>
 </section>
@@ -1373,48 +1457,48 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">04 — Cho Chủ đầu tư</span>
-        <h2 class="h-section">Mang bản thiết kế đến. <em class="serif">Chúng tôi lo phần còn lại.</em></h2>
+        <span class="ix">04 — Cho Chủ đầu tư dự án</span>
+        <h2 class="h-section">Từ định hướng vật liệu. <em class="serif">Đến hiệu quả triển khai.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">Bạn không cần biết AC rating hay texture map là gì. Bạn cần một sàn đẹp, bền, đúng ngân sách — đó là việc của chúng tôi.</p>
+        <p class="lede">Với chủ đầu tư dự án, lựa chọn sàn không dừng ở màu sắc. Vật liệu cần có nguồn gốc rõ, hồ sơ đủ kiểm chứng, chi phí hợp lý và khả năng triển khai ổn định trên nhiều căn, nhiều tầng hoặc nhiều giai đoạn bàn giao.</p>
       </div>
     </div>
 
     <div class="owners-flow">
       <div class="step">
         <span class="step-n">— Bước 01</span>
-        <h3>Bạn có bản thiết kế.<br>Hoặc chưa có — không sao.</h3>
-        <p>Mang đến bản vẽ KTS, ảnh tham khảo từ Pinterest, hoặc chỉ là ý tưởng trong đầu. Chúng tôi đọc ngôn ngữ thiết kế và dịch sang vật liệu.</p>
+        <h3>Định hướng thiết kế<br>được giữ nhất quán.</h3>
+        <p>Từ concept nội thất, căn mẫu đến bảng vật liệu hoàn thiện, LOC được đối chiếu theo tinh thần thiết kế để màu sàn đi cùng tổng thể kiến trúc và tiêu chuẩn bàn giao.</p>
       </div>
       <div class="step">
         <span class="step-n">— Bước 02</span>
-        <h3>Tư vấn chọn vật liệu<br>phù hợp ngân sách.</h3>
-        <p>Showroom có hơn 200 mẫu trưng bày thật. Đi cùng KTS hoặc đi một mình — chúng tôi không bán, chúng tôi tư vấn theo công năng từng phòng.</p>
+        <h3>Tối ưu vật liệu<br>theo quy mô đầu tư.</h3>
+        <p>Hơn 200 mẫu trưng bày thật hỗ trợ quá trình duyệt mẫu, so sánh mã và chốt phương án theo diện tích, phân khu sử dụng, tiến độ và ngân sách vật tư.</p>
       </div>
       <div class="step">
         <span class="step-n">— Bước 03</span>
-        <h3>Bạn tiết kiệm<br>25–35 triệu cho nhà 4 phòng.</h3>
-        <p>Cùng spec, cùng nhà máy, khác giá — đơn giản là vậy. Phần tiết kiệm có thể đầu tư sang nội thất hoặc giữ lại như dự phòng thi công.</p>
+        <h3>Hiệu quả chi phí<br>ở quy mô dự án.</h3>
+        <p>Khi diện tích triển khai lớn, chênh lệch đơn giá trên mỗi mét vuông trở thành một phần đáng kể của tổng mức đầu tư, nhưng vẫn cần được đặt trên nền tảng thông số và chứng từ rõ ràng.</p>
       </div>
     </div>
 
     <div class="testimonial">
       <div class="test-img">
         <div class="test-img-inner"></div>
-        <span class="test-img-lbl">Không gian tham chiếu · Căn hộ hoàn thiện</span>
+        <span class="test-img-lbl">Không gian tham chiếu · Sàn sau bàn giao</span>
       </div>
       <div class="test-content">
         <span class="test-mark">"</span>
-        <blockquote class="test-quote">KTS ban đầu chọn <em>Quick-Step Impressive ~1.400.000đ/m²</em>. Sau khi tham quan showroom và nghe tư vấn, tôi chuyển sang LOC Elite — cùng nhà máy Unilin Belgium. <em>Tiết kiệm hơn 100 triệu</em> trên diện tích 4 phòng ngủ — đủ để làm thêm hệ tủ âm tường.</blockquote>
+        <blockquote class="test-quote">Ở những dự án có diện tích sàn lớn, việc đối chiếu giữa thông số, chứng từ và đơn giá giúp chủ đầu tư nhìn rõ hơn tổng hiệu quả vật liệu. LOC Elite giữ được tinh thần gỗ ấm trong không gian, đồng thời tạo khoảng linh hoạt đáng kể cho ngân sách hoàn thiện.</blockquote>
         <div class="test-meta">
           <div class="who">
-            <div class="who-n">Chị Nguyễn Thị Lan</div>
-            <div class="who-r">Chủ căn hộ duplex · Masteri Centre Point · Q.7</div>
+            <div class="who-n">Đại diện chủ đầu tư</div>
+            <div class="who-r">Dự án căn hộ cao tầng · TP.HCM</div>
           </div>
           <div class="test-savings">
             <div class="v">100<small style="font-size:18px">tr</small></div>
-            <div class="k">Tiết kiệm</div>
+            <div class="k">Tối ưu</div>
           </div>
         </div>
       </div>
@@ -1425,9 +1509,9 @@
       <div class="ba-head">
         <div>
           <span class="ix">— Trước &amp; Sau · Drag để so sánh</span>
-          <h3>Cùng một góc nhìn. <em class="serif">Khác biệt sau 5 ngày thi công.</em></h3>
+          <h3>Cùng một mặt bằng. <em class="serif">Khác cảm giác sau hoàn thiện.</em></h3>
         </div>
-        <p class="lede">Căn hộ duplex 280m² tại Masteri Centre Point — kéo thanh trượt để so sánh hiện trạng nền xi măng trước thi công và mặt sàn LOC Elite Series sau bàn giao.</p>
+        <p class="lede">Một bề mặt sàn được hoàn thiện đúng cách làm thay đổi cảm nhận về ánh sáng, độ ấm và sự liền mạch của không gian. Kéo thanh trượt để xem lớp nền trước và sau khi hoàn thiện bằng LOC Elite Series.</p>
       </div>
       <div class="ba-frame" id="baFrame">
         <div class="ba-before"></div>
@@ -1444,8 +1528,8 @@
     <div class="warranty">
       <div class="left">
         <span class="ix">— Chi tiết bảo hành</span>
-        <h3>15 năm bảo hành — <em>có nghĩa là gì?</em></h3>
-        <p class="lede">Bảo hành không phải là khẩu hiệu. Đây là phạm vi rõ ràng — điều gì có, điều gì không, quy trình xử lý cụ thể.</p>
+        <h3>15 năm bảo hành — <em>được hiểu bằng điều khoản rõ ràng.</em></h3>
+        <p class="lede">Bảo hành cần được nhìn như một phần của hồ sơ vật liệu: phạm vi áp dụng, điều kiện sử dụng và quy trình xử lý đều được trình bày rõ trước khi bàn giao.</p>
       </div>
       <div class="acc" id="warrantyAcc">
         <div class="acc-item open">
@@ -1482,14 +1566,14 @@
     </div>
 
     <div class="owners-cta">
-      <a class="btn btn-primary" href="#dat-lich">Đặt lịch tư vấn miễn phí <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#dat-lich">Trao đổi phương án vật liệu <span class="arr">→</span></a>
       <!-- Post-CTA micro-copy — Fix 6 -->
       <div class="post-cta">
         <div class="post-cta-step"><span class="n">1</span><div><strong>Điền số điện thoại</strong>10 giây</div></div>
         <div class="post-cta-sep">→</div>
-        <div class="post-cta-step"><span class="n">2</span><div><strong>Tư vấn viên gọi lại</strong>trong 2 giờ làm việc</div></div>
+        <div class="post-cta-step"><span class="n">2</span><div><strong>Đầu mối dự án phản hồi</strong>trong 2 giờ làm việc</div></div>
         <div class="post-cta-sep">→</div>
-        <div class="post-cta-step"><span class="n">3</span><div><strong>Đặt lịch tham quan</strong>showroom hoặc tư vấn online</div></div>
+        <div class="post-cta-step"><span class="n">3</span><div><strong>Sắp lịch đối chiếu mẫu</strong>showroom hoặc tư vấn online</div></div>
       </div>
     </div>
   </div>
@@ -1505,15 +1589,15 @@
     </div>
     <div class="show-content">
       <span class="h-eyebrow-sec">08 — Showroom Experience</span>
-      <h2 class="h-sub">Trải nghiệm thật.<br><em class="serif">Chọn lựa chính xác.</em></h2>
-      <p class="lede">Hơn 200 mẫu sàn trưng bày trên không gian tiếp khách 380m². Đi chân trần, dậm thử, soi dưới ánh sáng tự nhiên — quyết định dựa trên cảm nhận, không dựa trên catalog.</p>
+      <h2 class="h-sub">Nhìn vật liệu thật.<br><em class="serif">Cảm nhận trước khi chọn.</em></h2>
+      <p class="lede">Không gian showroom giúp mẫu sàn được nhìn dưới ánh sáng thực, đặt cạnh vật liệu nội thất và cảm nhận bằng bước chân. Catalog là điểm bắt đầu; bề mặt thật mới là nơi quyết định trở nên rõ ràng.</p>
       <ul class="show-bullets">
-        <li>Hơn 200 mẫu trưng bày kích thước thực — sờ, dậm, cảm nhận texture</li>
-        <li>Không gian tiếp khách riêng tư · trà cà phê · thảo luận spec với KTS riêng</li>
-        <li>KTS &amp; nhà thầu được ưu tiên đặt lịch riêng ngoài giờ hành chính</li>
+        <li>Hơn 200 mẫu trưng bày kích thước thực để quan sát sắc độ, vân và độ hoàn thiện bề mặt</li>
+        <li>Không gian trao đổi riêng cho nhóm thiết kế, chủ đầu tư và bộ phận vật tư</li>
+        <li>Có thể sắp lịch riêng cho các buổi duyệt mẫu, đối chiếu spec hoặc chuẩn bị hồ sơ vật liệu</li>
       </ul>
       <div class="acts">
-        <a class="btn btn-gold" href="#dat-lich">Đặt lịch tham quan showroom <span class="arr">→</span></a>
+        <a class="btn btn-gold" href="#dat-lich">Sắp lịch đối chiếu mẫu showroom <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="#maps">Xem bản đồ <span class="arr">↗</span></a>
       </div>
     </div>
@@ -1528,10 +1612,10 @@
     <div class="sec-head">
       <div class="left">
         <span class="ix">05 — Thông số kỹ thuật</span>
-        <h2 class="h-section">Dữ liệu đầy đủ. <em class="serif">Sẵn sàng cho hồ sơ.</em></h2>
+        <h2 class="h-section">Thông số rõ ràng. <em class="serif">Hồ sơ dễ đối chiếu.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">So sánh trực tiếp LOC Elite Series với Quick-Step Impressive. Cùng nhà máy Unilin Belgium, cùng tiêu chuẩn EN 13329 Class 32, Uniclic® — khác ở định vị thương hiệu và giá thành.</p>
+        <p class="lede">Thông số kỹ thuật, chứng từ xuất xứ và tiêu chuẩn kiểm định được đặt cạnh nhau để quá trình duyệt vật liệu diễn ra mạch lạc, đặc biệt khi cần đối chiếu giữa nhiều phương án laminate trong cùng hệ tiêu chuẩn.</p>
       </div>
     </div>
 
@@ -1586,54 +1670,54 @@
     <div class="specs-badge">
       <div class="left">
         <div class="seal">UNILIN<br>BELGIUM<br>FACTORY</div>
-        <p>LOC Elite và Quick-Step Impressive: <strong>cùng một nhà máy</strong> Unilin Belgium.<br><small>EN 13329 · Class 32 · Uniclic® · CO Form A — cùng bộ hồ sơ, khác mức giá.</small></p>
+        <p>LOC Elite được trình bày với bộ thông số và chứng từ rõ ràng trong hệ Unilin Belgium.<br><small>EN 13329 · Class 32 · Uniclic® · CO Form A — thuận tiện cho bước đối chiếu, trình mẫu và nghiệm thu vật liệu.</small></p>
       </div>
-      <a class="btn btn-outline" href="#download">Tải Spec Sheet PDF <span class="arr">↓</span></a>
+      <a class="btn btn-outline" href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">Xem TDS Elite <span class="arr">↓</span></a>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     S6 — CONTRACTORS / VI
+     S6 — CONTRACTORS / VE
 ============================================================ -->
 <section class="contractors" id="nha-thau">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
         <span class="ix">06 — Cho Nhà thầu</span>
-        <h2 class="h-section">VI — Giữ nguyên spec. <em class="serif">Giảm chi phí.</em></h2>
+        <h2 class="h-section">VE — Giữ nền tảng kỹ thuật. <em class="serif">Tối ưu tổng mức đầu tư.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">Value Engineering không phải hạ chất lượng. Khi hồ sơ ghi "Quick-Step, EN 13329, Class 32, Unilin Belgium" — LOC Elite đáp ứng đúng từng tiêu chí, với mức giá thấp hơn 40–55%.</p>
+        <p class="lede">Value Engineering không nên được hiểu là hạ cấp vật liệu. Với LOC, VE bắt đầu từ việc đối chiếu thông số, chứng từ, xuất xứ và điều kiện triển khai để tìm một phương án laminate cân bằng hơn cho ngân sách dự án.</p>
       </div>
     </div>
 
     <div class="vi-intro">
       <div class="vi-what">
         <span class="h-eyebrow-sec">VE là gì?</span>
-        <h3>Tối ưu chi phí mà không hạ tiêu chuẩn kỹ thuật ghi trong hồ sơ thiết kế.</h3>
-        <p>Khi hồ sơ thiết kế ghi "sàn laminate Quick-Step, EN 13329, Class 32, Unilin Belgium" — chúng tôi cung cấp LOC Elite: cùng nhà máy, cùng kiểm định, cùng hệ thống khóa Uniclic®. Spec sheet ký bởi cùng Unilin Group. CO/CQ đầy đủ.</p>
+        <h3>Tối ưu lựa chọn vật liệu mà vẫn giữ những tiêu chuẩn kỹ thuật cốt lõi trong hồ sơ thiết kế.</h3>
+        <p>Khi hồ sơ yêu cầu một bề mặt laminate có tiêu chuẩn rõ ràng, LOC Elite được đặt vào bảng đối chiếu bằng các tiêu chí có thể kiểm chứng: EN 13329, Class 32, hệ khóa Uniclic®, xuất xứ Unilin Belgium và bộ CO/CQ đi kèm.</p>
       </div>
       <ul class="vi-benefits">
         <li>
           <span class="vi-n">01</span>
           <div>
             <h4>Giữ nguyên thông số kỹ thuật</h4>
-            <p>AC rating, độ dày, xuất xứ, kiểm định — tất cả khớp với spec gốc. Không phải thuyết phục KTS hay CĐT chấp nhận hàng "tương đương".</p>
+            <p>AC rating, độ dày, xuất xứ, kiểm định — tất cả khớp với spec gốc. Việc đối chiếu dựa trên thông số và chứng từ, giúp các bên nhìn thấy cơ sở kỹ thuật của phương án thay thế.</p>
           </div>
         </li>
         <li>
           <span class="vi-n">02</span>
           <div>
-            <h4>Tiết kiệm 40–55% so với Quick-Step Impressive</h4>
-            <p>Tính trên 100m² sàn: tiết kiệm khoảng 60–100 triệu đồng so với Quick-Step Impressive cùng spec EN 13329 Class 32 — đủ cải thiện biên lợi nhuận hoặc bù hạng mục khác.</p>
+            <h4>Tối ưu 40–55% so với Quick-Step Impressive</h4>
+            <p>Khi quy mô sàn tăng lên, phần chênh lệch vật liệu có thể tạo dư địa đáng kể cho ngân sách hoàn thiện, dự phòng tiến độ hoặc các hạng mục nội thất khác.</p>
           </div>
         </li>
         <li>
           <span class="vi-n">03</span>
           <div>
-            <h4>Hồ sơ thanh toán đầy đủ</h4>
-            <p>CO Form A · CQ · hóa đơn VAT · biên bản nghiệm thu vật liệu. Cùng bộ hồ sơ Unilin Belgium gốc — đủ chuẩn cho dự án nhà nước và FDI.</p>
+            <h4>Hồ sơ nghiệm thu rõ ràng</h4>
+            <p>CO Form A, CQ, hóa đơn VAT và biên bản nghiệm thu vật liệu được chuẩn bị theo yêu cầu hồ sơ, thuận tiện cho dự án có quy trình kiểm soát vật tư chặt chẽ.</p>
           </div>
         </li>
       </ul>
@@ -1641,7 +1725,7 @@
 
     <div class="vi-table-wrap" id="viTabs">
       <div class="vi-tabs-h">
-        <div class="label">— Bảng so sánh VI · LOC Elite Series vs Quick-Step Impressive</div>
+        <div class="label">— Bảng so sánh VE · LOC Elite Series vs Quick-Step Impressive</div>
       </div>
       <div class="vi-tab-pane active" data-pane="lam">
         <table class="vi-table">
@@ -1698,7 +1782,7 @@
           <tr>
             <td class="vol">&lt; 200m²</td>
             <td class="disc">Giá niêm yết</td>
-            <td>Mua lẻ tại showroom · không cần đặt trước</td>
+            <td>Phù hợp đơn hàng nhỏ hoặc nhu cầu xem mẫu trực tiếp tại showroom</td>
           </tr>
           <tr>
             <td class="vol">200–500m²</td>
@@ -1713,7 +1797,7 @@
           <tr>
             <td class="vol">&gt; 1.500m²</td>
             <td class="disc tag">Liên hệ trực tiếp</td>
-            <td>Account manager riêng · báo giá trong 48 giờ</td>
+            <td>Đầu mối dự án riêng · phản hồi báo giá trong 48 giờ</td>
           </tr>
         </tbody>
       </table>
@@ -1733,12 +1817,12 @@
           <li><div><strong>Keo dán chuyên dụng</strong> · dòng Laminate · 5kg/can</div></li>
           <li><div><strong>Băng dán seam</strong> · xử lý mối nối ẩm · 50m/cuộn</div></li>
         </ul>
-        <div class="acc-foot">Báo giá <em>trọn gói theo m²</em> — không phát sinh phụ kiện giữa dự án, không phải đặt từng món rời.</div>
+        <div class="acc-foot">Báo giá <em>trọn gói theo m²</em> — giúp phụ kiện được kiểm soát đồng bộ theo diện tích, hạn chế phát sinh rời rạc trong quá trình triển khai.</div>
       </div>
     </div>
 
     <div class="contractors-cta">
-      <a class="btn btn-primary" href="#vi-request">Gửi yêu cầu VI · Báo giá bulk <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#vi-request" data-contact-open>Gửi yêu cầu VE · Báo giá dự án <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -1751,10 +1835,10 @@
     <div class="sec-head">
       <div class="left">
         <span class="ix">07 — Hai dòng laminate</span>
-        <h2 class="h-section">Hai dòng. <em class="serif">Một tiêu chuẩn.</em></h2>
+        <h2 class="h-section">Hai dòng sản phẩm. <em class="serif">Một tinh thần vật liệu.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">LOC sản xuất laminate Unilin Belgium theo hai dòng: Elite (cao cấp hơn, bề mặt Pressed Bevel xử lý đặc biệt) và Plus (đa mẫu, giá tốt, phù hợp nhiều phong cách). Cùng tiêu chuẩn EN 13329 — khác ứng dụng.</p>
+        <p class="lede">Elite Series và Plus Series mở ra hai cách tiếp cận khác nhau với sàn laminate LOC: một dòng nhấn vào chiều sâu bề mặt và cảm giác hoàn thiện, một dòng linh hoạt hơn về sắc độ và ứng dụng. Cả hai cùng đặt trên nền tảng tiêu chuẩn kỹ thuật rõ ràng.</p>
       </div>
     </div>
 
@@ -1765,12 +1849,12 @@
           <span class="lbl">Elite Series · LFE</span>
         </div>
         <div class="range-body">
-          <span class="range-cat">Cao cấp · Biệt thự · Căn hộ hạng A</span>
+          <span class="range-cat">Bề mặt giàu chiều sâu · Không gian chọn lọc</span>
           <h3 class="range-name">LOC Elite Series<small>HDF 8mm · EN 13329 · Class 32 · Pressed Bevel</small></h3>
-          <p class="range-spec">Cạnh vát Pressed Bevel 4 mặt, bề mặt texture cao. Phù hợp <strong>biệt thự, căn hộ cao cấp, văn phòng hạng A</strong>. Uniclic® — lắp không keo. Bảo hành 15 năm.</p>
+          <p class="range-spec">Cạnh vát Pressed Bevel 4 mặt và texture bề mặt rõ hơn, phù hợp với những không gian cần sắc gỗ có chiều sâu, khả năng bắt sáng tinh tế và cảm giác hoàn thiện cao.</p>
           <div class="range-foot">
             <div class="range-price">~600–800K<small>/m²</small></div>
-            <a class="range-link" href="#">Xem chi tiết <span class="arr">→</span></a>
+            <a class="range-link" href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">Xem TDS Elite <span class="arr">→</span></a>
           </div>
         </div>
       </article>
@@ -1781,12 +1865,12 @@
           <span class="lbl">Plus Series · LPF/LPV</span>
         </div>
         <div class="range-body">
-          <span class="range-cat">Phổ thông · Căn hộ · Shophouse</span>
+          <span class="range-cat">Linh hoạt · Dễ phối · Ứng dụng rộng</span>
           <h3 class="range-name">LOC Plus Series<small>HDF 8mm · EN 13329 · Đa mẫu · Giá tốt</small></h3>
-          <p class="range-spec">Đa dạng mẫu mã, dễ phối nhiều phong cách. Phù hợp <strong>căn hộ dân dụng, shophouse, văn phòng hạng B</strong>. Uniclic® · chống nước 24h. Bảo hành 15 năm.</p>
+          <p class="range-spec">Bảng màu đa dạng, dễ phối với nhiều phong cách nội thất và quy mô triển khai. Plus Series giữ tinh thần gỗ tự nhiên theo cách nhẹ, sạch và dễ ứng dụng trong các không gian hoàn thiện hằng ngày.</p>
           <div class="range-foot">
             <div class="range-price">~400–600K<small>/m²</small></div>
-            <a class="range-link" href="#">Xem chi tiết <span class="arr">→</span></a>
+            <a class="range-link" href="assets/loc-certificates/tds-loc-floor-plus.pdf" target="_blank" rel="noopener">Xem TDS Plus <span class="arr">→</span></a>
           </div>
         </div>
       </article>
@@ -1802,10 +1886,10 @@
     <div class="sec-head">
       <div class="left">
         <span class="ix">09 — Dự án tham chiếu</span>
-        <h2 class="h-section">Đã ứng dụng <em class="serif">trong thực tế.</em></h2>
+        <h2 class="h-section">Được đặt vào <em class="serif">bối cảnh thực tế.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">Từ căn hộ cao cấp đến resort 5 sao và văn phòng tập đoàn — các studio kiến trúc đầu ngành đã đặc tả LOC vào hồ sơ thiết kế.</p>
+        <p class="lede">Các hình ảnh tham chiếu cho thấy cách bề mặt sàn ảnh hưởng đến ánh sáng, nhịp vân, đồ rời và cảm giác hoàn thiện tổng thể trong nhiều loại không gian.</p>
       </div>
     </div>
 
@@ -1874,11 +1958,11 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">10 — Được tin dùng bởi</span>
-        <h2 class="h-section">Studio kiến trúc <em class="serif">&amp; nhà thầu đầu ngành.</em></h2>
+        <span class="ix">10 — Góc nhìn từ dự án</span>
+        <h2 class="h-section">Khi vật liệu đi qua <em class="serif">thiết kế và thi công.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">Hơn 40 studio kiến trúc đã đặc tả LOC vào hồ sơ thiết kế. Đây là 12 đơn vị có dự án bàn giao trong 24 tháng gần nhất.</p>
+        <p class="lede">Một vật liệu tốt cần đi qua nhiều lớp kiểm chứng: phối cảnh, bảng mẫu, hồ sơ kỹ thuật, hiện trường và cảm nhận sau bàn giao.</p>
       </div>
     </div>
 
@@ -1911,8 +1995,8 @@
       </article>
 
       <article class="testi">
-        <span class="role">Chủ đầu tư · Số tiền tiết kiệm cụ thể</span>
-        <blockquote>Bản vẽ ban đầu KTS đặc tả Quick-Step Impressive cho toàn bộ 3 tầng penthouse. Sau buổi tham quan showroom Mau Trung, tôi chuyển sang LOC Elite cùng spec Unilin Belgium — <em>tiết kiệm hơn 150 triệu</em>. Sàn bàn giao 18 tháng vẫn như mới.</blockquote>
+        <span class="role">Chủ đầu tư dự án · Hiệu quả vật liệu</span>
+        <blockquote>Bản vẽ ban đầu KTS đặc tả Quick-Step Impressive cho toàn bộ 3 tầng penthouse. Sau buổi tham quan showroom Mao Trung, tôi chuyển sang LOC Elite cùng spec Unilin Belgium — <em>tiết kiệm hơn 150 triệu</em>. Sàn bàn giao 18 tháng vẫn như mới.</blockquote>
         <div class="testi-meta">
           <div class="testi-avatar">HN</div>
           <div>
@@ -1946,28 +2030,28 @@
       <span class="idx">— 11 / A</span>
       <div class="pre">
         <span class="role">Kiến trúc sư · Thiết kế</span>
-        <h3>Tải tài liệu kỹ thuật.<br>Spec sheet · texture map 4K.</h3>
-        <p>Catalog PDF 96 trang + texture pack .zip cho 9 mẫu xu hướng Q3/2026. Mọi mã trong catalog đều cam kết tồn kho 12 tháng.</p>
+        <h3>Nhận bộ hồ sơ vật liệu.<br>TDS · chứng chỉ · bảo hành.</h3>
+        <p>Thông số kỹ thuật, chứng nhận nguồn gốc và chính sách bảo hành giúp vật liệu được đưa vào moodboard, bản vẽ và hồ sơ trình duyệt một cách rõ ràng.</p>
       </div>
-      <a class="cta-link" href="#download">Download ngay <span class="arr">→</span></a>
+      <a class="cta-link" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ <span class="arr">→</span></a>
     </div>
     <div class="triple-col">
       <span class="idx">— 11 / B</span>
       <div class="pre">
-        <span class="role">Chủ đầu tư</span>
-        <h3>Tư vấn chọn vật liệu.<br>Miễn phí · không cam kết.</h3>
-        <p>Mang bản vẽ đến showroom 380m² tại Bình Thạnh. Trà cà phê, đi chân trần thử sàn, quyết định trong 90 phút.</p>
+        <span class="role">Chủ đầu tư dự án</span>
+        <h3>Đối chiếu phương án vật liệu.<br>Theo quy mô và tiêu chuẩn dự án.</h3>
+        <p>Đưa concept, bảng vật liệu hoặc yêu cầu bàn giao đến showroom để đối chiếu mẫu thật, sắc độ và hướng triển khai phù hợp với dự án.</p>
       </div>
-      <a class="cta-link" href="#dat-lich">Đặt lịch miễn phí <span class="arr">→</span></a>
+      <a class="cta-link" href="#dat-lich" data-contact-open>Đặt lịch miễn phí <span class="arr">→</span></a>
     </div>
     <div class="triple-col">
       <span class="idx">— 11 / C</span>
       <div class="pre">
         <span class="role">Nhà thầu</span>
-        <h3>Yêu cầu báo giá VI.<br>Giữ spec · giảm chi phí.</h3>
-        <p>Gửi BOQ &amp; spec sheet — chúng tôi trả lại bảng VI có CO/CQ và giá bulk theo dự án trong 48 giờ làm việc.</p>
+        <h3>Yêu cầu phương án VE.<br>Giữ nền tảng · tối ưu chi phí.</h3>
+        <p>Gửi BOQ và spec sheet để nhận bảng đối chiếu VE kèm CO/CQ, ghi chú kỹ thuật và báo giá theo quy mô dự án trong 48 giờ làm việc.</p>
       </div>
-      <a class="cta-link" href="#vi-request">Gửi yêu cầu <span class="arr">→</span></a>
+      <a class="cta-link" href="#vi-request" data-contact-open>Gửi yêu cầu <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -1980,39 +2064,49 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="foot-mark">LOC</div>
-        <div class="foot-by">Phân phối bởi <strong>Mau Trung</strong></div>
-        <p class="foot-tag">Sàn LOC — thuộc tập đoàn Unilin Group, Bỉ. Cùng nhà máy Quick-Step. Phân phối chính thức tại Việt Nam bởi Mau Trung.</p>
+        <div class="foot-by">Phân phối bởi <strong>Mao Trung</strong></div>
+        <p class="foot-tag">Sàn LOC — thuộc tập đoàn Unilin Group, Bỉ. Cùng nhà máy Quick-Step. Phân phối chính thức tại Việt Nam bởi Mao Trung.</p>
       </div>
-      <div class="foot-col">
+      <div class="foot-col" id="lien-he">
         <h5>Liên hệ</h5>
         <ul>
-          <li><strong>0938 360 986</strong>Hotline · Zalo · 24/7</li>
-          <li><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a020f0606052a0605091c030f1e040b0744090507">[email&#160;protected]</a></strong>Tư vấn dự án</li>
-          <li>92 Nguyễn Hữu Cảnh<br>P.22, Q.Bình Thạnh, TP.HCM</li>
+          <li>Đại diện NPP Mao Trung - Anh Hoàng Nam</li>
+          <li>
+            <strong>0938 360 986</strong>
+            <div class="foot-contact-actions" aria-label="Hotline và Zalo">
+              <a class="foot-contact-btn" href="tel:0938360986" aria-label="Gọi 0938 360 986">
+                <span class="phone-ico">☎</span>
+              </a>
+              <a class="foot-contact-btn" href="https://zalo.me/0938360986" target="_blank" rel="noopener" aria-label="Mở Zalo 0938 360 986">
+                <span class="zalo-ico">Zalo</span>
+              </a>
+            </div>
+          </li>
+          <li>291 Tô Hiến Thành<br>p. Hoà Hưng (tên cũ: p13, Q10), TP. HCM</li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Tài liệu</h5>
         <ul>
-          <li><a href="#">Catalog PDF · 96 trang</a></li>
-          <li><a href="#">Texture Map 3D (.zip)</a></li>
-          <li><a href="#">Spec Sheet · Tech data</a></li>
-          <li><a href="#">Chính sách bảo hành 15 năm</a></li>
-          <li><a href="#">CO Form A · Unilin Belgium</a></li>
+          <li><a href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">TDS Elite · Tech data</a></li>
+          <li><a href="assets/loc-certificates/tds-loc-floor-plus.pdf" target="_blank" rel="noopener">TDS Plus · Tech data</a></li>
+          <li><a href="assets/loc-certificates/loc-cocq.pdf" target="_blank" rel="noopener">COCQ · LOC Floor</a></li>
+          <li><a href="assets/loc-certificates/loc-warranty-policy.pdf" target="_blank" rel="noopener">Chính sách bảo hành LOC</a></li>
+          <li><a href="assets/loc-certificates/epd-unilin-laminate.pdf" target="_blank" rel="noopener">EPD · Unilin Laminate</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Theo đối tượng</h5>
         <ul>
           <li><a href="#mau-ma">KTS &amp; Thiết kế</a></li>
-          <li><a href="#chu-du-an">Chủ đầu tư</a></li>
-          <li><a href="#nha-thau">Nhà thầu &amp; VI</a></li>
+          <li><a href="#chu-du-an">Chủ đầu tư dự án</a></li>
+          <li><a href="#nha-thau">Nhà thầu &amp; VE</a></li>
           <li><a href="#showroom">Đặt lịch showroom</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 Mau Trung — Nhà phân phối chính thức LOC tại Việt Nam · GPKD 0312-345-678</div>
+      <div>© 2026 Mao Trung — Nhà phân phối chính thức LOC tại Việt Nam · GPKD 0312-345-678</div>
       <div class="social-links">
         <a href="#">Instagram</a>
         <a href="#">Facebook</a>
@@ -2036,11 +2130,11 @@
       <div class="lb-code" id="lbCode">LFE00458</div>
       <div class="lb-tags swatch-tags" id="lbTags"></div>
       <div class="lb-spec" id="lbSpec">
-        <strong>Texture map · 4K seamless</strong>
-        Diffuse · Normal · Roughness · AO<br>
-        PNG 4096×4096 · 32-bit · 18.4 MB<br>
-        Tile: 2400×1800mm (1:1 scale)<br>
-        Tương thích: 3ds Max · SketchUp · Lumion · Enscape · Twinmotion
+        <strong>Hồ sơ kỹ thuật · chứng chỉ LOC</strong>
+        TDS Elite/Plus · Quality Letter · COCQ<br>
+        Warranty · ISO 9001/14001/45001 · EPD · A+<br>
+        EN 13329 · Class 32 · Uniclic<br>
+        Đối chiếu cho trình mẫu, nghiệm thu và hồ sơ vật liệu
       </div>
       <div class="lb-thumbs">
         <div class="lb-thumb diffuse active" data-map="d">
@@ -2057,14 +2151,40 @@
         </div>
       </div>
       <div class="lb-acts">
-        <a class="btn btn-primary" href="#download">Tải texture map .zip <span class="arr">↓</span></a>
+        <a class="btn btn-primary" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ LOC <span class="arr">↓</span></a>
         <a class="btn btn-outline" href="#dat-lich">Đặt mẫu vật lý về showroom <span class="arr">→</span></a>
       </div>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="contact-dialog">
+    <button class="contact-close" type="button" id="contactClose" aria-label="Đóng form">×</button>
+    <div class="contact-head">
+      <span class="contact-kicker">Mao Trung · LOC Floor</span>
+      <h3 id="contactTitle">Nhận tư vấn dự án</h3>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="contact-field">
+        <label for="contactName">Tên</label>
+        <input id="contactName" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="contact-field">
+        <label for="contactPhone">Số điện thoại</label>
+        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" required>
+      </div>
+      <div class="contact-field">
+        <label for="contactProject">Mô tả dự án &amp; thông tin cần tư vấn</label>
+        <textarea id="contactProject" name="project" required></textarea>
+      </div>
+      <button class="btn btn-primary contact-submit" type="submit">Gửi thông tin <span class="arr">→</span></button>
+      <p class="contact-note" id="contactNote" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<script>
 (function(){
   'use strict';
 
@@ -2199,7 +2319,7 @@
     });
   });
 
-  // -------- VI tabs --------
+  // -------- VE tabs --------
   var viTabsEl = document.getElementById('viTabs');
   if(viTabsEl){
     viTabsEl.querySelectorAll('.vi-tab-btn').forEach(function(btn){
@@ -2210,6 +2330,48 @@
         var pane = viTabsEl.querySelector('.vi-tab-pane[data-pane="'+btn.dataset.tab+'"]');
         if(pane) pane.classList.add('active');
       });
+    });
+  }
+
+  // -------- Contact modal --------
+  var contactModal = document.getElementById('contactModal');
+  var contactClose = document.getElementById('contactClose');
+  var contactForm = document.getElementById('contactForm');
+  var contactNote = document.getElementById('contactNote');
+  var contactName = document.getElementById('contactName');
+
+  function openContact(e){
+    if(e) e.preventDefault();
+    contactModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if(contactNote) contactNote.textContent = '';
+    setTimeout(function(){ if(contactName) contactName.focus(); }, 60);
+  }
+
+  function closeContact(){
+    contactModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-contact-open]').forEach(function(btn){
+    btn.addEventListener('click', openContact);
+  });
+  if(contactClose) contactClose.addEventListener('click', closeContact);
+  if(contactModal){
+    contactModal.addEventListener('click', function(e){
+      if(e.target === contactModal) closeContact();
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && contactModal && contactModal.classList.contains('open')){
+      closeContact();
+    }
+  });
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      contactNote.textContent = 'Cảm ơn anh/chị. Thông tin đã được ghi nhận trên form.';
+      contactForm.reset();
     });
   }
 })();

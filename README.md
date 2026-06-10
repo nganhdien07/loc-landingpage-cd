@@ -1,7 +1,8 @@
 # LOC Landing Page
 
-Static landing page for LOC Vietnam.
+Static landing pages for LOC Vietnam.
 
-## Deployment
+## Pages
 
-This repository is ready for GitHub Pages. The site entry point is `index.html`.
+- Desktop: `desktop.html`
+- Mobile: `mobile.html`
