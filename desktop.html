@@ -117,6 +117,23 @@
   .nav-links a:hover::after{transform:scaleX(1)}
   .nav-cta{font-size:13px; font-weight:600; padding:12px 22px; background:var(--ink);
     color:var(--warm); display:inline-flex; align-items:center; gap:10px}
+  .nav-actions{display:flex; align-items:center; gap:10px}
+  .nav-search{width:42px; height:42px; border:1px solid var(--line); background:transparent;
+    display:grid; place-items:center; cursor:pointer; color:var(--ink); transition:border-color .2s, background .2s}
+  .nav-search:hover{border-color:var(--ink); background:var(--warm-2)}
+  .search-ico{width:16px; height:16px; border:2px solid currentColor; border-radius:50%; position:relative; display:block}
+  .search-ico::after{content:''; position:absolute; width:7px; height:2px; background:currentColor;
+    right:-6px; bottom:-4px; transform:rotate(45deg); transform-origin:left center}
+  .search-panel{position:fixed; top:78px; left:0; right:0; z-index:90; background:var(--warm);
+    border-bottom:1px solid var(--line); padding:18px var(--gutter); transform:translateY(-120%);
+    opacity:0; pointer-events:none; transition:transform .25s ease, opacity .25s ease}
+  .nav.search-open .search-panel{transform:translateY(0); opacity:1; pointer-events:auto}
+  .search-panel-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; gap:14px}
+  .search-panel input{width:100%; border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:16px 18px; font:600 13px/1 var(--sans); letter-spacing:.04em; outline:none}
+  .search-panel input:focus{border-color:var(--gold)}
+  .search-panel button{width:44px; height:44px; border:1px solid var(--line); background:var(--warm-2);
+    color:var(--ink); cursor:pointer; font-size:22px}
 
   /* ====================  S1 HERO  ==================== */
   .hero{
@@ -144,6 +161,29 @@
   .hero h1 em{font-style:normal; color:var(--gold-soft); font-weight:500; font-family:inherit}
   .hero-lede{font-size:20px; line-height:1.6; color:rgba(250,248,245,.78);
     max-width:52ch; font-weight:400; margin:0 0 48px}
+  .belgian-proof{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:0 0 26px}
+  .proof-chip{min-height:38px; display:inline-flex; align-items:center; gap:10px; padding:8px 12px;
+    border:1px solid rgba(250,248,245,.22); background:rgba(250,248,245,.08);
+    color:rgba(250,248,245,.86); font-size:10px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
+  .proof-chip.dark{border-color:var(--line); background:var(--warm); color:var(--ink)}
+  .proof-chip.loc-chip{min-height:38px; padding:3px 12px}
+  .proof-chip img{display:block; height:18px; width:auto}
+  .loc-logo{width:32px; height:32px; border-radius:50%; display:inline-flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:1px; background:#2d5f8c; color:#fff;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.2); font-family:Georgia, 'Times New Roman', serif;
+    text-transform:none; letter-spacing:0; line-height:1}
+  .loc-logo .loc-main{position:relative; font-size:15px; font-weight:700; letter-spacing:.03em}
+  .loc-logo .loc-main::after{content:'®'; position:absolute; top:-3px; right:-7px; font-size:4px; font-weight:400}
+  .loc-logo .loc-sub{font-size:7px; font-weight:700; letter-spacing:.18em}
+  .loc-logo.logo-large{width:86px; height:86px; margin-bottom:18px}
+  .loc-logo.logo-large .loc-main{font-size:39px}
+  .loc-logo.logo-large .loc-main::after{top:-7px; right:-12px; font-size:9px}
+  .loc-logo.logo-large .loc-sub{font-size:14px}
+  .be-flag{width:27px; height:18px; display:inline-grid; grid-template-columns:repeat(3,1fr);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+  .be-flag span:nth-child(1){background:#000}
+  .be-flag span:nth-child(2){background:#ffd90c}
+  .be-flag span:nth-child(3){background:#ef3340}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap}
   .hero .btn-primary{background:var(--warm); color:var(--ink); border-color:var(--warm)}
   .hero .btn-primary:hover{background:var(--gold); border-color:var(--gold)}
@@ -225,6 +265,11 @@
     border:1px solid var(--line);
     display:grid; grid-template-columns:repeat(4,1fr); gap:36px;
   }
+  .product-filter{display:flex; align-items:center; justify-content:space-between; gap:18px;
+    margin:44px 0 22px; padding-top:28px; border-top:1px solid var(--line)}
+  .product-filter .filter-label{font-size:10px; letter-spacing:.24em; text-transform:uppercase;
+    font-weight:600; color:var(--ink-60); margin:0}
+  .product-filter .filter-chips{display:flex; gap:10px; flex-wrap:wrap}
   .filter-group .filter-label{font-size:10px; letter-spacing:.24em; text-transform:uppercase;
     font-weight:600; color:var(--ink-60); margin-bottom:14px}
   .filter-chips{display:flex; flex-wrap:wrap; gap:6px}
@@ -244,8 +289,14 @@
   .filter-meta .count strong{color:var(--ink); font-weight:600}
   .filter-meta .sort{font-size:12px; color:var(--ink-60); letter-spacing:.06em}
 
-  .swatch-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px 28px}
+  .swatch-grid{display:flex; gap:28px; overflow-x:auto; padding:4px 0 18px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+  .swatch-grid::-webkit-scrollbar,.proj-grid::-webkit-scrollbar{height:6px}
+  .swatch-grid::-webkit-scrollbar-thumb,.proj-grid::-webkit-scrollbar-thumb{background:var(--line-2)}
+  .swatch-grid::-webkit-scrollbar-track,.proj-grid::-webkit-scrollbar-track{background:var(--warm-2)}
+  .swatch{flex:0 0 31.5%; min-width:330px; scroll-snap-align:start}
   .swatch{position:relative; background:var(--warm); display:flex; flex-direction:column}
+  .swatch.is-hidden{display:none}
   .swatch-img{
     aspect-ratio:1/1.05; position:relative; overflow:hidden;
   }
@@ -285,6 +336,13 @@
     font-family:'SF Mono','Menlo',monospace; font-weight:500; padding:10px 14px;
     background:var(--warm-2); border:1px solid var(--line); display:inline-block; margin-bottom:18px}
   .spec-callout .acts{display:flex; gap:12px; flex-wrap:wrap}
+  .cert-icon-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  .cert-icon{min-height:92px; border:1px solid var(--line); background:var(--warm-2);
+    display:flex; flex-direction:column; justify-content:center; align-items:center; gap:9px; color:var(--ink)}
+  .cert-icon .ico{width:34px; height:34px; border:1px solid var(--gold); color:var(--gold);
+    display:grid; place-items:center; font-size:14px; font-weight:700; line-height:1}
+  .cert-icon span:last-child{font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-60); font-weight:600}
 
   .stock-promise{
     margin-top:48px; padding:36px 40px; background:var(--ink); color:var(--warm);
@@ -340,7 +398,7 @@
 
   /* ====================  S8 SHOWROOM  ==================== */
   .showroom{background:var(--navy); color:var(--warm); padding:0; overflow:hidden}
-  .show-split{display:grid; grid-template-columns:6fr 4fr; min-height:680px}
+  .show-split{display:grid; grid-template-columns:1fr 1fr; min-height:340px}
   .show-img{
     position:relative; overflow:hidden;
     background:
@@ -351,19 +409,19 @@
   }
   .show-img::after{content:''; position:absolute; inset:0;
     background:radial-gradient(ellipse at 70% 50%,transparent 0%,rgba(13,46,86,.55) 100%)}
-  .show-img-lbl{position:absolute; right:32px; bottom:32px; z-index:3; color:rgba(250,248,245,.7);
-    font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
+  .show-img-lbl{position:absolute; right:22px; bottom:22px; z-index:3; color:rgba(250,248,245,.7);
+    font-size:9px; letter-spacing:.18em; text-transform:uppercase; font-weight:500;
     font-family:'SF Mono',monospace}
-  .show-content{padding:120px 80px; display:flex; flex-direction:column; gap:32px; justify-content:center}
+  .show-content{padding:52px 56px; display:flex; flex-direction:column; gap:18px; justify-content:center}
   .show-content .h-eyebrow-sec{color:var(--gold)}
   .show-content h2{color:var(--warm)}
   .show-content .lede{color:rgba(250,248,245,.75); font-size:18px; max-width:38ch}
-  .show-bullets{list-style:none; padding:0; margin:8px 0 0; display:flex; flex-direction:column; gap:18px}
-  .show-bullets li{display:flex; gap:16px; align-items:flex-start; font-size:15px; line-height:1.5;
+  .show-bullets{list-style:none; padding:0; margin:2px 0 0; display:flex; flex-direction:column; gap:10px}
+  .show-bullets li{display:flex; gap:12px; align-items:flex-start; font-size:13px; line-height:1.45;
     color:rgba(250,248,245,.85)}
   .show-bullets li::before{content:''; width:6px; height:6px; background:var(--gold);
-    margin-top:9px; flex:0 0 auto}
-  .show-content .acts{display:flex; gap:14px; margin-top:16px}
+    margin-top:7px; flex:0 0 auto}
+  .show-content .acts{display:flex; gap:12px; margin-top:6px}
 
   /* ====================  S5 TECH SPECS  ==================== */
   .specs{background:var(--warm); padding:140px 0}
@@ -395,9 +453,12 @@
     color:var(--gold); letter-spacing:.1em; line-height:1.1; text-align:center}
   .specs-badge p{margin:0; font-size:16px; font-weight:500; color:var(--ink)}
   .specs-badge p small{display:block; font-size:13px; color:var(--ink-60); font-weight:400; margin-top:2px}
+  .belgian-mark-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px}
 
   /* ====================  S6 CONTRACTORS  ==================== */
   .contractors{background:var(--warm-2); padding:140px 0}
+  .contractors .sec-head{grid-template-columns:minmax(0,760px); gap:0; margin-bottom:44px}
+  .contractors .sec-head h2{max-width:16ch}
   .vi-intro{display:grid; grid-template-columns:1fr 1fr; gap:80px; margin-bottom:80px}
   .vi-what{display:flex; flex-direction:column; gap:18px}
   .vi-what .h-eyebrow-sec{color:var(--gold)}
@@ -470,7 +531,9 @@
 
   /* ====================  S9 REFERENCE PROJECTS  ==================== */
   .projects{background:var(--warm-2); padding:140px 0}
-  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px 28px}
+  .proj-grid{display:flex; gap:28px; overflow-x:auto; padding:4px 0 18px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+  .proj{flex:0 0 31.5%; min-width:330px; scroll-snap-align:start}
   .proj{display:flex; flex-direction:column; gap:18px}
   .proj-img{aspect-ratio:4/3; background:var(--navy); position:relative; overflow:hidden}
   .proj-img-inner{position:absolute; inset:0; opacity:.9}
@@ -555,7 +618,26 @@
   .foot-by{font-size:12px; letter-spacing:.18em; text-transform:uppercase;
     color:var(--ink-60); font-weight:600}
   .foot-by strong{color:var(--ink); font-weight:700}
+  .mao-logo{display:inline-flex; flex-direction:column; align-items:flex-start; gap:8px; width:max-content;
+    max-width:100%; margin-top:-6px}
+  .mao-symbol{position:relative; width:108px; height:54px}
+  .mao-symbol span{position:absolute; display:block}
+  .mao-symbol .m-red{left:28px; top:28px; width:26px; height:26px; background:#f5232b}
+  .mao-symbol .m-yellow{left:51px; top:5px; width:20px; height:56px; background:#ffd925;
+    transform:rotate(-42deg); transform-origin:center; box-shadow:inset 0 0 0 1px rgba(24,27,43,.16)}
+  .mao-symbol .m-green{right:0; top:0; width:66px; height:26px; background:#127738}
+  .mao-symbol .m-blue{right:20px; top:28px; width:26px; height:46px; background:#075182}
+  .mao-word{font-family:Montserrat, var(--sans); font-size:24px; line-height:.9; font-weight:800;
+    letter-spacing:-.08em; color:#00558b; white-space:nowrap}
+  .mao-word .home{font-weight:400; letter-spacing:-.09em; color:#075182}
   .foot-tag{font-size:13px; color:var(--ink-60); line-height:1.55; max-width:32ch; margin-top:12px}
+  .foot-brand .belgian-proof{margin:0; gap:8px}
+  .foot-brand .proof-chip{min-height:34px; padding:7px 10px; font-size:9px}
+  .foot-brand .proof-chip img{height:16px}
+  .foot-brand .proof-chip .loc-logo{width:32px; height:32px}
+  .foot-brand .proof-chip .loc-main{font-size:15px}
+  .foot-brand .proof-chip .loc-main::after{top:-3px; right:-7px; font-size:4px}
+  .foot-brand .proof-chip .loc-sub{font-size:7px}
   .foot-col h5{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:600;
     color:var(--gold); margin:0 0 18px; font-family:var(--sans)}
   .foot-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px}
@@ -635,30 +717,38 @@
 
   /* ====================  LIGHTBOX (S3 new)  ==================== */
   .lb-backdrop{position:fixed; inset:0; z-index:1000; background:rgba(10,18,32,.92);
-    backdrop-filter:blur(6px); display:none; opacity:0; transition:opacity .25s; padding:48px}
+    backdrop-filter:blur(6px); display:none; opacity:0; transition:opacity .25s; padding:24px}
   .lb-backdrop.open{display:flex; align-items:center; justify-content:center; opacity:1}
-  .lb-box{background:var(--warm); width:100%; max-width:1080px; max-height:92vh; overflow:auto;
-    display:grid; grid-template-columns:1.1fr 1fr; position:relative}
+  .lb-box{background:var(--warm); width:100%; max-width:1180px; height:min(760px,calc(100vh - 48px)); max-height:calc(100vh - 48px); overflow:hidden;
+    display:grid; grid-template-columns:minmax(0,1.24fr) minmax(340px,.76fr); position:relative}
   .lb-close{position:absolute; top:18px; right:18px; z-index:5; width:42px; height:42px;
     background:rgba(26,26,46,.9); color:var(--warm); display:grid; place-items:center;
     font-family:var(--serif); font-size:22px; font-weight:300; cursor:pointer}
   .lb-close:hover{background:var(--ink)}
-  .lb-img{aspect-ratio:1/1; position:relative; min-height:400px}
-  .lb-thumbs{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:24px; background:var(--warm-2)}
-  .lb-thumb{aspect-ratio:1/1; position:relative; cursor:pointer; border:2px solid transparent; transition:.18s}
+  .lb-img{height:100%; min-height:0; aspect-ratio:auto; position:relative}
+  .lb-thumbs{display:grid; grid-template-columns:repeat(3,64px); justify-content:start; gap:7px; padding:12px 14px; background:var(--warm-2)}
+  .lb-thumb{width:64px; aspect-ratio:1/1; position:relative; cursor:pointer; border:2px solid transparent; transition:.18s}
   .lb-thumb.active{border-color:var(--gold)}
-  .lb-thumb-lbl{position:absolute; left:0; right:0; bottom:0; padding:6px 8px;
-    background:rgba(26,26,46,.78); color:var(--warm); font-size:9px;
-    letter-spacing:.16em; text-transform:uppercase; font-weight:600; text-align:center}
-  .lb-content{padding:48px 44px; display:flex; flex-direction:column; gap:18px}
-  .lb-cat{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:600}
-  .lb-name{font-family:var(--serif); font-size:42px; line-height:1.05; font-weight:500; margin:0; letter-spacing:-.015em}
-  .lb-code{font-size:12px; letter-spacing:.18em; color:var(--ink-40); font-weight:500; font-family:'SF Mono','Menlo',monospace}
-  .lb-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+  .lb-thumb-lbl{position:absolute; left:0; right:0; bottom:0; padding:5px 4px;
+    background:rgba(26,26,46,.78); color:var(--warm); font-size:8px;
+    letter-spacing:.12em; text-transform:uppercase; font-weight:600; text-align:center}
+  .lb-content{height:100%; overflow:hidden; padding:30px; display:flex; flex-direction:column; gap:10px}
+  .lb-cat{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:600}
+  .lb-name{font-family:var(--serif); font-size:30px; line-height:1.04; font-weight:500; margin:0; letter-spacing:-.015em}
+  .lb-code{font-size:11px; letter-spacing:.16em; color:var(--ink-40); font-weight:500; font-family:'SF Mono','Menlo',monospace}
+  .lb-tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:0}
   .lb-tags .swatch-tag{background:var(--warm-2)}
-  .lb-spec{margin-top:12px; padding:18px 20px; background:var(--warm-2); border:1px solid var(--line); font-size:12px; line-height:1.7; color:var(--ink-60); font-family:'SF Mono','Menlo',monospace; letter-spacing:.04em}
-  .lb-spec strong{color:var(--ink); font-weight:600; display:block; margin-bottom:6px; font-size:10px; letter-spacing:.2em; text-transform:uppercase; font-family:var(--sans)}
-  .lb-acts{margin-top:auto; display:flex; flex-direction:column; gap:10px; padding-top:20px}
+  .lb-tags .swatch-tag{font-size:9px; padding:3px 7px}
+  .lb-spec{margin-top:0; padding:12px 14px; background:var(--warm-2); border:1px solid var(--line); font-size:11px; line-height:1.45; color:var(--ink-60); font-family:'SF Mono','Menlo',monospace; letter-spacing:.035em}
+  .lb-spec strong{color:var(--ink); font-weight:600; display:block; margin-bottom:5px; font-size:9px; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans)}
+  .lb-scenes{margin-top:0; padding:12px 14px; background:var(--warm-2); border:1px solid var(--line)}
+  .lb-scenes strong{display:block; margin-bottom:8px; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); font-family:var(--sans)}
+  .lb-scene-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
+  .lb-scene{aspect-ratio:16/9; overflow:hidden; position:relative; background:var(--line); cursor:pointer; border:2px solid transparent; transition:border-color .18s}
+  .lb-scene.active{border-color:var(--gold)}
+  .lb-scene img{width:100%; height:100%; object-fit:cover}
+  .lb-acts{margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:8px; padding-top:10px; background:var(--warm)}
+  .lb-acts .btn{padding:11px 14px; min-height:50px; font-size:12px; justify-content:space-between}
   .lb-thumb.diffuse .lb-thumb-inner{position:absolute; inset:0}
   /* normal map preview = purple-blue gradient */
   .lb-thumb.normal-map .lb-thumb-inner{position:absolute; inset:0;
@@ -737,7 +827,7 @@
   .post-cta-step .n{font-family:var(--serif); font-size:24px; font-weight:400; color:var(--gold); width:24px}
   .post-cta-sep{color:var(--line-2); font-family:var(--serif); font-size:18px}
 
-  /* ====================  S6 — VE TABS + PRICE TIER + ACCESSORIES  ==================== */
+  /* ====================  S6 — TECH COMPARISON + PRICE TIER + ACCESSORIES  ==================== */
   .vi-tabs-h{display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
     border-bottom:1px solid var(--ink); margin-bottom:0}
   .vi-tabs-h .label{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-60); font-weight:600; padding-bottom:14px}
@@ -843,12 +933,139 @@
     font-style:normal;
   }
 
+  /* Compact visual scale */
+  :root{ --maxw:1160px; --gutter:64px }
+  body{font-size:15px}
+  .section-pad,.authority,.architects,.owners,.contractors,.range,.projects,.social{padding:96px 0}
+  .h-display{font-size:72px; line-height:1.02}
+  .h-section{font-size:46px; line-height:1.08}
+  .h-sub{font-size:34px}
+  .h-card{font-size:24px}
+  .lede{font-size:17px; line-height:1.55}
+  .eyebrow{font-size:10px}
+  .btn{padding:14px 24px; font-size:13px; gap:10px}
+  .btn .arr{font-size:16px}
+  .nav-inner{height:66px}
+  .brand-mark{font-size:24px}
+  .nav-links{gap:28px}
+  .nav-cta{font-size:12px; padding:10px 18px}
+  .hero{min-height:640px}
+  .hero-inner{padding:118px 0 88px}
+  .hero h1{margin:28px 0 24px}
+  .hero-lede{font-size:17px; margin-bottom:34px}
+  .hero-meta{bottom:34px}
+  .hero-stats{gap:42px}
+  .hero-stats .stat-n{font-size:30px}
+  .sec-head{gap:56px; margin-bottom:52px}
+  .sec-head .left{gap:16px}
+  .sec-head .ix{font-size:12px}
+  .range-grid{gap:20px}
+  .range-body{padding:22px; gap:11px}
+  .range-name{font-size:22px}
+  .range-name small{font-size:12px}
+  .range-spec{font-size:12px}
+  .range-price{font-size:19px}
+  .filter-bar{padding:24px 28px; margin-bottom:34px; gap:24px}
+  .filter-meta{padding-bottom:18px}
+  .swatch-grid,.proj-grid{gap:22px}
+  .swatch{flex-basis:28%; min-width:285px}
+  .swatch-img{aspect-ratio:1/0.92}
+  .swatch-name{font-size:19px}
+  .swatch-meta{padding-top:15px}
+  .spec-callout{margin-top:46px; padding:34px; gap:34px}
+  .spec-callout h3{font-size:21px}
+  .spec-callout p{font-size:13px}
+  .cert-icon{min-height:76px; gap:7px}
+  .cert-icon .ico{width:30px; height:30px; font-size:12px}
+  .owners-flow{gap:34px; margin-bottom:78px}
+  .step{padding-top:28px; gap:12px}
+  .step h3{font-size:25px}
+  .step p{font-size:14px}
+  .testimonial{gap:56px}
+  .test-content{gap:22px}
+  .test-mark{font-size:82px; height:34px}
+  .test-quote{font-size:26px}
+  .show-split{min-height:320px}
+  .show-content{padding:46px 52px; gap:16px}
+  .show-content .lede{font-size:16px}
+  .show-bullets{gap:9px}
+  .show-bullets li{font-size:13px}
+  .vi-intro{gap:56px; margin-bottom:56px}
+  .vi-what h3{font-size:28px}
+  .vi-what p{font-size:15px}
+  .vi-benefits{gap:16px}
+  .vi-benefits li{grid-template-columns:40px 1fr; gap:16px; padding:16px 0}
+  .vi-benefits h4{font-size:16px}
+  .vi-table-wrap{padding:34px; margin-bottom:34px}
+  .vi-table td{padding:14px 0; font-size:14px}
+  .vi-table td.brand-loc,.vi-table td.brand-w{font-size:17px}
+  .logistics{margin-bottom:34px}
+  .log-cell{padding:28px}
+  .log-cell .log-h{font-size:21px}
+  .specs-badge{margin-top:34px; padding:22px 28px}
+  .specs-badge p{font-size:14px}
+  .specs-badge p small{font-size:12px}
+  .proj{flex-basis:28%; min-width:285px; gap:14px}
+  .proj-name{font-size:20px}
+  .proj-cred{font-size:12px}
+  .footer{padding:72px 0 32px}
+  .foot-top{gap:44px; padding-bottom:44px}
+  .foot-mark{font-size:44px}
+  .mao-symbol{width:96px; height:48px}
+  .mao-symbol .m-red{left:24px; top:25px; width:23px; height:23px}
+  .mao-symbol .m-yellow{left:46px; top:4px; width:18px; height:50px}
+  .mao-symbol .m-green{width:59px; height:23px}
+  .mao-symbol .m-blue{right:18px; top:25px; width:23px; height:41px}
+  .mao-word{font-size:22px}
+  .contact-head{padding:34px 38px 14px}
+  .contact-head h3{font-size:30px}
+  .contact-form{padding:8px 38px 36px; gap:14px}
+  .contact-field input,.contact-field textarea{padding:12px 14px; font-size:14px}
+  .contact-field textarea{min-height:104px}
+  .lb-box{max-width:1120px}
+  .lb-img{min-height:0}
+  .lb-content{padding:28px; gap:9px}
+  .lb-name{font-size:29px}
+  .lb-spec{padding:10px 12px; font-size:10px; line-height:1.38}
+  .lb-scenes{padding:10px 12px}
+  .lb-scene-grid{gap:6px}
+  .lb-thumbs{grid-template-columns:repeat(3,56px); gap:6px; padding:10px 12px}
+  .lb-thumb{width:56px}
+  .lb-acts{padding-top:8px}
+  .lb-acts .btn{min-height:48px}
+
+  /* Focused spacing trim: sections 03, 04, 06 */
+  .architects,.owners,.contractors{padding:78px 0}
+  .architects .sec-head,.owners .sec-head{margin-bottom:34px}
+  .contractors .sec-head{margin-bottom:30px}
+  .architects .filter-bar{padding:18px 22px; margin-bottom:22px; gap:18px}
+  .architects .filter-group .filter-label{margin-bottom:9px}
+  .architects .filter-meta{padding-bottom:12px}
+  .architects .swatch-grid{gap:18px; padding-bottom:12px}
+  .architects .swatch-meta{padding-top:12px}
+  .architects .spec-callout{margin-top:30px; padding:24px 26px; gap:24px}
+  .architects .cert-icon{min-height:66px}
+  .owners .owners-flow{gap:24px; margin-bottom:48px}
+  .owners .step{padding-top:18px; gap:8px}
+  .owners .step h3{font-size:23px}
+  .owners .testimonial{gap:38px}
+  .owners .test-content{gap:16px}
+  .owners .test-meta{padding-top:16px}
+  .contractors .vi-table-wrap{padding:26px 30px; margin-bottom:24px}
+  .contractors .vi-table th{padding:10px 0}
+  .contractors .vi-table td{padding:11px 0}
+  .contractors .logistics{margin-bottom:24px}
+  .contractors .log-cell{padding:22px 24px; gap:8px}
+  .contractors .specs-badge{margin-top:24px; padding:18px 22px}
+  .contractors .contractors-cta{padding-top:14px}
+
   /* ====================  RESPONSIVE — 768px tablet  ==================== */
   @media (max-width: 1100px){
     :root{ --gutter:48px }
     .h-display{font-size:72px}
     .h-section{font-size:52px}
     .swatch-grid{grid-template-columns:repeat(3,1fr); gap:24px 20px}
+    .swatch,.proj{flex-basis:42%; min-width:300px}
     .range-grid{grid-template-columns:repeat(2,1fr)} /* already 2col */
     .proj-grid{grid-template-columns:repeat(2,1fr)}
     .logo-grid{grid-template-columns:repeat(4,1fr)}
@@ -857,6 +1074,7 @@
     :root{ --gutter:24px; --maxw:100% }
     body{font-size:15px}
     .section-pad, .authority, .architects, .owners, .specs, .contractors, .range, .projects, .social{padding:72px 0}
+    .architects,.owners,.contractors{padding:54px 0}
     .h-display{font-size:46px; line-height:1.04; letter-spacing:-.02em}
     .h-section{font-size:34px; line-height:1.08; letter-spacing:-.015em}
     .h-sub{font-size:28px}
@@ -870,6 +1088,7 @@
     .brand-by{font-size:9px; letter-spacing:.16em}
     .nav-toggle{display:flex}
     .nav-cta{display:none}
+    .search-panel{top:64px}
     .nav-links{position:fixed; top:64px; left:0; right:0;
       flex-direction:column; align-items:flex-start; gap:0; background:var(--warm);
       border-top:1px solid var(--line); border-bottom:1px solid var(--line);
@@ -895,7 +1114,7 @@
     .hero-stats .stat-l{font-size:10px}
 
     /* SECTION HEAD */
-    .sec-head{grid-template-columns:1fr; gap:24px; margin-bottom:48px}
+    .sec-head{grid-template-columns:1fr; gap:20px; margin-bottom:34px}
     .sec-head .right{padding-bottom:0}
 
     /* S2 */
@@ -909,10 +1128,11 @@
     .cert-badges{flex-direction:column; gap:10px}
 
     /* S3 FILTER + GRID */
-    .filter-bar{grid-template-columns:1fr; gap:22px; padding:22px 20px}
+    .filter-bar{grid-template-columns:1fr; gap:16px; padding:18px 18px; margin-bottom:22px}
     .swatch-grid{grid-template-columns:repeat(2,1fr); gap:24px 16px}
+    .swatch,.proj{flex-basis:78%; min-width:280px}
     .swatch-name{font-size:18px}
-    .spec-callout{grid-template-columns:1fr; padding:32px 24px; gap:24px}
+    .spec-callout{grid-template-columns:1fr; padding:24px 20px; gap:18px; margin-top:26px}
     .spec-callout h3{font-size:20px}
     .spec-callout .acts{flex-direction:column; align-items:stretch}
     .spec-callout .acts .btn{justify-content:center}
@@ -934,11 +1154,11 @@
     .lb-name{font-size:30px}
 
     /* S4 OWNERS */
-    .owners-flow{grid-template-columns:1fr; gap:0; margin-bottom:64px}
-    .step{padding:28px 0; border-bottom:1px solid var(--line)}
+    .owners-flow{grid-template-columns:1fr; gap:0; margin-bottom:36px}
+    .step{padding:20px 0; border-bottom:1px solid var(--line)}
     .step:last-child{border-bottom:0}
     .step h3{font-size:22px}
-    .testimonial{grid-template-columns:1fr; gap:32px}
+    .testimonial{grid-template-columns:1fr; gap:24px}
     .test-quote{font-size:22px}
     .test-meta{flex-direction:column; gap:18px; align-items:flex-start}
     .test-savings{text-align:left; margin-left:0}
@@ -959,8 +1179,10 @@
 
     /* S8 SHOWROOM */
     .show-split{grid-template-columns:1fr}
-    .show-img{min-height:280px}
-    .show-content{padding:64px 24px}
+    .show-img{min-height:180px}
+    .show-content{padding:36px 24px; gap:14px}
+    .show-bullets{gap:8px}
+    .show-bullets li{font-size:13px}
     .show-content .acts{flex-direction:column; align-items:stretch}
     .show-content .acts .btn{justify-content:center}
 
@@ -1038,6 +1260,12 @@
     .footer{padding:64px 0 32px}
     .foot-top{grid-template-columns:1fr; gap:36px; padding-bottom:36px}
     .foot-mark{font-size:42px}
+    .mao-symbol{width:88px; height:44px}
+    .mao-symbol .m-red{left:22px; top:23px; width:21px; height:21px}
+    .mao-symbol .m-yellow{left:42px; top:4px; width:17px; height:46px}
+    .mao-symbol .m-green{width:54px; height:21px}
+    .mao-symbol .m-blue{right:17px; top:23px; width:21px; height:38px}
+    .mao-word{font-size:20px}
     .foot-bot{flex-direction:column; gap:16px; align-items:flex-start; padding-top:24px}
   }
 
@@ -1050,10 +1278,12 @@
     .filter-chips::-webkit-scrollbar{display:none}
     .chip{white-space:nowrap}
     .swatch-grid{grid-template-columns:1fr}
+    .swatch,.proj{flex-basis:86%; min-width:260px}
     .swatch-img{aspect-ratio:5/4}
     .stat-n{font-size:26px}
     .btn{padding:15px 22px; font-size:13px}
     .auth-stat-row .n{font-size:36px}
+    .mao-word{font-size:18px}
   }
 
   /* ====================  FLOATING ANCHOR / BACK TO TOP HIDDEN PRINT  ==================== */
@@ -1087,16 +1317,27 @@
       <span class="brand-by">Unilin Group · Belgium</span>
     </div>
     <div class="nav-links">
-      <a href="#authority">Về chúng tôi</a>
+      <a href="#authority">Elite &amp; Plus</a>
       <a href="#mau-ma">Sản phẩm</a>
       <a href="#showroom">Showroom</a>
-      <a href="#thong-so">Kỹ thuật &amp; VE</a>
+      <a href="#nha-thau">Thông số kỹ thuật</a>
       <a href="#du-an">Dự án</a>
     </div>
-    <a href="#tu-van" class="nav-cta" data-contact-open>Tư vấn <span style="font-family:var(--serif); font-weight:300; font-size:16px">→</span></a>
+    <div class="nav-actions">
+      <button class="nav-search" type="button" id="searchToggle" aria-label="Tìm kiếm sản phẩm">
+        <span class="search-ico" aria-hidden="true"></span>
+      </button>
+      <a href="#tu-van" class="nav-cta" data-contact-open>Tư vấn <span style="font-family:var(--serif); font-weight:300; font-size:16px">→</span></a>
+    </div>
     <button class="nav-toggle" aria-label="Menu" id="navToggle">
       <span></span><span></span><span></span>
     </button>
+  </div>
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <div class="search-panel-inner">
+      <input id="productSearch" type="search" placeholder="Tìm theo tên màu hoặc mã sản phẩm" autocomplete="off">
+      <button type="button" id="searchClose" aria-label="Đóng tìm kiếm">×</button>
+    </div>
   </div>
 </nav>
 
@@ -1109,11 +1350,16 @@
   <div class="hero-grain"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow hero-eyebrow"><span class="dot"></span>Unilin Group · Belgium · cùng nhà máy Quick-Step</div>
+    <div class="belgian-proof" aria-label="Dấu hiệu thương hiệu Bỉ">
+      <span class="proof-chip"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Belgium origin</span>
+      <span class="proof-chip"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
+      <span class="proof-chip loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
+    </div>
     <h1 class="h-display">Bề mặt gỗ cho <em>không gian có chiều sâu.</em></h1>
     <p class="hero-lede">LOC Floor thuộc hệ sinh thái Unilin Group tại Bỉ, nơi kỹ thuật laminate, sắc độ gỗ và tiêu chuẩn hoàn thiện được đặt trong cùng một nền tảng. Hai dòng Elite và Plus mở ra những lựa chọn khác nhau cho cùng một tinh thần vật liệu: rõ nguồn gốc, đẹp trong phối cảnh và ổn định khi đi vào công trình.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#mau-ma">Xem sản phẩm <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#thong-so">Đối chiếu kỹ thuật <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#nha-thau">Đối chiếu kỹ thuật <span class="arr">→</span></a>
     </div>
   </div>
   <div class="hero-meta">
@@ -1127,127 +1373,59 @@
 </section>
 
 <!-- ============================================================
-     S2 — BRAND AUTHORITY
+     S2 — PRODUCT RANGE
 ============================================================ -->
-<section class="authority section-pad" id="authority">
+<section class="range" id="authority">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">02 — Thẩm quyền thương hiệu</span>
-        <h2 class="h-section">Từ nền tảng Unilin. <em class="serif">Đến bề mặt hoàn thiện.</em></h2>
+        <span class="ix">02 — Hai dòng laminate</span>
+        <h2 class="h-section">Hai dòng sản phẩm. <em class="serif">Một tinh thần vật liệu.</em></h2>
       </div>
       <div class="right">
-        <p class="lede">LOC được phát triển trong hệ sinh thái Unilin Group tại Bỉ, với bộ tiêu chuẩn kỹ thuật, chứng nhận và hồ sơ sản phẩm đủ rõ để đi cùng quá trình chọn mẫu, trình duyệt vật liệu và triển khai hoàn thiện tại Việt Nam.</p>
+        <p class="lede">Elite Series và Plus Series mở ra hai cách tiếp cận khác nhau với sàn laminate LOC: một dòng nhấn vào chiều sâu bề mặt và cảm giác hoàn thiện, một dòng linh hoạt hơn về sắc độ và ứng dụng. Cả hai cùng đặt trên nền tảng tiêu chuẩn kỹ thuật rõ ràng.</p>
       </div>
     </div>
 
-    <div class="authority-grid">
-      <div class="auth-logo-block">
-        <div class="auth-logo">
-          <img src="https://locfloor.com.vn/wp-content/uploads/2025/07/logo-v1.png" alt="LOC Floor" style="max-height:64px;max-width:200px;object-fit:contain;">
-          <div class="lg-sub">Unilin Group · Belgium</div>
+    <div class="range-grid">
+      <article class="range-card">
+        <div class="range-img" style="aspect-ratio:1/1;overflow:hidden;position:relative;">
+          <img src="https://images.pexels.com/photos/7005277/pexels-photo-7005277.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Không gian phòng ngủ dùng LOC Elite Series" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <span class="lbl">Elite Series · LFE</span>
         </div>
-        <div class="cert-badges">
-          <div class="cert">
-            <div class="cert-tag">Certification</div>
-            <div class="cert-name">EN 13329 · Class 32 · Uniclic®</div>
+        <div class="range-body">
+          <span class="range-cat">Bề mặt giàu chiều sâu · Không gian chọn lọc</span>
+          <h3 class="range-name">LOC Elite Series<small>HDF 8mm · EN 13329 · Class 32 · Pressed Bevel</small></h3>
+          <p class="range-spec">Cạnh vát Pressed Bevel 4 mặt và texture bề mặt rõ hơn, phù hợp với những không gian cần sắc gỗ có chiều sâu, khả năng bắt sáng tinh tế và cảm giác hoàn thiện cao.</p>
+          <div class="range-foot">
+            <div class="range-price">~600–800K<small>/m²</small></div>
+            <a class="range-link" href="assets/loc-certificates/loc-floor-elite-catalog.pdf" target="_blank" rel="noopener">Xem Catalogue Elite <span class="arr">→</span></a>
           </div>
-          <div class="cert">
-            <div class="cert-tag">Origin</div>
-            <div class="cert-name">CO Form A · Bỉ · đầy đủ hồ sơ</div>
+        </div>
+      </article>
+
+      <article class="range-card">
+        <div class="range-img" style="aspect-ratio:1/1;overflow:hidden;position:relative;">
+          <img src="https://images.pexels.com/photos/34996523/pexels-photo-34996523.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Không gian căn hộ dùng LOC Plus Series" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <span class="lbl">Plus Series · LPF/LPV</span>
+        </div>
+        <div class="range-body">
+          <span class="range-cat">Linh hoạt · Dễ phối · Ứng dụng rộng</span>
+          <h3 class="range-name">LOC Plus Series<small>HDF 8mm · EN 13329 · Đa mẫu · Giá tốt</small></h3>
+          <p class="range-spec">Bảng màu đa dạng, dễ phối với nhiều phong cách nội thất và quy mô triển khai. Plus Series giữ tinh thần gỗ tự nhiên theo cách nhẹ, sạch và dễ ứng dụng trong các không gian hoàn thiện hằng ngày.</p>
+          <div class="range-foot">
+            <div class="range-price">~400–600K<small>/m²</small></div>
+            <a class="range-link" href="assets/loc-certificates/loc-floor-plus-catalog.pdf" target="_blank" rel="noopener">Xem Catalogue Plus <span class="arr">→</span></a>
           </div>
         </div>
-      </div>
-
-      <div class="auth-stats">
-        <div class="auth-stat-row">
-          <span class="n">200+</span>
-          <span class="l">mẫu sàn sẵn kho tại Việt Nam</span>
-        </div>
-        <div class="auth-stat-row">
-          <span class="n">15</span>
-          <span class="l">năm bảo hành chính hãng</span>
-        </div>
-        <div class="auth-stat-row">
-          <span class="n">1<span style="font-family:var(--sans); font-weight:400; font-size:36px">/</span>3</span>
-          <span class="l">mức đầu tư tham chiếu khi đối chiếu trong cùng hệ tiêu chuẩn Unilin Belgium</span>
-        </div>
-      </div>
-
-      <div class="auth-claim">
-        <div class="num-mk">— 01</div>
-        <div class="claim-h">"Một lựa chọn laminate đẹp không chỉ nằm ở vân gỗ. Nó còn nằm ở nguồn gốc, hồ sơ kỹ thuật và khả năng giữ nhịp khi đi từ bản vẽ đến mặt sàn thực tế."</div>
-        <div class="claim-p">Từ mẫu màu, chứng nhận EN 13329, hệ khóa Uniclic® đến CO/CQ, LOC được trình bày như một hệ vật liệu có thể kiểm chứng, phù hợp cho các hồ sơ cần sự rõ ràng trước khi bước vào thi công.</div>
-      </div>
+      </article>
     </div>
-
-    <div class="stock-callout">
-      <span class="badge">Mới · v2.0</span>
-      <p>Các mã trong catalog được <strong>duy trì nguồn cung tối thiểu 12 tháng</strong>, giúp hồ sơ thiết kế và kế hoạch vật tư có thêm độ ổn định khi dự án bước qua nhiều giai đoạn.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ============================================================
-     S3 — FOR ARCHITECTS
-============================================================ -->
-<section class="architects" id="mau-ma">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="left">
-        <span class="ix">03 — Cho Kiến trúc sư &amp; Thiết kế</span>
-        <h2 class="h-section">Bảng màu có chiều sâu. <em class="serif">Tư liệu sẵn sàng.</em></h2>
+    <div class="product-filter" id="mau-ma">
+      <div class="filter-label">Sản phẩm</div>
+      <div class="filter-chips" id="seriesFilter">
+        <button class="chip active" data-series="Elite">Elite Series</button>
+        <button class="chip" data-series="Plus">Plus Series</button>
       </div>
-      <div class="right">
-        <p class="lede">Các mã màu được sắp xếp theo tông, phong cách, bề rộng thanh và độ hoàn thiện bề mặt. Texture map 4K đi kèm giúp vật liệu được đọc đúng trong phối cảnh, ánh sáng và moodboard.</p>
-      </div>
-    </div>
-
-    <!-- Filter -->
-    <div class="filter-bar" id="filterBar">
-      <div class="filter-group">
-        <div class="filter-label">Tông màu</div>
-        <div class="filter-chips">
-          <button class="chip active" data-f="tone">Tất cả</button>
-          <button class="chip" data-f="tone">Warm</button>
-          <button class="chip" data-f="tone">Cool</button>
-          <button class="chip" data-f="tone">Neutral</button>
-          <button class="chip" data-f="tone">Dark</button>
-        </div>
-      </div>
-      <div class="filter-group">
-        <div class="filter-label">Phong cách</div>
-        <div class="filter-chips">
-          <button class="chip active" data-f="style">Tất cả</button>
-          <button class="chip" data-f="style">Scandinavian</button>
-          <button class="chip" data-f="style">Industrial</button>
-          <button class="chip" data-f="style">Japandi</button>
-          <button class="chip" data-f="style">Classic</button>
-        </div>
-      </div>
-      <div class="filter-group">
-        <div class="filter-label">Bề rộng thanh</div>
-        <div class="filter-chips">
-          <button class="chip active" data-f="plank">Tất cả</button>
-          <button class="chip" data-f="plank">Narrow plank</button>
-          <button class="chip" data-f="plank">Wide plank</button>
-        </div>
-      </div>
-      <div class="filter-group">
-        <div class="filter-label">Độ bóng</div>
-        <div class="filter-chips">
-          <button class="chip active" data-f="finish">Tất cả</button>
-          <button class="chip" data-f="finish">Matte</button>
-          <button class="chip" data-f="finish">Semi-gloss</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-meta">
-      <div class="count"><strong>8</strong> mẫu hiển thị · trong tổng <strong>200+</strong> mã catalog</div>
-      <div class="sort">Sắp xếp: Xu hướng Q3/2026 ↓</div>
     </div>
 
     <div class="swatch-grid" id="swatchGrid">
@@ -1377,75 +1555,20 @@
     </div>
 
     <!-- MOODBOARD — Fix 3 -->
-    <div class="moodboard">
-      <div class="mood-head">
-        <div>
-          <span class="ix">— Moodboard · Render thực tế</span>
-          <h3>Trông như thế nào <em class="serif">trong không gian thực?</em></h3>
-        </div>
-        <p class="lede">Render từ file 3D đã được hoàn thiện — cùng material, cùng kích thước thanh, cùng độ bóng như sản phẩm thật. Click để xem texture map đi kèm.</p>
-      </div>
-      <div class="mood-grid">
-        <article class="mood-card">
-          <div class="mood-img mb1">
-            <div class="mood-img-inner"></div>
-            <span class="mood-badge">LFE00461</span>
-            <span class="mood-tag">Neutral · Japandi</span>
-          </div>
-          <div class="mood-body">
-            <span class="mood-scene">Phòng khách · 60m²</span>
-            <h4 class="mood-title">Japandi serenity · Ash Linen</h4>
-            <div class="mood-meta">Tone trung tính, narrow plank, độ bóng matte 7%.</div>
-            <button class="mood-cta" data-open="LFE00461">Xem texture map <span class="arr">→</span></button>
-          </div>
-        </article>
-        <article class="mood-card">
-          <div class="mood-img mb2">
-            <div class="mood-img-inner"></div>
-            <span class="mood-badge">LFE00463</span>
-            <span class="mood-tag">Dark · Classic</span>
-          </div>
-          <div class="mood-body">
-            <span class="mood-scene">Lobby khách sạn boutique</span>
-            <h4 class="mood-title">Hospitality presence · Smoked Walnut</h4>
-            <div class="mood-meta">Wide plank 240mm, độ bóng semi-gloss 15%.</div>
-            <button class="mood-cta" data-open="LFE00463">Xem texture map <span class="arr">→</span></button>
-          </div>
-        </article>
-        <article class="mood-card">
-          <div class="mood-img mb3">
-            <div class="mood-img-inner"></div>
-            <span class="mood-badge">LFE00458</span>
-            <span class="mood-tag">Warm · Scandinavian</span>
-          </div>
-          <div class="mood-body">
-            <span class="mood-scene">Phòng ngủ villa · Scandinavia</span>
-            <h4 class="mood-title">Warm comfort · Belgian Oak</h4>
-            <div class="mood-meta">Wide plank 220mm, brushed matte finish.</div>
-            <button class="mood-cta" data-open="LFE00458">Xem texture map <span class="arr">→</span></button>
-          </div>
-        </article>
-      </div>
-    </div>
-
     <!-- Spec / download callout -->
     <div class="spec-callout">
       <div>
         <h3>Hồ sơ chứng chỉ LOC.<br>TDS · COCQ · Bảo hành · EPD.</h3>
         <p>Bộ tài liệu đối chiếu nguồn gốc, chất lượng và thông số kỹ thuật của LOC Floor: sản xuất tại Bỉ, hệ hèm Uniclic, Class 32, chứng nhận hợp quy tại Việt Nam và các tiêu chuẩn môi trường liên quan.</p>
       </div>
-      <div>
-        <div class="file-tag">Quality Letter · COCQ · TDS Elite/Plus · Warranty · ISO · EPD · A+</div>
-        <div class="acts">
-          <a class="btn btn-primary" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ LOC <span class="arr">↓</span></a>
-          <a class="btn btn-outline" href="assets/loc-certificates/loc-cocq.pdf" target="_blank" rel="noopener">Xem COCQ LOC Floor <span class="arr">↓</span></a>
-        </div>
+      <div class="cert-icon-grid" aria-label="Nhóm hồ sơ chứng chỉ LOC">
+        <div class="cert-icon"><span class="ico">T</span><span>TDS</span></div>
+        <div class="cert-icon"><span class="ico">Q</span><span>COCQ</span></div>
+        <div class="cert-icon"><span class="ico">W</span><span>Warranty</span></div>
+        <div class="cert-icon"><span class="ico">E</span><span>EPD</span></div>
+        <div class="cert-icon"><span class="ico">A+</span><span>A+</span></div>
+        <div class="cert-icon"><span class="ico">ISO</span><span>ISO</span></div>
       </div>
-    </div>
-
-    <div class="stock-promise">
-      <div class="mark">12<small>tháng tồn kho</small></div>
-      <p>Các mã trong catalog được <em>duy trì nguồn cung tối thiểu 12 tháng</em>, giúp hồ sơ thiết kế, bước trình mẫu và kế hoạch giao hàng giữ được sự liền mạch giữa bản vẽ và hiện trường.</p>
     </div>
   </div>
 </section>
@@ -1469,17 +1592,14 @@
       <div class="step">
         <span class="step-n">— Bước 01</span>
         <h3>Định hướng thiết kế<br>được giữ nhất quán.</h3>
-        <p>Từ concept nội thất, căn mẫu đến bảng vật liệu hoàn thiện, LOC được đối chiếu theo tinh thần thiết kế để màu sàn đi cùng tổng thể kiến trúc và tiêu chuẩn bàn giao.</p>
       </div>
       <div class="step">
         <span class="step-n">— Bước 02</span>
         <h3>Tối ưu vật liệu<br>theo quy mô đầu tư.</h3>
-        <p>Hơn 200 mẫu trưng bày thật hỗ trợ quá trình duyệt mẫu, so sánh mã và chốt phương án theo diện tích, phân khu sử dụng, tiến độ và ngân sách vật tư.</p>
       </div>
       <div class="step">
         <span class="step-n">— Bước 03</span>
         <h3>Hiệu quả chi phí<br>ở quy mô dự án.</h3>
-        <p>Khi diện tích triển khai lớn, chênh lệch đơn giá trên mỗi mét vuông trở thành một phần đáng kể của tổng mức đầu tư, nhưng vẫn cần được đặt trên nền tảng thông số và chứng từ rõ ràng.</p>
       </div>
     </div>
 
@@ -1490,7 +1610,7 @@
       </div>
       <div class="test-content">
         <span class="test-mark">"</span>
-        <blockquote class="test-quote">Ở những dự án có diện tích sàn lớn, việc đối chiếu giữa thông số, chứng từ và đơn giá giúp chủ đầu tư nhìn rõ hơn tổng hiệu quả vật liệu. LOC Elite giữ được tinh thần gỗ ấm trong không gian, đồng thời tạo khoảng linh hoạt đáng kể cho ngân sách hoàn thiện.</blockquote>
+        <blockquote class="test-quote">Ở những dự án có diện tích sàn lớn, việc đối chiếu giữa thông số, chứng từ và đơn giá giúp chủ đầu tư nhìn rõ hơn tổng hiệu quả vật liệu. LOC giữ được tinh thần gỗ ấm trong không gian, đồng thời tạo khoảng linh hoạt đáng kể cho ngân sách hoàn thiện.</blockquote>
         <div class="test-meta">
           <div class="who">
             <div class="who-n">Đại diện chủ đầu tư</div>
@@ -1505,234 +1625,30 @@
     </div>
 
     <!-- BEFORE / AFTER SLIDER — Fix 4 -->
-    <div class="ba-wrap">
-      <div class="ba-head">
-        <div>
-          <span class="ix">— Trước &amp; Sau · Drag để so sánh</span>
-          <h3>Cùng một mặt bằng. <em class="serif">Khác cảm giác sau hoàn thiện.</em></h3>
-        </div>
-        <p class="lede">Một bề mặt sàn được hoàn thiện đúng cách làm thay đổi cảm nhận về ánh sáng, độ ấm và sự liền mạch của không gian. Kéo thanh trượt để xem lớp nền trước và sau khi hoàn thiện bằng LOC Elite Series.</p>
-      </div>
-      <div class="ba-frame" id="baFrame">
-        <div class="ba-before"></div>
-        <div class="ba-after" id="baAfter"></div>
-        <div class="ba-slider" id="baSlider"><div class="ba-handle"></div></div>
-      </div>
-      <div class="ba-cap">
-        <div><strong>Masteri Centre Point</strong> · Q.7 · Phòng khách 42m² · góc Đông-Nam</div>
-        <div>LFE00458 Belgian Oak · Bàn giao 03/2026</div>
-      </div>
-    </div>
-
-    <!-- WARRANTY ACCORDION — Fix 5 -->
-    <div class="warranty">
-      <div class="left">
-        <span class="ix">— Chi tiết bảo hành</span>
-        <h3>15 năm bảo hành — <em>được hiểu bằng điều khoản rõ ràng.</em></h3>
-        <p class="lede">Bảo hành cần được nhìn như một phần của hồ sơ vật liệu: phạm vi áp dụng, điều kiện sử dụng và quy trình xử lý đều được trình bày rõ trước khi bàn giao.</p>
-      </div>
-      <div class="acc" id="warrantyAcc">
-        <div class="acc-item open">
-          <button class="acc-q" type="button">Phạm vi bảo hành chi tiết <span class="ico">+</span></button>
-          <div class="acc-body"><div class="acc-body-inner">
-            <ul>
-              <li><span class="y">✓</span><div><strong>Cong vênh, phồng rộp, tách khớp</strong> do lỗi sản xuất trong điều kiện sử dụng bình thường.</div></li>
-              <li><span class="y">✓</span><div><strong>Phai màu bề mặt quá 20%</strong> so với mẫu gốc trong khoảng thời gian bảo hành.</div></li>
-              <li><span class="y">✓</span><div><strong>Bong tróc lớp phủ AC</strong> dưới điều kiện đi lại thông thường (khu vực dân dụng / thương mại nhẹ).</div></li>
-              <li><span class="n">✗</span><div>Trầy xước do sử dụng vật cứng, kéo lê đồ nội thất không có đệm bảo vệ.</div></li>
-              <li><span class="n">✗</span><div>Ngập nước kéo dài trên 48 giờ; tiếp xúc với chất tẩy rửa công nghiệp.</div></li>
-              <li><span class="n">✗</span><div>Hư hỏng do thi công sai quy chuẩn (mặt nền không phẳng &gt; 3mm/2m, không có lớp lót foam).</div></li>
-            </ul>
-          </div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-q" type="button">Quy trình bảo hành khi phát sinh <span class="ico">+</span></button>
-          <div class="acc-body"><div class="acc-body-inner">
-            <div class="proc">
-              <strong style="display:block; margin-bottom:6px">3 bước · tối đa 7 ngày làm việc</strong>
-              <strong>01</strong> · Gọi hotline 0938 360 986 hoặc gửi email kèm ảnh hiện trạng.<br>
-              <strong>02</strong> · Kỹ thuật viên đến kiểm tra, lập biên bản trong vòng 48 giờ.<br>
-              <strong>03</strong> · Sửa chữa tại chỗ hoặc đổi mới cùng batch sản xuất trong 7 ngày làm việc.
-            </div>
-          </div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-q" type="button">Bảo hành có chuyển nhượng được không? <span class="ico">+</span></button>
-          <div class="acc-body"><div class="acc-body-inner">
-            Có. Khi căn hộ/biệt thự được sang nhượng, chủ mới chỉ cần gửi bản scan hợp đồng chuyển nhượng hoặc sổ hồng — bảo hành tiếp tục có hiệu lực đến hết thời hạn còn lại (15 năm tính từ ngày bàn giao gốc).
-          </div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="owners-cta">
-      <a class="btn btn-primary" href="#dat-lich">Trao đổi phương án vật liệu <span class="arr">→</span></a>
-      <!-- Post-CTA micro-copy — Fix 6 -->
-      <div class="post-cta">
-        <div class="post-cta-step"><span class="n">1</span><div><strong>Điền số điện thoại</strong>10 giây</div></div>
-        <div class="post-cta-sep">→</div>
-        <div class="post-cta-step"><span class="n">2</span><div><strong>Đầu mối dự án phản hồi</strong>trong 2 giờ làm việc</div></div>
-        <div class="post-cta-sep">→</div>
-        <div class="post-cta-step"><span class="n">3</span><div><strong>Sắp lịch đối chiếu mẫu</strong>showroom hoặc tư vấn online</div></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============================================================
-     S8 — SHOWROOM (moved up)
-============================================================ -->
-<section class="showroom" id="showroom">
-  <div class="show-split">
-    <div class="show-img">
-      <span class="show-img-lbl">Không gian trải nghiệm vật liệu · showroom tham chiếu</span>
-    </div>
-    <div class="show-content">
-      <span class="h-eyebrow-sec">08 — Showroom Experience</span>
-      <h2 class="h-sub">Nhìn vật liệu thật.<br><em class="serif">Cảm nhận trước khi chọn.</em></h2>
-      <p class="lede">Không gian showroom giúp mẫu sàn được nhìn dưới ánh sáng thực, đặt cạnh vật liệu nội thất và cảm nhận bằng bước chân. Catalog là điểm bắt đầu; bề mặt thật mới là nơi quyết định trở nên rõ ràng.</p>
-      <ul class="show-bullets">
-        <li>Hơn 200 mẫu trưng bày kích thước thực để quan sát sắc độ, vân và độ hoàn thiện bề mặt</li>
-        <li>Không gian trao đổi riêng cho nhóm thiết kế, chủ đầu tư và bộ phận vật tư</li>
-        <li>Có thể sắp lịch riêng cho các buổi duyệt mẫu, đối chiếu spec hoặc chuẩn bị hồ sơ vật liệu</li>
-      </ul>
-      <div class="acts">
-        <a class="btn btn-gold" href="#dat-lich">Sắp lịch đối chiếu mẫu showroom <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#maps">Xem bản đồ <span class="arr">↗</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S5 — TECHNICAL SPECS
-============================================================ -->
-<section class="specs" id="thong-so">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="left">
-        <span class="ix">05 — Thông số kỹ thuật</span>
-        <h2 class="h-section">Thông số rõ ràng. <em class="serif">Hồ sơ dễ đối chiếu.</em></h2>
-      </div>
-      <div class="right">
-        <p class="lede">Thông số kỹ thuật, chứng từ xuất xứ và tiêu chuẩn kiểm định được đặt cạnh nhau để quá trình duyệt vật liệu diễn ra mạch lạc, đặc biệt khi cần đối chiếu giữa nhiều phương án laminate trong cùng hệ tiêu chuẩn.</p>
-      </div>
-    </div>
-
-    <div class="specs-table">
-      <div class="specs-row head">
-        <div class="col">Tiêu chí kỹ thuật</div>
-        <div class="col brand-loc">LOC Elite Series</div>
-        <div class="col brand-w">Quick-Step Impressive</div>
-      </div>
-      <div class="specs-row" data-label="Chất liệu lõi">
-        <div class="col">Chất liệu lõi</div>
-        <div class="col brand-loc">HDF mật độ cao</div>
-        <div class="col brand-w match">HDF mật độ cao</div>
-      </div>
-      <div class="specs-row" data-label="Xuất xứ">
-        <div class="col">Xuất xứ</div>
-        <div class="col brand-loc">Unilin Belgium</div>
-        <div class="col brand-w match">Unilin Belgium</div>
-      </div>
-      <div class="specs-row" data-label="Độ cứng (AC rating)">
-        <div class="col">Tiêu chuẩn kiểm định</div>
-        <div class="col brand-loc">EN 13329 · Class 32</div>
-        <div class="col brand-w match">EN 13329 · Class 32</div>
-      </div>
-      <div class="specs-row" data-label="Khả năng chống nước">
-        <div class="col">Khả năng chống nước</div>
-        <div class="col brand-loc">24h waterproof</div>
-        <div class="col brand-w match">24h waterproof</div>
-      </div>
-      <div class="specs-row" data-label="Hệ thống khóa">
-        <div class="col">Hệ thống khóa</div>
-        <div class="col brand-loc">Uniclic®</div>
-        <div class="col brand-w match">Uniclic®</div>
-      </div>
-      <div class="specs-row" data-label="Độ dày">
-        <div class="col">Độ dày</div>
-        <div class="col brand-loc">8mm</div>
-        <div class="col brand-w match">8mm</div>
-      </div>
-      <div class="specs-row" data-label="Bảo hành chính hãng">
-        <div class="col">Bảo hành chính hãng</div>
-        <div class="col brand-loc">15 năm</div>
-        <div class="col brand-w match">15 năm</div>
-      </div>
-      <div class="specs-row" data-label="Giá tham khảo">
-        <div class="col">Giá tham khảo</div>
-        <div class="col brand-loc diff"><strong>~600–800K</strong>/m²</div>
-        <div class="col brand-w">~1.200–1.800K/m²</div>
-      </div>
-    </div>
-
-    <div class="specs-badge">
-      <div class="left">
-        <div class="seal">UNILIN<br>BELGIUM<br>FACTORY</div>
-        <p>LOC Elite được trình bày với bộ thông số và chứng từ rõ ràng trong hệ Unilin Belgium.<br><small>EN 13329 · Class 32 · Uniclic® · CO Form A — thuận tiện cho bước đối chiếu, trình mẫu và nghiệm thu vật liệu.</small></p>
-      </div>
-      <a class="btn btn-outline" href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">Xem TDS Elite <span class="arr">↓</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S6 — CONTRACTORS / VE
+     S6 — CONTRACTORS / TECH COMPARISON
 ============================================================ -->
 <section class="contractors" id="nha-thau">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
         <span class="ix">06 — Cho Nhà thầu</span>
-        <h2 class="h-section">VE — Giữ nền tảng kỹ thuật. <em class="serif">Tối ưu tổng mức đầu tư.</em></h2>
+        <h2 class="h-section">Giữ nền tảng kỹ thuật. <em class="serif">Tối ưu tổng mức đầu tư.</em></h2>
       </div>
-      <div class="right">
-        <p class="lede">Value Engineering không nên được hiểu là hạ cấp vật liệu. Với LOC, VE bắt đầu từ việc đối chiếu thông số, chứng từ, xuất xứ và điều kiện triển khai để tìm một phương án laminate cân bằng hơn cho ngân sách dự án.</p>
-      </div>
-    </div>
-
-    <div class="vi-intro">
-      <div class="vi-what">
-        <span class="h-eyebrow-sec">VE là gì?</span>
-        <h3>Tối ưu lựa chọn vật liệu mà vẫn giữ những tiêu chuẩn kỹ thuật cốt lõi trong hồ sơ thiết kế.</h3>
-        <p>Khi hồ sơ yêu cầu một bề mặt laminate có tiêu chuẩn rõ ràng, LOC Elite được đặt vào bảng đối chiếu bằng các tiêu chí có thể kiểm chứng: EN 13329, Class 32, hệ khóa Uniclic®, xuất xứ Unilin Belgium và bộ CO/CQ đi kèm.</p>
-      </div>
-      <ul class="vi-benefits">
-        <li>
-          <span class="vi-n">01</span>
-          <div>
-            <h4>Giữ nguyên thông số kỹ thuật</h4>
-            <p>AC rating, độ dày, xuất xứ, kiểm định — tất cả khớp với spec gốc. Việc đối chiếu dựa trên thông số và chứng từ, giúp các bên nhìn thấy cơ sở kỹ thuật của phương án thay thế.</p>
-          </div>
-        </li>
-        <li>
-          <span class="vi-n">02</span>
-          <div>
-            <h4>Tối ưu 40–55% so với Quick-Step Impressive</h4>
-            <p>Khi quy mô sàn tăng lên, phần chênh lệch vật liệu có thể tạo dư địa đáng kể cho ngân sách hoàn thiện, dự phòng tiến độ hoặc các hạng mục nội thất khác.</p>
-          </div>
-        </li>
-        <li>
-          <span class="vi-n">03</span>
-          <div>
-            <h4>Hồ sơ nghiệm thu rõ ràng</h4>
-            <p>CO Form A, CQ, hóa đơn VAT và biên bản nghiệm thu vật liệu được chuẩn bị theo yêu cầu hồ sơ, thuận tiện cho dự án có quy trình kiểm soát vật tư chặt chẽ.</p>
-          </div>
-        </li>
-      </ul>
     </div>
 
     <div class="vi-table-wrap" id="viTabs">
       <div class="vi-tabs-h">
-        <div class="label">— Bảng so sánh VE · LOC Elite Series vs Quick-Step Impressive</div>
+        <div class="label">— Bảng so sánh kỹ thuật · LOC Floor vs Quick-Step Impressive</div>
       </div>
       <div class="vi-tab-pane active" data-pane="lam">
         <table class="vi-table">
           <thead>
             <tr>
               <th>Tiêu chí</th>
-              <th class="b-loc">LOC Elite Series</th>
+              <th class="b-loc">LOC Floor</th>
               <th class="b-w">Quick-Step Impressive</th>
             </tr>
           </thead>
@@ -1764,116 +1680,24 @@
       </div>
     </div>
 
-    <!-- PRICE TIER — Fix 8 -->
-    <div class="price-tier">
-      <div class="price-tier-h">
-        <h3>Giá theo quy mô dự án</h3>
-        <span class="ix">— Chiết khấu bulk</span>
+    <div class="specs-badge">
+      <div class="left">
+        <div class="seal">UNILIN<br>BELGIUM<br>FACTORY</div>
+        <div>
+          <p>LOC Elite và Plus được trình bày với bộ thông số và chứng từ rõ ràng trong hệ Unilin Belgium.<br><small>EN 13329 · Class 32 · Uniclic® · CO Form A — thuận tiện cho bước đối chiếu, trình mẫu và nghiệm thu vật liệu.</small></p>
+          <div class="belgian-mark-row" aria-label="Dấu hiệu nguồn gốc Bỉ">
+            <span class="proof-chip dark"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Bỉ</span>
+            <span class="proof-chip dark"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
+            <span class="proof-chip dark loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
+          </div>
+        </div>
       </div>
-      <table class="price-table">
-        <thead>
-          <tr>
-            <th>Số lượng</th>
-            <th>Mức chiết khấu</th>
-            <th>Ghi chú</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="vol">&lt; 200m²</td>
-            <td class="disc">Giá niêm yết</td>
-            <td>Phù hợp đơn hàng nhỏ hoặc nhu cầu xem mẫu trực tiếp tại showroom</td>
-          </tr>
-          <tr>
-            <td class="vol">200–500m²</td>
-            <td class="disc tag">Liên hệ báo giá</td>
-            <td>Thời gian giao 5–7 ngày từ kho TP.HCM</td>
-          </tr>
-          <tr>
-            <td class="vol">500–1.500m²</td>
-            <td class="disc tag">Liên hệ báo giá</td>
-            <td>Ưu tiên cùng batch sản xuất · giữ màu đồng nhất</td>
-          </tr>
-          <tr>
-            <td class="vol">&gt; 1.500m²</td>
-            <td class="disc tag">Liên hệ trực tiếp</td>
-            <td>Đầu mối dự án riêng · phản hồi báo giá trong 48 giờ</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="foot">Đặt trước 14 ngày để đảm bảo cùng batch — tránh lệch màu giữa các lô. Mọi chiết khấu áp dụng cho đơn hàng đã ký hợp đồng dự án có CO/CQ.</div>
+      <a class="btn btn-outline" href="assets/loc-certificates/tds-loc-floor-elite-plus.pdf" target="_blank" rel="noopener">Xem TDS Elite/Plus <span class="arr">↓</span></a>
     </div>
 
-    <!-- ACCESSORIES — Fix 9 -->
-    <div class="acc-pack">
-      <div class="seal">PHỤ KIỆN TRỌN GÓI</div>
-      <div>
-        <h3>Cung cấp <em>trọn bộ phụ kiện thi công</em> — báo giá theo m².</h3>
-        <ul class="acc-list">
-          <li><div><strong>Underlay foam</strong> · 2mm hoặc 3mm · IXPE chống ẩm</div></li>
-          <li><div><strong>Nẹp kết thúc</strong> · nhôm anodize · 6 màu</div></li>
-          <li><div><strong>Nẹp góc &amp; nẹp chuyển tiếp</strong> · tương thích sàn 8/14mm</div></li>
-          <li><div><strong>Len chân tường MDF</strong> · sơn PU phủ melamine · cao 80mm</div></li>
-          <li><div><strong>Keo dán chuyên dụng</strong> · dòng Laminate · 5kg/can</div></li>
-          <li><div><strong>Băng dán seam</strong> · xử lý mối nối ẩm · 50m/cuộn</div></li>
-        </ul>
-        <div class="acc-foot">Báo giá <em>trọn gói theo m²</em> — giúp phụ kiện được kiểm soát đồng bộ theo diện tích, hạn chế phát sinh rời rạc trong quá trình triển khai.</div>
-      </div>
-    </div>
 
     <div class="contractors-cta">
-      <a class="btn btn-primary" href="#vi-request" data-contact-open>Gửi yêu cầu VE · Báo giá dự án <span class="arr">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S7 — PRODUCT RANGE
-============================================================ -->
-<section class="range">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="left">
-        <span class="ix">07 — Hai dòng laminate</span>
-        <h2 class="h-section">Hai dòng sản phẩm. <em class="serif">Một tinh thần vật liệu.</em></h2>
-      </div>
-      <div class="right">
-        <p class="lede">Elite Series và Plus Series mở ra hai cách tiếp cận khác nhau với sàn laminate LOC: một dòng nhấn vào chiều sâu bề mặt và cảm giác hoàn thiện, một dòng linh hoạt hơn về sắc độ và ứng dụng. Cả hai cùng đặt trên nền tảng tiêu chuẩn kỹ thuật rõ ràng.</p>
-      </div>
-    </div>
-
-    <div class="range-grid">
-      <article class="range-card">
-        <div class="range-img" style="aspect-ratio:1/1;overflow:hidden;position:relative;">
-          <img src="https://images.pexels.com/photos/7005277/pexels-photo-7005277.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Không gian phòng ngủ dùng LOC Elite Series" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <span class="lbl">Elite Series · LFE</span>
-        </div>
-        <div class="range-body">
-          <span class="range-cat">Bề mặt giàu chiều sâu · Không gian chọn lọc</span>
-          <h3 class="range-name">LOC Elite Series<small>HDF 8mm · EN 13329 · Class 32 · Pressed Bevel</small></h3>
-          <p class="range-spec">Cạnh vát Pressed Bevel 4 mặt và texture bề mặt rõ hơn, phù hợp với những không gian cần sắc gỗ có chiều sâu, khả năng bắt sáng tinh tế và cảm giác hoàn thiện cao.</p>
-          <div class="range-foot">
-            <div class="range-price">~600–800K<small>/m²</small></div>
-            <a class="range-link" href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">Xem TDS Elite <span class="arr">→</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="range-card">
-        <div class="range-img" style="aspect-ratio:1/1;overflow:hidden;position:relative;">
-          <img src="https://images.pexels.com/photos/34996523/pexels-photo-34996523.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Không gian căn hộ dùng LOC Plus Series" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <span class="lbl">Plus Series · LPF/LPV</span>
-        </div>
-        <div class="range-body">
-          <span class="range-cat">Linh hoạt · Dễ phối · Ứng dụng rộng</span>
-          <h3 class="range-name">LOC Plus Series<small>HDF 8mm · EN 13329 · Đa mẫu · Giá tốt</small></h3>
-          <p class="range-spec">Bảng màu đa dạng, dễ phối với nhiều phong cách nội thất và quy mô triển khai. Plus Series giữ tinh thần gỗ tự nhiên theo cách nhẹ, sạch và dễ ứng dụng trong các không gian hoàn thiện hằng ngày.</p>
-          <div class="range-foot">
-            <div class="range-price">~400–600K<small>/m²</small></div>
-            <a class="range-link" href="assets/loc-certificates/tds-loc-floor-plus.pdf" target="_blank" rel="noopener">Xem TDS Plus <span class="arr">→</span></a>
-          </div>
-        </div>
-      </article>
+      <a class="btn btn-primary" href="#vi-request" data-contact-open>Gửi yêu cầu · Báo giá dự án <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -1899,7 +1723,7 @@
         <div class="proj-meta">
           <span class="proj-type">Căn hộ duplex · Q.7 · 280m²</span>
           <h3 class="proj-name">Masteri Centre Point Residence</h3>
-          <p class="proj-cred"><strong>KTS · TROPICAL SPACE</strong> — LOC Elite Series · LFE00458</p>
+          <p class="proj-cred"><strong>KTS · TROPICAL SPACE</strong> — LOC Floor · LFE00458</p>
         </div>
       </article>
 
@@ -1908,7 +1732,7 @@
         <div class="proj-meta">
           <span class="proj-type">Resort 5★ · Hội An · 4.200m²</span>
           <h3 class="proj-name">Anantara Hoi An Riverside</h3>
-          <p class="proj-cred"><strong>KTS · MIA Design Studio</strong> — LOC Elite Series · LFE00463</p>
+          <p class="proj-cred"><strong>KTS · MIA Design Studio</strong> — LOC Floor · LFE00463</p>
         </div>
       </article>
 
@@ -1917,7 +1741,7 @@
         <div class="proj-meta">
           <span class="proj-type">Khách sạn boutique · Q.1</span>
           <h3 class="proj-name">Sofitel Saigon Plaza Suites</h3>
-          <p class="proj-cred"><strong>KTS · AVALON Design</strong> — LOC Elite Laminate · 6 mã</p>
+          <p class="proj-cred"><strong>KTS · AVALON Design</strong> — LOC Floor Laminate · 6 mã</p>
         </div>
       </article>
 
@@ -1926,7 +1750,7 @@
         <div class="proj-meta">
           <span class="proj-type">HQ office · Q.2 · 1.800m²</span>
           <h3 class="proj-name">Unilever Vietnam Headquarter</h3>
-          <p class="proj-cred"><strong>KTS · M+ Architects</strong> — LOC Elite Laminate · 8 mã</p>
+          <p class="proj-cred"><strong>KTS · M+ Architects</strong> — LOC Floor Laminate · 8 mã</p>
         </div>
       </article>
 
@@ -1935,7 +1759,7 @@
         <div class="proj-meta">
           <span class="proj-type">Penthouse · Thủ Thiêm · 520m²</span>
           <h3 class="proj-name">The River Thu Thiem · 5904</h3>
-          <p class="proj-cred"><strong>KTS · Le House</strong> — LOC Elite Series · LFE00467</p>
+          <p class="proj-cred"><strong>KTS · Le House</strong> — LOC Floor · LFE00467</p>
         </div>
       </article>
 
@@ -1944,7 +1768,7 @@
         <div class="proj-meta">
           <span class="proj-type">Biệt thự · Đà Lạt · 680m²</span>
           <h3 class="proj-name">Villa de Pin · Dalat Estate</h3>
-          <p class="proj-cred"><strong>KTS · 23°5 Studio</strong> — LOC Elite Series · LFE00466</p>
+          <p class="proj-cred"><strong>KTS · 23°5 Studio</strong> — LOC Floor · LFE00466</p>
         </div>
       </article>
     </div>
@@ -1952,106 +1776,25 @@
 </section>
 
 <!-- ============================================================
-     S10 — SOCIAL PROOF
+     S8 — SHOWROOM EXPERIENCE
 ============================================================ -->
-<section class="social">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="left">
-        <span class="ix">10 — Góc nhìn từ dự án</span>
-        <h2 class="h-section">Khi vật liệu đi qua <em class="serif">thiết kế và thi công.</em></h2>
-      </div>
-      <div class="right">
-        <p class="lede">Một vật liệu tốt cần đi qua nhiều lớp kiểm chứng: phối cảnh, bảng mẫu, hồ sơ kỹ thuật, hiện trường và cảm nhận sau bàn giao.</p>
-      </div>
+<section class="showroom" id="showroom">
+  <div class="show-split">
+    <div class="show-img">
+      <span class="show-img-lbl">Không gian trải nghiệm vật liệu · showroom tham chiếu</span>
     </div>
-
-    <div class="logo-grid">
-      <div class="logo-cell">MIA Design</div>
-      <div class="logo-cell mono">TROPICAL · SPACE</div>
-      <div class="logo-cell">AVALON</div>
-      <div class="logo-cell">Le House</div>
-      <div class="logo-cell mono">M+ · ARCHITECTS</div>
-      <div class="logo-cell">23°5 Studio</div>
-      <div class="logo-cell mono">A21 · STUDIO</div>
-      <div class="logo-cell">Vo Trong Nghia</div>
-      <div class="logo-cell mono">G8A · ASIA</div>
-      <div class="logo-cell">DP+ Studio</div>
-      <div class="logo-cell mono">COTTAGE · CO</div>
-      <div class="logo-cell">Tan Anh Build</div>
-    </div>
-
-    <div class="testi-grid three">
-      <article class="testi">
-        <span class="role">KTS · Spec &amp; map quality</span>
-        <blockquote>Texture map của LOC là loại 4K seamless thực sự — không phải ảnh chụp swatch upscale. Render trong Lumion lên đúng chất gỗ gốc. Khoảng 12 dự án gần đây của studio đều dùng catalog LOC làm chuẩn đặc tả.</blockquote>
-        <div class="testi-meta">
-          <div class="testi-avatar">PT</div>
-          <div>
-            <div class="testi-who-n">KTS Phạm Tuấn — Founder</div>
-            <div class="testi-who-r">TROPICAL SPACE · 12 năm hành nghề</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="testi">
-        <span class="role">Chủ đầu tư dự án · Hiệu quả vật liệu</span>
-        <blockquote>Bản vẽ ban đầu KTS đặc tả Quick-Step Impressive cho toàn bộ 3 tầng penthouse. Sau buổi tham quan showroom Mao Trung, tôi chuyển sang LOC Elite cùng spec Unilin Belgium — <em>tiết kiệm hơn 150 triệu</em>. Sàn bàn giao 18 tháng vẫn như mới.</blockquote>
-        <div class="testi-meta">
-          <div class="testi-avatar">HN</div>
-          <div>
-            <div class="testi-who-n">Anh Hoàng Nam — Chủ penthouse</div>
-            <div class="testi-who-r">The River Thu Thiem · Q.2</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="testi">
-        <span class="role">Nhà thầu · Hồ sơ &amp; tiến độ</span>
-        <blockquote>Chúng tôi đã chạy LOC qua 4 dự án FDI có nghiệm thu. Hồ sơ CO Form A · CQ Unilin Belgium đủ chuẩn — không phải làm lại lần nào. Hotline kỹ thuật bắt máy ngay cả thứ Bảy khi đội thi công gặp vấn đề mặt nền.</blockquote>
-        <div class="testi-meta">
-          <div class="testi-avatar">DV</div>
-          <div>
-            <div class="testi-who-n">Anh Đỗ Vinh — PM thi công</div>
-            <div class="testi-who-r">Cotteccons · 4 dự án 2024–2026</div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S11 — TRIPLE CTA
-============================================================ -->
-<section class="triple" id="hop-tac">
-  <div class="triple-grid">
-    <div class="triple-col">
-      <span class="idx">— 11 / A</span>
-      <div class="pre">
-        <span class="role">Kiến trúc sư · Thiết kế</span>
-        <h3>Nhận bộ hồ sơ vật liệu.<br>TDS · chứng chỉ · bảo hành.</h3>
-        <p>Thông số kỹ thuật, chứng nhận nguồn gốc và chính sách bảo hành giúp vật liệu được đưa vào moodboard, bản vẽ và hồ sơ trình duyệt một cách rõ ràng.</p>
+    <div class="show-content">
+      <span class="h-eyebrow-sec">08 — Showroom Experience</span>
+      <h2 class="h-sub">Nhìn vật liệu thật.<br><em class="serif">Cảm nhận trước khi chọn.</em></h2>
+      <ul class="show-bullets">
+        <li>Hơn 200 mẫu trưng bày kích thước thực để quan sát sắc độ, vân và độ hoàn thiện bề mặt</li>
+        <li>Không gian trao đổi riêng cho nhóm thiết kế, chủ đầu tư và bộ phận vật tư</li>
+        <li>Có thể sắp lịch riêng cho các buổi duyệt mẫu, đối chiếu spec hoặc chuẩn bị hồ sơ vật liệu</li>
+      </ul>
+      <div class="acts">
+        <a class="btn btn-gold" href="#dat-lich">Sắp lịch đối chiếu mẫu showroom <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#maps">Xem bản đồ <span class="arr">↗</span></a>
       </div>
-      <a class="cta-link" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ <span class="arr">→</span></a>
-    </div>
-    <div class="triple-col">
-      <span class="idx">— 11 / B</span>
-      <div class="pre">
-        <span class="role">Chủ đầu tư dự án</span>
-        <h3>Đối chiếu phương án vật liệu.<br>Theo quy mô và tiêu chuẩn dự án.</h3>
-        <p>Đưa concept, bảng vật liệu hoặc yêu cầu bàn giao đến showroom để đối chiếu mẫu thật, sắc độ và hướng triển khai phù hợp với dự án.</p>
-      </div>
-      <a class="cta-link" href="#dat-lich" data-contact-open>Đặt lịch miễn phí <span class="arr">→</span></a>
-    </div>
-    <div class="triple-col">
-      <span class="idx">— 11 / C</span>
-      <div class="pre">
-        <span class="role">Nhà thầu</span>
-        <h3>Yêu cầu phương án VE.<br>Giữ nền tảng · tối ưu chi phí.</h3>
-        <p>Gửi BOQ và spec sheet để nhận bảng đối chiếu VE kèm CO/CQ, ghi chú kỹ thuật và báo giá theo quy mô dự án trong 48 giờ làm việc.</p>
-      </div>
-      <a class="cta-link" href="#vi-request" data-contact-open>Gửi yêu cầu <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -2063,14 +1806,28 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="foot-mark">LOC</div>
-        <div class="foot-by">Phân phối bởi <strong>Mao Trung</strong></div>
-        <p class="foot-tag">Sàn LOC — thuộc tập đoàn Unilin Group, Bỉ. Cùng nhà máy Quick-Step. Phân phối chính thức tại Việt Nam bởi Mao Trung.</p>
+        <div class="loc-logo logo-large" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></div>
+        <div class="belgian-proof" aria-label="Dấu hiệu thương hiệu Bỉ">
+          <span class="proof-chip dark"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Belgium</span>
+          <span class="proof-chip dark"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
+          <span class="proof-chip dark loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
+        </div>
+        <div class="foot-by">Phân phối độc quyền bởi <strong>Mao Trung</strong></div>
+        <div class="mao-logo" role="img" aria-label="Mao Trung Home">
+          <div class="mao-symbol" aria-hidden="true">
+            <span class="m-red"></span>
+            <span class="m-yellow"></span>
+            <span class="m-green"></span>
+            <span class="m-blue"></span>
+          </div>
+          <div class="mao-word">MAOTRUNG<span class="home">HOME</span></div>
+        </div>
+        <p class="foot-tag">Sàn LOC — thuộc tập đoàn Unilin Group, Bỉ. Cùng nhà máy Quick-Step. Phân phối độc quyền tại Việt Nam bởi Mao Trung.</p>
       </div>
       <div class="foot-col" id="lien-he">
         <h5>Liên hệ</h5>
         <ul>
-          <li>Đại diện NPP Mao Trung - Anh Hoàng Nam</li>
+          <li>Đại diện NPP độc quyền Mao Trung - Anh Hoàng Nam</li>
           <li>
             <strong>0938 360 986</strong>
             <div class="foot-contact-actions" aria-label="Hotline và Zalo">
@@ -2098,15 +1855,15 @@
       <div class="foot-col">
         <h5>Theo đối tượng</h5>
         <ul>
-          <li><a href="#mau-ma">KTS &amp; Thiết kế</a></li>
+          <li><a href="#mau-ma">Sản phẩm</a></li>
           <li><a href="#chu-du-an">Chủ đầu tư dự án</a></li>
-          <li><a href="#nha-thau">Nhà thầu &amp; VE</a></li>
+          <li><a href="#nha-thau">Nhà thầu</a></li>
           <li><a href="#showroom">Đặt lịch showroom</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 Mao Trung — Nhà phân phối chính thức LOC tại Việt Nam · GPKD 0312-345-678</div>
+      <div>© 2026 Mao Trung — Nhà phân phối độc quyền LOC tại Việt Nam · GPKD 0312-345-678</div>
       <div class="social-links">
         <a href="#">Instagram</a>
         <a href="#">Facebook</a>
@@ -2136,6 +1893,14 @@
         EN 13329 · Class 32 · Uniclic<br>
         Đối chiếu cho trình mẫu, nghiệm thu và hồ sơ vật liệu
       </div>
+      <div class="lb-scenes">
+        <strong>Phối cảnh thực tế</strong>
+        <div class="lb-scene-grid">
+          <div class="lb-scene"><img src="https://images.pexels.com/photos/5203529/pexels-photo-5203529.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phối cảnh phòng khách với sàn LOC"></div>
+          <div class="lb-scene"><img src="https://images.pexels.com/photos/31080809/pexels-photo-31080809.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phối cảnh hospitality với sàn LOC"></div>
+          <div class="lb-scene"><img src="https://images.pexels.com/photos/34996523/pexels-photo-34996523.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phối cảnh phòng ngủ với sàn LOC"></div>
+        </div>
+      </div>
       <div class="lb-thumbs">
         <div class="lb-thumb diffuse active" data-map="d">
           <div class="lb-thumb-inner"></div>
@@ -2151,8 +1916,8 @@
         </div>
       </div>
       <div class="lb-acts">
-        <a class="btn btn-primary" href="assets/loc-certificates/loc-floor-certificates-complete.zip" download>Tải bộ hồ sơ LOC <span class="arr">↓</span></a>
-        <a class="btn btn-outline" href="#dat-lich">Đặt mẫu vật lý về showroom <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="assets/loc-certificates/tds-loc-floor-elite-plus.pdf" target="_blank" rel="noopener">Xem TDS <span class="arr">→</span></a>
+        <a class="btn btn-outline" href="#contactModal" data-contact-open>Đặt mẫu vật lý về showroom <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -2173,6 +1938,10 @@
       <div class="contact-field">
         <label for="contactPhone">Số điện thoại</label>
         <input id="contactPhone" name="phone" type="tel" autocomplete="tel" required>
+      </div>
+      <div class="contact-field">
+        <label for="contactEmail">Email</label>
+        <input id="contactEmail" name="email" type="email" autocomplete="email" required>
       </div>
       <div class="contact-field">
         <label for="contactProject">Mô tả dự án &amp; thông tin cần tư vấn</label>
@@ -2198,15 +1967,55 @@
     });
   }
 
-  // -------- Filter bar — visual demo --------
-  document.querySelectorAll('.filter-group').forEach(function(group){
-    group.addEventListener('click', function(e){
+  // -------- Product search + series filter --------
+  var searchToggle = document.getElementById('searchToggle');
+  var searchClose = document.getElementById('searchClose');
+  var productSearch = document.getElementById('productSearch');
+  var seriesFilter = document.getElementById('seriesFilter');
+  var activeSeries = 'Elite';
+
+  function normalizeText(text){
+    return (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function applyProductFilter(){
+    var q = normalizeText(productSearch ? productSearch.value : '');
+    document.querySelectorAll('.swatch').forEach(function(card){
+      var tags = Array.from(card.querySelectorAll('.swatch-tag')).map(function(t){ return t.textContent.trim(); });
+      var seriesMatch = tags.indexOf(activeSeries) !== -1;
+      var haystack = normalizeText(card.textContent);
+      var searchMatch = !q || haystack.indexOf(q) !== -1;
+      card.classList.toggle('is-hidden', !(seriesMatch && searchMatch));
+    });
+  }
+
+  if(searchToggle){
+    searchToggle.addEventListener('click', function(){
+      nav.classList.add('search-open');
+      if(productSearch) setTimeout(function(){ productSearch.focus(); }, 60);
+    });
+  }
+  if(searchClose){
+    searchClose.addEventListener('click', function(){
+      nav.classList.remove('search-open');
+      if(productSearch) productSearch.value = '';
+      applyProductFilter();
+    });
+  }
+  if(productSearch){
+    productSearch.addEventListener('input', applyProductFilter);
+  }
+  if(seriesFilter){
+    seriesFilter.addEventListener('click', function(e){
       var btn = e.target.closest('.chip');
       if(!btn) return;
-      group.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
+      activeSeries = btn.dataset.series || 'Elite';
+      seriesFilter.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
       btn.classList.add('active');
+      applyProductFilter();
     });
-  });
+    applyProductFilter();
+  }
 
   // -------- Swatch zoom icon (inject) --------
   document.querySelectorAll('.swatch .swatch-img').forEach(function(img){
@@ -2224,15 +2033,28 @@
   var lbCat = document.getElementById('lbCat');
   var lbTags = document.getElementById('lbTags');
   var lbThumbs = document.querySelectorAll('.lb-thumb');
+  var lbScenes = document.querySelectorAll('.lb-scene');
+
+  function setMainImage(src, alt){
+    if(!src) return;
+    lbImg.className = 'lb-img';
+    lbImg.style.background = '';
+    lbImg.innerHTML = '<img src="'+src+'" alt="'+(alt || '')+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">';
+  }
+
+  function clearSceneActive(){
+    lbScenes.forEach(function(scene){ scene.classList.remove('active'); });
+  }
 
   function setMap(map){
     lbThumbs.forEach(function(t){ t.classList.remove('active'); });
+    clearSceneActive();
     var current = lb.querySelector('.lb-thumb[data-map="'+map+'"]');
     if(current) current.classList.add('active');
     var imgSrc = lbImg.dataset.swatch || '';
     lbImg.className = 'lb-img';
     if(map === 'd'){
-      lbImg.innerHTML = imgSrc ? '<img src="'+imgSrc+'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">' : '';
+      if(imgSrc) setMainImage(imgSrc, lbName ? lbName.textContent : '');
       lbImg.style.background = '';
     } else if(map === 'n'){
       lbImg.innerHTML = '';
@@ -2274,6 +2096,16 @@
     b.addEventListener('click', function(){ openByCode(b.dataset.open); });
   });
   lbThumbs.forEach(function(t){ t.addEventListener('click', function(){ setMap(t.dataset.map); }); });
+  lbScenes.forEach(function(scene){
+    scene.addEventListener('click', function(){
+      var img = scene.querySelector('img');
+      if(!img) return;
+      lbThumbs.forEach(function(t){ t.classList.remove('active'); });
+      clearSceneActive();
+      scene.classList.add('active');
+      setMainImage(img.src, img.alt);
+    });
+  });
 
   document.getElementById('lbClose').addEventListener('click', function(){
     lb.classList.remove('open'); document.body.style.overflow = '';
@@ -2319,7 +2151,7 @@
     });
   });
 
-  // -------- VE tabs --------
+  // -------- Technical comparison tabs --------
   var viTabsEl = document.getElementById('viTabs');
   if(viTabsEl){
     viTabsEl.querySelectorAll('.vi-tab-btn').forEach(function(btn){

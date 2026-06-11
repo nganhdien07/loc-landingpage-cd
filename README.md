@@ -1,8 +1,5 @@
-# LOC Landing Page
+# LOC Landing Page CDX
 
-Static landing pages for LOC Vietnam.
+Desktop: `desktop.html`
 
-## Pages
-
-- Desktop: `desktop.html`
-- Mobile: `mobile.html`
+Mobile: `mobile.html`
