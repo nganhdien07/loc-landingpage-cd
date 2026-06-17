@@ -2,11 +2,9 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1440">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LOC Vietnam — Sàn gỗ định nghĩa không gian</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="LOC_LOGO.png">
 <style>
   :root{
     --navy:#0D2E56;
@@ -24,13 +22,13 @@
     --maxw:1280px;
     --gutter:80px;
 
-    --serif:'Cormorant Garamond', 'Times New Roman', serif;
-    --sans:'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
-    --title:'Montserrat', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+    --serif:Arial, Helvetica, sans-serif;
+    --sans:Arial, Helvetica, sans-serif;
+    --title:Arial, Helvetica, sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0; padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth; overflow-x:hidden}
   body{
     font-family:var(--sans);
     color:var(--ink);
@@ -39,10 +37,12 @@
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
+    overflow-x:hidden;
   }
   img{max-width:100%; display:block}
   a{color:inherit; text-decoration:none}
   button{font:inherit; cursor:pointer; border:0; background:0}
+  body, body *, body *::before, body *::after{font-family:Arial, Helvetica, sans-serif!important}
 
   /* ====================  TYPE  ==================== */
   .eyebrow{
@@ -103,10 +103,8 @@
     height:78px;
   }
   .brand{display:flex; align-items:center; gap:14px}
-  .brand-mark{
-    font-family:var(--serif); font-weight:500; font-size:28px;
-    letter-spacing:.04em; line-height:1; color:var(--ink);
-  }
+  .brand-mark{display:inline-flex; align-items:center; width:48px; height:48px; flex:0 0 auto}
+  .brand-mark img{width:100%; height:100%; object-fit:contain}
   .brand-by{font-size:10px; letter-spacing:.2em; text-transform:uppercase;
     color:var(--ink-40); font-weight:600; padding-left:14px; border-left:1px solid var(--line-2)}
   .nav-links{display:flex; gap:38px; align-items:center}
@@ -118,23 +116,6 @@
   .nav-cta{font-size:13px; font-weight:600; padding:12px 22px; background:var(--ink);
     color:var(--warm); display:inline-flex; align-items:center; gap:10px}
   .nav-actions{display:flex; align-items:center; gap:10px}
-  .nav-search{width:42px; height:42px; border:1px solid var(--line); background:transparent;
-    display:grid; place-items:center; cursor:pointer; color:var(--ink); transition:border-color .2s, background .2s}
-  .nav-search:hover{border-color:var(--ink); background:var(--warm-2)}
-  .search-ico{width:16px; height:16px; border:2px solid currentColor; border-radius:50%; position:relative; display:block}
-  .search-ico::after{content:''; position:absolute; width:7px; height:2px; background:currentColor;
-    right:-6px; bottom:-4px; transform:rotate(45deg); transform-origin:left center}
-  .search-panel{position:fixed; top:78px; left:0; right:0; z-index:90; background:var(--warm);
-    border-bottom:1px solid var(--line); padding:18px var(--gutter); transform:translateY(-120%);
-    opacity:0; pointer-events:none; transition:transform .25s ease, opacity .25s ease}
-  .nav.search-open .search-panel{transform:translateY(0); opacity:1; pointer-events:auto}
-  .search-panel-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; gap:14px}
-  .search-panel input{width:100%; border:1px solid var(--line); background:#fff; color:var(--ink);
-    padding:16px 18px; font:600 13px/1 var(--sans); letter-spacing:.04em; outline:none}
-  .search-panel input:focus{border-color:var(--gold)}
-  .search-panel button{width:44px; height:44px; border:1px solid var(--line); background:var(--warm-2);
-    color:var(--ink); cursor:pointer; font-size:22px}
-
   /* ====================  S1 HERO  ==================== */
   .hero{
     position:relative; min-height:760px; color:var(--warm);
@@ -157,21 +138,23 @@
   .hero-inner{position:relative; z-index:2; padding:160px 0 120px}
   .hero-eyebrow{color:rgba(250,248,245,.7)}
   .hero-eyebrow .dot{background:var(--gold)}
-  .hero h1{color:var(--warm); margin:36px 0 32px; max-width:14ch}
+  .hero h1{color:var(--warm); margin:36px 0 32px; max-width:none; white-space:nowrap}
   .hero h1 em{font-style:normal; color:var(--gold-soft); font-weight:500; font-family:inherit}
   .hero-lede{font-size:20px; line-height:1.6; color:rgba(250,248,245,.78);
-    max-width:52ch; font-weight:400; margin:0 0 48px}
+    max-width:55ch; font-weight:400; margin:0 0 48px}
   .belgian-proof{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:0 0 26px}
   .proof-chip{min-height:38px; display:inline-flex; align-items:center; gap:10px; padding:8px 12px;
     border:1px solid rgba(250,248,245,.22); background:rgba(250,248,245,.08);
     color:rgba(250,248,245,.86); font-size:10px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
   .proof-chip.dark{border-color:var(--line); background:var(--warm); color:var(--ink)}
-  .proof-chip.loc-chip{min-height:38px; padding:3px 12px}
+  .proof-chip.loc-chip{min-height:76px; padding:6px 20px}
   .proof-chip img{display:block; height:18px; width:auto}
   .loc-logo{width:32px; height:32px; border-radius:50%; display:inline-flex; flex-direction:column;
     align-items:center; justify-content:center; gap:1px; background:#2d5f8c; color:#fff;
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.2); font-family:Georgia, 'Times New Roman', serif;
-    text-transform:none; letter-spacing:0; line-height:1}
+    text-transform:none; letter-spacing:0; line-height:1; overflow:visible; flex:0 0 auto}
+  .loc-logo-img{width:68px; height:68px; object-fit:contain; display:block}
+  .loc-logo-img.logo-large-img{width:172px; height:172px; margin-bottom:18px}
   .loc-logo .loc-main{position:relative; font-size:15px; font-weight:700; letter-spacing:.03em}
   .loc-logo .loc-main::after{content:'®'; position:absolute; top:-3px; right:-7px; font-size:4px; font-weight:400}
   .loc-logo .loc-sub{font-size:7px; font-weight:700; letter-spacing:.18em}
@@ -188,18 +171,35 @@
   .hero .btn-primary{background:var(--warm); color:var(--ink); border-color:var(--warm)}
   .hero .btn-primary:hover{background:var(--gold); border-color:var(--gold)}
   .hero-meta{
-    position:absolute; left:var(--gutter); right:var(--gutter); bottom:48px; z-index:2;
-    display:flex; justify-content:space-between; align-items:flex-end;
+    position:absolute; left:50%; right:auto; bottom:48px; z-index:2; transform:translateX(-50%);
+    width:100%; max-width:var(--maxw); padding:0 var(--gutter); margin:0 auto;
+    display:flex; justify-content:flex-start; align-items:flex-end;
     color:rgba(250,248,245,.55); font-size:12px; letter-spacing:.16em; text-transform:uppercase;
   }
   .hero-meta .vert{writing-mode:vertical-rl; transform:rotate(180deg);
     position:absolute; right:0; bottom:160px; font-size:11px; letter-spacing:.3em}
-  .hero-stats{display:flex; gap:60px}
+  .hero-stats{display:grid; grid-template-columns:repeat(3,minmax(120px,1fr)); gap:28px; width:min(680px,100%); margin-left:-48px}
   .hero-stats .stat{display:flex; flex-direction:column; gap:6px}
+  .hero-stats .stat{padding:16px 18px; border:1px solid rgba(250,248,245,.18); background:rgba(13,46,86,.34); backdrop-filter:blur(8px)}
   .hero-stats .stat-n{font-family:var(--serif); font-size:36px; font-weight:300;
     color:var(--warm); letter-spacing:-.02em; line-height:1}
   .hero-stats .stat-l{font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-    color:rgba(250,248,245,.6); font-weight:500}
+    color:#fff; font-weight:500}
+
+  /* ====================  ABOUT LOC  ==================== */
+  .about-loc{background:var(--warm); padding:88px 0; overflow:hidden; border-bottom:1px solid var(--line)}
+  .about-shell{display:grid; grid-template-columns:minmax(0,1fr) minmax(420px,.9fr); gap:68px; align-items:center}
+  .about-kicker{display:block; margin-bottom:18px; color:var(--gold); font-size:12px; letter-spacing:.28em; text-transform:uppercase; font-weight:700}
+  .about-title{margin:0; font-family:var(--title); font-size:64px; line-height:1.04; letter-spacing:0; font-weight:500}
+  .about-title .keep-line{white-space:nowrap}
+  .about-lede{max-width:58ch; margin:34px 0 0; color:var(--ink-60); font-size:22px; line-height:1.72}
+  .about-visual{position:relative; min-height:500px}
+  .about-card{position:absolute; inset:0; border:1px solid var(--line); background:#fff; overflow:hidden}
+  .about-image{position:absolute; inset:0; background:
+    linear-gradient(180deg,rgba(13,46,86,.02),rgba(13,46,86,.16)),
+    url('assets/about-us-unilin-building.png'); background-size:cover; background-position:center}
+  .about-line{position:absolute; left:-36px; bottom:84px; width:110px; height:1px; background:var(--gold); z-index:3}
+  .about-note{position:absolute; right:-22px; bottom:122px; z-index:3; writing-mode:vertical-rl; transform:rotate(180deg); color:var(--gold); font-size:11px; letter-spacing:.26em; text-transform:uppercase; font-weight:700}
 
   /* ====================  AQUA PROTECT USP  ==================== */
   .aqua-usp{background:var(--warm); border-bottom:1px solid var(--line); overflow:hidden}
@@ -231,7 +231,7 @@
   .aqua-decor .spark.s2{left:18px; top:168px; width:4px; height:4px; background:rgba(201,168,76,.78)}
   .aqua-decor .spark.s3{left:196px; top:206px; width:4px; height:4px}
   .aqua-ring{position:absolute; right:34px; top:34px; z-index:5; width:86px; height:86px; border:1px solid rgba(201,168,76,.72); border-radius:50%; display:grid; place-items:center; color:var(--gold-soft); font-family:var(--serif); font-size:42px; background:rgba(13,46,86,.34); backdrop-filter:blur(8px)}
-  .aqua-labels{position:absolute; left:auto; right:132px; top:48px; z-index:5; display:flex; gap:10px; flex-wrap:wrap}
+  .aqua-labels{position:absolute; left:auto; right:38px; top:48px; z-index:5; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .aqua-chip{padding:9px 11px; border:1px solid rgba(250,248,245,.18); background:rgba(250,248,245,.08); color:rgba(250,248,245,.86); font-size:10px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
   .aqua-caption{position:absolute; left:38px; right:38px; bottom:26px; z-index:6; display:grid; grid-template-columns:repeat(2,1fr); gap:1px; border:1px solid rgba(250,248,245,.16); background:rgba(5,16,30,.4); backdrop-filter:blur(10px)}
   .aqua-cap{padding:14px 16px; border-right:1px solid rgba(250,248,245,.12)}
@@ -344,6 +344,13 @@
 
   .swatch-grid{display:flex; gap:28px; overflow-x:auto; padding:4px 0 18px;
     scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+  .carousel-wrap{position:relative}
+  .carousel-arrow{position:absolute; top:42%; z-index:5; width:44px; height:44px; display:grid; place-items:center;
+    border:1px solid rgba(26,26,46,.2); background:rgba(250,248,245,.92); color:var(--ink);
+    box-shadow:0 10px 28px rgba(10,18,32,.12); font-size:22px; line-height:1; transition:.18s}
+  .carousel-arrow:hover{border-color:var(--gold); color:var(--gold); background:#fff}
+  .carousel-arrow.prev{left:-22px}
+  .carousel-arrow.next{right:-22px}
   .swatch-grid::-webkit-scrollbar,.proj-grid::-webkit-scrollbar{height:6px}
   .swatch-grid::-webkit-scrollbar-thumb,.proj-grid::-webkit-scrollbar-thumb{background:var(--line-2)}
   .swatch-grid::-webkit-scrollbar-track,.proj-grid::-webkit-scrollbar-track{background:var(--warm-2)}
@@ -449,6 +456,8 @@
     color:var(--ink-60); font-weight:600; margin-top:6px}
 
   .owners-cta{margin-top:80px; text-align:center; display:flex; flex-direction:column; gap:24px; align-items:center}
+  .owners-banner{aspect-ratio:6/1; min-height:180px; position:relative; overflow:hidden; background:var(--navy)}
+  .owners-banner img{width:100%; height:100%; object-fit:cover; object-position:center}
 
   /* ====================  S8 SHOWROOM  ==================== */
   .showroom{background:var(--navy); color:var(--warm); padding:0; overflow:hidden}
@@ -511,7 +520,7 @@
   /* ====================  S6 CONTRACTORS  ==================== */
   .contractors{background:var(--warm-2); padding:140px 0}
   .contractors .sec-head{grid-template-columns:minmax(0,760px); gap:0; margin-bottom:44px}
-  .contractors .sec-head h2{max-width:16ch}
+  .contractors .sec-head h2{max-width:none}
   .vi-intro{display:grid; grid-template-columns:1fr 1fr; gap:80px; margin-bottom:80px}
   .vi-what{display:flex; flex-direction:column; gap:18px}
   .vi-what .h-eyebrow-sec{color:var(--gold)}
@@ -541,7 +550,7 @@
   .vi-table td.brand-loc{font-family:var(--serif); font-size:20px; color:var(--navy); font-weight:500}
   .vi-table td.brand-w{font-family:var(--serif); font-size:20px; color:var(--ink-40)}
   .vi-table tr:last-child td{border-bottom:0}
-  .vi-table .match{color:var(--gold); font-family:var(--serif); font-weight:300; margin-right:8px}
+  .vi-table .match{display:none}
 
   .logistics{display:grid; grid-template-columns:repeat(3,1fr); gap:0;
     background:var(--ink); color:var(--warm); margin-bottom:48px}
@@ -555,6 +564,8 @@
 
   /* ====================  S7 PRODUCT RANGE  ==================== */
   .range{background:var(--warm); padding:140px 0}
+  .range .sec-head{grid-template-columns:1fr; gap:0; margin-bottom:44px}
+  .range .sec-head h2{max-width:none}
   .range-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px}
   .hero-img-real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;z-index:0;opacity:1}
   .swatch-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
@@ -662,27 +673,23 @@
   .triple-col:hover .cta-link .arr{transform:translateX(8px)}
 
   /* ====================  S12 FOOTER  ==================== */
-  .footer{background:var(--warm); color:var(--ink); padding:96px 0 40px}
-  .foot-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:64px; padding-bottom:64px;
-    border-bottom:1px solid var(--line)}
-  .foot-brand{display:flex; flex-direction:column; gap:20px}
+  .footer{background:var(--warm); color:var(--ink); padding:96px 0 32px}
+  .foot-top{display:grid; grid-template-columns:.72fr 1.28fr .92fr 1fr; gap:64px; padding:72px 0 124px;
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--line)}
+  .foot-brand{display:flex; flex-direction:column; gap:20px; align-items:center}
   .foot-mark{font-family:var(--serif); font-size:54px; font-weight:500; color:var(--navy);
     letter-spacing:.04em; line-height:1}
   .foot-by{font-size:12px; letter-spacing:.18em; text-transform:uppercase;
     color:var(--ink-60); font-weight:600}
-  .foot-by strong{color:var(--ink); font-weight:700}
-  .mao-logo{display:inline-flex; flex-direction:column; align-items:flex-start; gap:8px; width:max-content;
-    max-width:100%; margin-top:-6px}
-  .mao-symbol{position:relative; width:108px; height:54px}
-  .mao-symbol span{position:absolute; display:block}
-  .mao-symbol .m-red{left:28px; top:28px; width:26px; height:26px; background:#f5232b}
-  .mao-symbol .m-yellow{left:51px; top:5px; width:20px; height:56px; background:#ffd925;
-    transform:rotate(-42deg); transform-origin:center; box-shadow:inset 0 0 0 1px rgba(24,27,43,.16)}
-  .mao-symbol .m-green{right:0; top:0; width:66px; height:26px; background:#127738}
-  .mao-symbol .m-blue{right:20px; top:28px; width:26px; height:46px; background:#075182}
-  .mao-word{font-family:Montserrat, var(--sans); font-size:24px; line-height:.9; font-weight:800;
-    letter-spacing:-.08em; color:#00558b; white-space:nowrap}
-  .mao-word .home{font-weight:400; letter-spacing:-.09em; color:#075182}
+  .foot-by strong{color:var(--ink); font-weight:700; display:block; margin-top:3px}
+  .mao-logo{display:inline-block; width:260px; max-width:100%; margin-top:-4px}
+  .mao-logo img{display:block; width:100%; height:auto}
+  .foot-distributor{display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center}
+  .foot-distributor .foot-by{
+    margin:0; color:var(--ink-60); font-size:12px; letter-spacing:.22em;
+    line-height:1.2; white-space:nowrap}
+  .foot-distributor .foot-by strong{display:inline; margin:0 0 0 10px; color:var(--ink); letter-spacing:.2em}
+  .foot-distributor .mao-logo{width:220px; margin:0; transform:none}
   .foot-tag{font-size:13px; color:var(--ink-60); line-height:1.55; max-width:32ch; margin-top:12px}
   .foot-brand .belgian-proof{margin:0; gap:8px}
   .foot-brand .proof-chip{min-height:34px; padding:7px 10px; font-size:9px}
@@ -696,16 +703,20 @@
   .foot-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px}
   .foot-col li{font-size:14px; color:var(--ink-60); line-height:1.4}
   .foot-col li strong{display:block; color:var(--ink); font-size:15px; font-weight:600; margin-bottom:3px}
+  .foot-col li span,.foot-col li a{display:block}
+  .foot-col .rep-line{white-space:nowrap}
   .foot-col li a:hover{color:var(--ink)}
   .foot-contact-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:2px}
   .foot-contact-btn{width:42px; height:42px; border:1px solid var(--line); background:var(--warm-2);
     color:var(--ink); display:inline-grid; place-items:center; font-size:14px; font-weight:700;
     transition:border-color .18s, color .18s, background .18s}
+  .foot-contact-actions .foot-contact-btn{display:inline-grid}
   .foot-contact-btn:hover{border-color:var(--gold); color:var(--gold); background:#fff}
   .foot-contact-btn .phone-ico{font-size:18px; line-height:1}
   .foot-contact-btn .zalo-ico{font-size:11px; letter-spacing:.02em; line-height:1}
+  .foot-contact-btn .mail-ico{width:18px; height:18px; stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round}
 
-  .foot-bot{display:flex; justify-content:space-between; align-items:center; padding-top:32px;
+  .foot-bot{display:flex; justify-content:center; align-items:center; gap:0; padding-top:18px;
     font-size:12px; color:var(--ink-40)}
   .foot-bot .social-links{display:flex; gap:24px}
   .foot-bot .social-links a{font-size:12px; letter-spacing:.06em; color:var(--ink-60)}
@@ -794,15 +805,16 @@
   .lb-tags .swatch-tag{font-size:9px; padding:3px 7px}
   .lb-spec{margin-top:0; padding:12px 14px; background:var(--warm-2); border:1px solid var(--line); font-size:11px; line-height:1.45; color:var(--ink-60); font-family:'SF Mono','Menlo',monospace; letter-spacing:.035em}
   .lb-spec strong{color:var(--ink); font-weight:600; display:block; margin-bottom:5px; font-size:9px; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans)}
+  .lb-spec span{display:block}
   .lb-scenes{margin-top:0; padding:12px 14px; background:var(--warm-2); border:1px solid var(--line)}
   .lb-scenes strong{display:block; margin-bottom:8px; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); font-family:var(--sans)}
   .lb-scene-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
-  .lb-scene{aspect-ratio:16/9; overflow:hidden; position:relative; background:var(--line); cursor:pointer; border:2px solid transparent; transition:border-color .18s}
+  .lb-scene{aspect-ratio:1/1; overflow:hidden; position:relative; background:var(--line); cursor:pointer; border:2px solid transparent; transition:border-color .18s}
   .lb-scene.active{border-color:var(--gold)}
   .lb-scene img{width:100%; height:100%; object-fit:cover}
   .lb-products{margin-top:0; padding:12px 14px; background:var(--warm-2); border:1px solid var(--line)}
   .lb-products strong{display:block; margin-bottom:8px; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); font-family:var(--sans)}
-  .lb-product-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
+  .lb-product-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:360px}
   .lb-product{aspect-ratio:1/1; overflow:hidden; position:relative; background:var(--line); cursor:pointer; border:2px solid transparent; transition:border-color .18s}
   .lb-product.active{border-color:var(--gold)}
   .lb-product img{width:100%; height:100%; object-fit:cover}
@@ -1071,13 +1083,10 @@
   .proj-cred{font-size:12px}
   .footer{padding:72px 0 32px}
   .foot-top{gap:44px; padding-bottom:44px}
+  .foot-distributor{gap:12px}
+  .foot-distributor .mao-logo{width:210px}
   .foot-mark{font-size:44px}
-  .mao-symbol{width:96px; height:48px}
-  .mao-symbol .m-red{left:24px; top:25px; width:23px; height:23px}
-  .mao-symbol .m-yellow{left:46px; top:4px; width:18px; height:50px}
-  .mao-symbol .m-green{width:59px; height:23px}
-  .mao-symbol .m-blue{right:18px; top:25px; width:23px; height:41px}
-  .mao-word{font-size:22px}
+  .mao-logo{width:238px}
   .contact-head{padding:34px 38px 14px}
   .contact-head h3{font-size:30px}
   .contact-form{padding:8px 38px 36px; gap:14px}
@@ -1121,6 +1130,8 @@
   .contractors .log-cell{padding:22px 24px; gap:8px}
   .contractors .specs-badge{margin-top:24px; padding:18px 22px}
   .contractors .contractors-cta{padding-top:14px}
+  .contractors{padding-bottom:36px}
+  .projects{padding-top:48px}
 
   /* ====================  RESPONSIVE — 768px tablet  ==================== */
   @media (max-width: 1100px){
@@ -1142,6 +1153,12 @@
     body{font-size:15px}
     .section-pad, .authority, .architects, .owners, .specs, .contractors, .range, .projects, .social{padding:72px 0}
     .architects,.owners,.contractors{padding:54px 0}
+    .about-loc{padding:64px 0}
+    .about-shell{grid-template-columns:1fr; gap:38px}
+    .about-title{font-size:42px}
+    .about-lede{font-size:15px}
+    .about-visual{min-height:560px}
+    .about-note,.about-line{display:none}
     .h-display{font-size:46px; line-height:1.04; letter-spacing:-.02em}
     .h-section{font-size:34px; line-height:1.08; letter-spacing:-.015em}
     .h-sub{font-size:28px}
@@ -1155,7 +1172,6 @@
     .brand-by{font-size:9px; letter-spacing:.16em}
     .nav-toggle{display:flex}
     .nav-cta{display:none}
-    .search-panel{top:64px}
     .nav-links{position:fixed; top:64px; left:0; right:0;
       flex-direction:column; align-items:flex-start; gap:0; background:var(--warm);
       border-top:1px solid var(--line); border-bottom:1px solid var(--line);
@@ -1170,6 +1186,7 @@
     /* HERO */
     .hero{min-height:auto}
     .hero-inner{padding:80px 0 60px}
+    .hero h1{white-space:normal}
     .hero h1{margin:24px 0 24px}
     .hero-lede{font-size:16px; margin-bottom:32px}
     .hero-ctas{flex-direction:column; gap:10px; align-items:stretch}
@@ -1177,8 +1194,11 @@
     .hero-meta{position:static; padding:48px var(--gutter) 32px; flex-direction:column;
       align-items:flex-start; gap:32px}
     .hero-stats{gap:36px; width:100%}
+    .hero-stats{grid-template-columns:1fr; gap:10px; margin-left:0}
     .hero-stats .stat-n{font-size:30px}
     .hero-stats .stat-l{font-size:10px}
+    .carousel-arrow.prev{left:6px}
+    .carousel-arrow.next{right:6px}
     .aqua-panel{padding:24px 0 32px}
     .aqua-visual{min-height:590px}
     .aqua-stage{left:3%; right:3%; bottom:166px; height:250px}
@@ -1340,14 +1360,16 @@
 
     /* S12 FOOTER */
     .footer{padding:64px 0 32px}
-    .foot-top{grid-template-columns:1fr; gap:36px; padding-bottom:36px}
+    .foot-top{grid-template-columns:1fr; gap:36px; padding:42px 0 42px}
+    .foot-brand{align-items:flex-start}
+    .foot-bot{justify-content:center; text-align:center}
+    .foot-distributor{align-items:center; flex-direction:column; gap:12px}
+    .foot-distributor .foot-by{white-space:normal; max-width:320px}
+    .foot-distributor .foot-by strong{display:block; margin:5px 0 0}
+    .foot-distributor .mao-logo{width:200px}
+    .foot-col .rep-line{white-space:normal}
     .foot-mark{font-size:42px}
-    .mao-symbol{width:88px; height:44px}
-    .mao-symbol .m-red{left:22px; top:23px; width:21px; height:21px}
-    .mao-symbol .m-yellow{left:42px; top:4px; width:17px; height:46px}
-    .mao-symbol .m-green{width:54px; height:21px}
-    .mao-symbol .m-blue{right:17px; top:23px; width:21px; height:38px}
-    .mao-word{font-size:20px}
+    .mao-logo{width:218px}
     .foot-bot{flex-direction:column; gap:16px; align-items:flex-start; padding-top:24px}
   }
 
@@ -1365,7 +1387,7 @@
     .stat-n{font-size:26px}
     .btn{padding:15px 22px; font-size:13px}
     .auth-stat-row .n{font-size:36px}
-    .mao-word{font-size:18px}
+    .mao-logo{width:200px}
   }
 
   /* ====================  FLOATING ANCHOR / BACK TO TOP HIDDEN PRINT  ==================== */
@@ -1395,62 +1417,70 @@
 <nav class="nav" id="top">
   <div class="nav-inner">
     <div class="brand">
-      <span class="brand-mark">LOC</span>
+      <span class="brand-mark"><img src="LOC_LOGO.png" alt="LOC Floor"></span>
       <span class="brand-by">Unilin Group · Belgium</span>
     </div>
     <div class="nav-links">
-      <span>Về chúng tôi</span>
+      <a href="#ve-chung-toi">Về chúng tôi</a>
       <a href="#authority">Sản phẩm</a>
       <a href="#showroom">Showroom</a>
       <a href="#nha-thau">Thông số kỹ thuật</a>
       <a href="#du-an">Dự án</a>
     </div>
     <div class="nav-actions">
-      <button class="nav-search" type="button" id="searchToggle" aria-label="Tìm kiếm sản phẩm">
-        <span class="search-ico" aria-hidden="true"></span>
-      </button>
       <a href="#tu-van" class="nav-cta" data-contact-open>Tư vấn <span style="font-family:var(--serif); font-weight:300; font-size:16px">→</span></a>
     </div>
     <button class="nav-toggle" aria-label="Menu" id="navToggle">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="search-panel" id="searchPanel" aria-hidden="true">
-    <div class="search-panel-inner">
-      <input id="productSearch" type="search" placeholder="Tìm theo tên màu hoặc mã sản phẩm" autocomplete="off">
-      <button type="button" id="searchClose" aria-label="Đóng tìm kiếm">×</button>
-    </div>
-  </div>
 </nav>
 
 <!-- ============================================================
      S1 — HERO
 ============================================================ -->
-<section class="hero" id="hero">
-  <img class="hero-img-real" src="https://images.pexels.com/photos/5203529/pexels-photo-5203529.jpeg?auto=compress&cs=tinysrgb&w=2200" alt="" aria-hidden="true">
+<section class="hero" id="about">
+  <img class="hero-img-real" src="assets/product-scenes-corrected/01-elite-LFE00458.png" alt="" aria-hidden="true">
   <div class="hero-bg"></div>
   <div class="hero-grain"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow hero-eyebrow"><span class="dot"></span>Unilin Group · Belgium · cùng nhà máy Quick-Step</div>
     <div class="belgian-proof" aria-label="Dấu hiệu thương hiệu Bỉ">
       <span class="proof-chip"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Belgium origin</span>
-      <span class="proof-chip"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
-      <span class="proof-chip loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
+      <span class="proof-chip"><img src="assets/unilin-logo-blue.jpg" alt="Unilin"></span>
     </div>
-    <h1 class="h-display">Giữ tinh thần thiết kế. <em>Tối ưu hiệu quả vật liệu.</em></h1>
-    <p class="hero-lede">LOC mang đến giải pháp sàn laminate nền tảng Unilin, nguồn gốc Bỉ và mức đầu tư các dự án cần cân bằng giữa thẩm mỹ, kỹ thuật và ngân sách.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="#authority">Xem sản phẩm <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#nha-thau">Đối chiếu kỹ thuật <span class="arr">→</span></a>
-    </div>
+    <h1 class="h-display">Giữ tinh thần thiết kế<br><em>Tối ưu hiệu quả vật liệu</em></h1>
+    <p class="hero-lede">LOC mang đến giải pháp sàn laminate nền tảng Unilin,<br>nguồn gốc Bỉ và mức đầu tư các dự án cần cân bằng giữa thẩm mỹ,<br>kỹ thuật và ngân sách</p>
   </div>
   <div class="hero-meta">
     <div class="hero-stats">
-      <div class="stat"><span class="stat-n">100<sup style="font-size:18px; vertical-align:top">+</sup></span><span class="stat-l">Năm nhà máy</span></div>
+      <div class="stat"><span class="stat-n">60<sup style="font-size:18px; vertical-align:top">+</sup></span><span class="stat-l">Năm thành lập</span></div>
       <div class="stat"><span class="stat-n">200<sup style="font-size:18px; vertical-align:top">+</sup></span><span class="stat-l">Mẫu sẵn kho</span></div>
       <div class="stat"><span class="stat-n">15</span><span class="stat-l">Năm bảo hành</span></div>
     </div>
-    <div>S1 · Hero</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT LOC
+============================================================ -->
+<section class="about-loc" id="ve-chung-toi" aria-label="Về chúng tôi">
+  <div class="wrap">
+    <div class="about-shell">
+      <div class="about-copy">
+        <span class="about-kicker">Về chúng tôi</span>
+        <h2 class="about-title"><span class="keep-line">LOC Floor by Unilin</span></h2>
+        <p class="about-lede">LOC Floor by Unilin là dòng sàn laminate cao cấp được sản xuất tại Bỉ bởi Unilin Group, một trong những nhà sản xuất sàn và vật liệu xây dựng hàng đầu thế giới. LOC Floor nổi bật với chất lượng vượt trội, độ bền cao, khả năng chống trầy xước và chống ẩm tốt, cùng hệ thống hèm khóa độc quyền Uniclic giúp việc lắp đặt trở nên dễ dàng và nhanh chóng.</p>
+      </div>
+
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-image"></div>
+        </div>
+        <span class="about-line" aria-hidden="true"></span>
+        <span class="about-note">Laminate Flooring</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1478,7 +1508,6 @@
           <span class="aqua-chip">Plus 12 giờ</span>
           <span class="aqua-chip">Bảo hành 5-10 năm</span>
         </div>
-        <div class="aqua-ring">∿</div>
         <div class="aqua-stage" aria-hidden="true">
           <div class="aqua-floor"></div>
           <span class="water-drop drop-a"></span>
@@ -1507,11 +1536,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">Cho Tư vấn thiết kế</span>
         <h2 class="h-section">Elite Series &amp; Plus Series</h2>
-      </div>
-      <div class="right">
-        <p class="lede">Elite Series và Plus Series mở ra hai cách tiếp cận khác nhau với sàn laminate LOC.</p>
       </div>
     </div>
 
@@ -1523,7 +1548,7 @@
         </div>
         <div class="range-body">
           <h3 class="range-name">LOC Elite Series<small>HDF 8mm · EN 13329</small></h3>
-          <p class="range-spec">Dành cho những không gian cần bề mặt sàn có chiều sâu rõ hơn. Cạnh vát Pressed Bevel 4 mặt giúp từng tấm sàn hiện vân, bắt sáng và tạo cảm giác hoàn thiện gần với gỗ thật.</p>
+          <p class="range-spec">Dành cho những không gian cần bề mặt sàn có chiều sâu rõ hơn. Cạnh vát Pressed Bevel 4 mặt giúp từng tấm sàn hiện vân, bắt sáng và tạo cảm giác hoàn thiện gần với gỗ thật, thu hút ngay từ ánh nhìn đầu tiên.</p>
           <div class="range-foot">
             <a class="range-link" href="assets/loc-certificates/loc-floor-elite-catalog.pdf" target="_blank" rel="noopener">Xem Catalogue Elite <span class="arr">→</span></a>
           </div>
@@ -1552,13 +1577,17 @@
       </div>
     </div>
 
-    <div class="swatch-grid" id="swatchGrid"></div>
+    <div class="carousel-wrap product-carousel">
+      <button class="carousel-arrow prev" type="button" data-scroll-target="swatchGrid" data-scroll-dir="-1" aria-label="Sản phẩm trước">‹</button>
+      <div class="swatch-grid" id="swatchGrid"></div>
+      <button class="carousel-arrow next" type="button" data-scroll-target="swatchGrid" data-scroll-dir="1" aria-label="Sản phẩm tiếp theo">›</button>
+    </div>
 
     <!-- MOODBOARD — Fix 3 -->
     <!-- Spec / download callout -->
     <div class="spec-callout">
       <div>
-        <h3>Hồ sơ chứng chỉ LOC</h3>
+        <h3>Hồ sơ kỹ thuật<br>chứng chỉ LOC</h3>
       </div>
       <div class="cert-icon-grid" aria-label="Nhóm hồ sơ chứng chỉ LOC">
         <div class="cert-icon"><span class="ico">T</span><span>TDS</span></div>
@@ -1579,8 +1608,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">04 — Cho Chủ đầu tư dự án</span>
-        <h2 class="h-section">Từ định hướng vật liệu. <em class="serif">Đến hiệu quả triển khai.</em></h2>
+        <h2 class="h-section">Từ định hướng vật liệu <em class="serif">đến hiệu quả triển khai</em></h2>
       </div>
       <div class="right">
         <p class="lede">Với chủ đầu tư dự án, lựa chọn sàn không dừng ở màu sắc. Vật liệu cần có nguồn gốc rõ, hồ sơ đủ kiểm chứng, chi phí hợp lý và khả năng triển khai ổn định trên nhiều căn, nhiều tầng hoặc nhiều giai đoạn bàn giao.</p>
@@ -1590,36 +1618,24 @@
     <div class="owners-flow">
       <div class="step">
         <span class="step-n">— Bước 01</span>
-        <h3>Định hướng thiết kế<br>được giữ nhất quán.</h3>
+        <h3>Định hướng thiết kế<br>được giữ nhất quán</h3>
       </div>
       <div class="step">
         <span class="step-n">— Bước 02</span>
-        <h3>Tối ưu vật liệu<br>theo quy mô đầu tư.</h3>
+        <h3>Tối ưu vật liệu<br>theo quy mô đầu tư</h3>
       </div>
       <div class="step">
         <span class="step-n">— Bước 03</span>
-        <h3>Hiệu quả chi phí<br>ở quy mô dự án.</h3>
+        <h3>Hiệu quả chi phí<br>ở quy mô dự án</h3>
       </div>
     </div>
 
-    <div class="testimonial">
-      <div class="test-img">
-        <div class="test-img-inner"></div>
-        <span class="test-img-lbl">Không gian tham chiếu · Sàn sau bàn giao</span>
-      </div>
-      <div class="test-content">
-        <span class="test-mark">"</span>
-        <blockquote class="test-quote">Ở những dự án có diện tích sàn lớn, việc đối chiếu giữa thông số, chứng từ và phương án vật liệu giúp chủ đầu tư nhìn rõ hơn hiệu quả triển khai. LOC giữ được tinh thần gỗ ấm trong không gian, đồng thời tạo khoảng linh hoạt cho hồ sơ hoàn thiện.</blockquote>
-        <div class="test-meta">
-          <div class="who">
-            <div class="who-n">Đại diện chủ đầu tư</div>
-            <div class="who-r">Dự án căn hộ cao tầng · TP.HCM</div>
-          </div>
-        </div>
-      </div>
+    <div class="owners-banner" aria-label="Không gian sàn LOC sau bàn giao">
+      <img src="assets/product-scenes-corrected/08-plus-LPF00336AP.png" alt="Không gian sàn LOC sau bàn giao">
     </div>
 
     <!-- BEFORE / AFTER SLIDER — Fix 4 -->
+  </div>
 </section>
 
 <!-- ============================================================
@@ -1629,8 +1645,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">06 — Cho Nhà thầu</span>
-        <h2 class="h-section">Giữ nền tảng kỹ thuật. <em class="serif">Tối ưu tổng mức đầu tư.</em></h2>
+        <h2 class="h-section">Giữ nền tảng kỹ thuật<br><em class="serif">Tối ưu tổng mức đầu tư</em></h2>
       </div>
     </div>
 
@@ -1648,12 +1663,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td class="label">Nhà sản xuất</td><td class="brand-loc">Unilin Group, Belgium</td><td class="brand-w"><span class="match">=</span>Unilin Group, Belgium</td></tr>
-            <tr><td class="label">Tiêu chuẩn</td><td class="brand-loc">EN 13329 · Class 32</td><td class="brand-w"><span class="match">=</span>EN 13329 · Class 32</td></tr>
-            <tr><td class="label">Hệ thống khóa</td><td class="brand-loc">Uniclic®</td><td class="brand-w"><span class="match">=</span>Uniclic®</td></tr>
-            <tr><td class="label">Độ dày</td><td class="brand-loc">8mm</td><td class="brand-w"><span class="match">=</span>8mm</td></tr>
-            <tr><td class="label">Chống nước</td><td class="brand-loc">Có</td><td class="brand-w"><span class="match">=</span>Có</td></tr>
-            <tr><td class="label">CO / CQ xuất xứ</td><td class="brand-loc">Form A · Unilin Belgium</td><td class="brand-w"><span class="match">=</span>Form A · Unilin Belgium</td></tr>
+            <tr><td class="label">Nhà sản xuất</td><td class="brand-loc">Unilin Group, Belgium</td><td class="brand-w">Unilin Group, Belgium</td></tr>
+            <tr><td class="label">Tiêu chuẩn</td><td class="brand-loc">EN 13329 · Class 32</td><td class="brand-w">EN 13329 · Class 32</td></tr>
+            <tr><td class="label">Hệ thống khóa</td><td class="brand-loc">Uniclic®</td><td class="brand-w">Uniclic®</td></tr>
+            <tr><td class="label">Độ dày</td><td class="brand-loc">8mm</td><td class="brand-w">8mm</td></tr>
+            <tr><td class="label">Chống nước</td><td class="brand-loc">Có</td><td class="brand-w">Có</td></tr>
+            <tr><td class="label">CO / CQ xuất xứ</td><td class="brand-loc">Form A · Unilin Belgium</td><td class="brand-w">Form A · Unilin Belgium</td></tr>
           </tbody>
         </table>
       </div>
@@ -1681,8 +1696,7 @@
           <p>LOC Elite và Plus được trình bày với bộ thông số và chứng từ rõ ràng trong hệ Unilin Belgium.<br><small>EN 13329 · Class 32 · Uniclic®</small></p>
           <div class="belgian-mark-row" aria-label="Dấu hiệu nguồn gốc Bỉ">
             <span class="proof-chip dark"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Bỉ</span>
-            <span class="proof-chip dark"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
-            <span class="proof-chip dark loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
+            <span class="proof-chip dark"><img src="assets/unilin-logo-blue.jpg" alt="Unilin"></span>
           </div>
         </div>
       </div>
@@ -1703,12 +1717,13 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="ix">09 — Dự án tham chiếu</span>
-        <h2 class="h-section">Được đặt vào <em class="serif">bối cảnh thực tế.</em></h2>
+        <h2 class="h-section">Dự án</h2>
       </div>
     </div>
 
-    <div class="proj-grid">
+    <div class="carousel-wrap project-carousel">
+      <button class="carousel-arrow prev" type="button" data-scroll-target="projectGrid" data-scroll-dir="-1" aria-label="Dự án trước">‹</button>
+      <div class="proj-grid" id="projectGrid">
       <article class="proj p1">
         <div class="proj-img"><div class="proj-img-inner"></div><span class="proj-img-lbl">Ảnh nội thất</span></div>
         <div class="proj-meta">
@@ -1756,6 +1771,8 @@
           <p class="proj-cred">Plus Series · LPV00611AP</p>
         </div>
       </article>
+      </div>
+      <button class="carousel-arrow next" type="button" data-scroll-target="projectGrid" data-scroll-dir="1" aria-label="Dự án tiếp theo">›</button>
     </div>
   </div>
 </section>
@@ -1767,19 +1784,17 @@
   <div class="show-split">
     <div class="show-img">
       <iframe class="show-video-frame" src="https://www.youtube.com/embed/XjFKIqanCD8?si=UexDqSDbk3OynXT5&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=XjFKIqanCD8&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="LOC showroom experience" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <span class="show-img-lbl">Không gian trải nghiệm vật liệu · showroom tham chiếu</span>
     </div>
     <div class="show-content">
-      <span class="h-eyebrow-sec">08 — Showroom Experience</span>
-      <h2 class="h-sub">Nhìn vật liệu thật.<br><em class="serif">Cảm nhận trước khi chọn.</em></h2>
+      <h2 class="h-sub">Showroom</h2>
       <ul class="show-bullets">
         <li>Hơn 200 mẫu trưng bày kích thước thực để quan sát sắc độ, vân và độ hoàn thiện bề mặt</li>
         <li>Không gian trao đổi riêng cho nhóm thiết kế, chủ đầu tư và bộ phận vật tư</li>
         <li>Có thể sắp lịch riêng cho các buổi duyệt mẫu, đối chiếu spec hoặc chuẩn bị hồ sơ vật liệu</li>
       </ul>
       <div class="acts">
-        <a class="btn btn-gold" href="#dat-lich">Sắp lịch đối chiếu mẫu showroom <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#maps">Xem bản đồ <span class="arr">↗</span></a>
+        <a class="btn btn-gold" href="#dat-lich" data-contact-open>Đặt lịch hẹn showroom <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=291%20T%C3%B4%20Hi%E1%BA%BFn%20Th%C3%A0nh%20p.%20Ho%C3%A0%20H%C6%B0ng%2C%20TP.%20HCM" target="_blank" rel="noopener">Xem bản đồ <span class="arr">↗</span></a>
       </div>
     </div>
   </div>
@@ -1792,29 +1807,15 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="loc-logo logo-large" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></div>
-        <div class="belgian-proof" aria-label="Dấu hiệu thương hiệu Bỉ">
-          <span class="proof-chip dark"><span class="be-flag" aria-hidden="true"><span></span><span></span><span></span></span>Belgium</span>
-          <span class="proof-chip dark"><img src="https://cdn2.unilin.com/-/media/sites/unilincorporate/v2/navigation/unilin-logo.ashx?h=28&amp;iar=0&amp;w=135&amp;rev=7f1e9f51738f4324ab7f70354d3e0ed6&amp;hash=3CFA0990503A624A6CAA49019C59F2F5" alt="Unilin"></span>
-          <span class="proof-chip dark loc-chip"><span class="loc-logo" role="img" aria-label="LOC Floor"><span class="loc-main">LOC</span><span class="loc-sub">floor</span></span></span>
-        </div>
-        <div class="foot-by">Phân phối độc quyền bởi <strong>Mao Trung</strong></div>
-        <div class="mao-logo" role="img" aria-label="Mao Trung Home">
-          <div class="mao-symbol" aria-hidden="true">
-            <span class="m-red"></span>
-            <span class="m-yellow"></span>
-            <span class="m-green"></span>
-            <span class="m-blue"></span>
-          </div>
-          <div class="mao-word">MAOTRUNG<span class="home">HOME</span></div>
-        </div>
+        <img class="loc-logo-img logo-large-img" src="LOC_LOGO.png" alt="LOC Floor">
       </div>
       <div class="foot-col" id="lien-he">
         <h5>Liên hệ</h5>
         <ul>
-          <li>Đại diện NPP độc quyền Mao Trung - Anh Hoàng Nam</li>
+          <li class="rep-line"><span>Đại diện nhà phân phối Mao Trung</span><span>Anh Hoàng Nam</span></li>
           <li>
-            <strong>0938 360 986</strong>
+            <span>Mobile: 0938 360 986</span>
+            <a href="mailto:hoangnam@maotrung.com">Email: hoangnam@maotrung.com</a>
             <div class="foot-contact-actions" aria-label="Hotline và Zalo">
               <a class="foot-contact-btn" href="tel:0938360986" aria-label="Gọi 0938 360 986">
                 <span class="phone-ico">☎</span>
@@ -1822,9 +1823,15 @@
               <a class="foot-contact-btn" href="https://zalo.me/0938360986" target="_blank" rel="noopener" aria-label="Mở Zalo 0938 360 986">
                 <span class="zalo-ico">Zalo</span>
               </a>
+              <a class="foot-contact-btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hoangnam@maotrung.com" target="_blank" rel="noopener" aria-label="Gửi email đến hoangnam@maotrung.com bằng Gmail">
+                <svg class="mail-ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="M4 7l8 6 8-6"></path>
+                </svg>
+              </a>
             </div>
           </li>
-          <li>291 Tô Hiến Thành<br>p. Hoà Hưng (tên cũ: p13, Q10), TP. HCM</li>
+          <li>Địa chỉ: 291 Tô Hiến Thành Phường Hoà Hưng, Thành Phố Hồ Chí Minh.</li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1846,12 +1853,11 @@
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 Mao Trung — Nhà phân phối độc quyền LOC tại Việt Nam · GPKD 0312-345-678</div>
-      <div class="social-links">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-        <a href="#">LinkedIn</a>
+      <div class="foot-distributor">
+        <div class="foot-by">Phân phối độc quyền bởi<strong>Mao Trung</strong></div>
+        <div class="mao-logo" role="img" aria-label="Mao Trung Home">
+          <img src="assets/mao-trung-home-logo.png" alt="Mao Trung Home">
+        </div>
       </div>
     </div>
   </div>
@@ -1870,20 +1876,16 @@
       <div class="lb-code" id="lbCode">LFE00458</div>
       <div class="lb-spec" id="lbSpec">
         <strong>Hồ sơ kỹ thuật · chứng chỉ LOC</strong>
-        TDS Elite/Plus · Quality Letter · COCQ<br>
-        Warranty · ISO 9001/14001/45001 · EPD · DOP<br>
-        EN 13329 · Class 32 · Uniclic
-      </div>
-      <div class="lb-scenes">
-        <strong>Phối cảnh thực tế</strong>
-        <div class="lb-scene-grid">
-          <div class="lb-scene"><img src="" alt=""></div>
-        </div>
+        <span>TDS Elite/Plus · Quality Letter · COCQ</span>
+        <span>Warranty · ISO 9001/14001/45001</span>
+        <span>EPD · DOP</span>
+        <span>EN 13329 · Class 32 · Uniclic</span>
       </div>
       <div class="lb-products">
         <strong>Sản phẩm</strong>
         <div class="lb-product-grid">
-          <div class="lb-product active" id="lbProduct"><img id="lbProductImg" src="" alt=""></div>
+          <div class="lb-product active" id="lbProduct"><img id="lbProductImg" src="assets/Map Texture_Diffuse/LFE00458.jpg" alt="Sản phẩm LOC LFE00458"></div>
+          <div class="lb-product scene-thumb" id="lbSceneProduct"><img id="lbSceneProductImg" src="assets/product-scenes-corrected/01-elite-LFE00458.png" alt="Phối cảnh thực tế LOC LFE00458"></div>
         </div>
       </div>
       <div class="lb-acts">
@@ -1905,19 +1907,19 @@
     <form class="contact-form" id="contactForm">
       <div class="contact-field">
         <label for="contactName">Tên</label>
-        <input id="contactName" name="name" type="text" autocomplete="name" required>
+        <input id="contactName" name="name" type="text" autocomplete="name" maxlength="35" required>
       </div>
       <div class="contact-field">
         <label for="contactPhone">Số điện thoại</label>
-        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" required>
+        <input id="contactPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" pattern="[0-9]{10}" required>
       </div>
       <div class="contact-field">
         <label for="contactEmail">Email</label>
-        <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+        <input id="contactEmail" name="email" type="email" autocomplete="email" maxlength="35">
       </div>
       <div class="contact-field">
         <label for="contactProject">Mô tả dự án &amp; thông tin cần tư vấn</label>
-        <textarea id="contactProject" name="project" required></textarea>
+        <textarea id="contactProject" name="project" maxlength="250" required></textarea>
       </div>
       <button class="btn btn-primary contact-submit" type="submit">Gửi thông tin <span class="arr">→</span></button>
       <p class="contact-note" id="contactNote" aria-live="polite"></p>
@@ -1940,11 +1942,11 @@
   }
 
   // -------- Product search + series filter --------
-  var searchToggle = document.getElementById('searchToggle');
-  var searchClose = document.getElementById('searchClose');
-  var productSearch = document.getElementById('productSearch');
   var seriesFilter = document.getElementById('seriesFilter');
   var activeSeries = 'Elite';
+  var CONTACT_SHEET_URL = 'https://docs.google.com/spreadsheets/d/10_WhppWyrYMttRzDnlvmhg8z-9PS2gvxHN2D6uuYsIo/edit?gid=0#gid=0';
+  var CONTACT_RECIPIENT = 'hoangnam@maotrung.com';
+  var CONTACT_ENDPOINT = '';
   var productData = [
     {series:'Elite', code:'LFE00458', image:'https://locfloor.com.vn/wp-content/uploads/2025/07/BRL06051_PB-resize-370x370.jpg', scene:'assets/product-scenes-corrected/01-elite-LFE00458.png', url:'https://locfloor.com.vn/san-pham/san-loc-lfe00458/'},
     {series:'Elite', code:'LFE00461', image:'https://locfloor.com.vn/wp-content/uploads/2025/07/BRL06054_PB-1-copy-370x370.jpg', scene:'assets/product-scenes-corrected/02-elite-LFE00461.png', url:'https://locfloor.com.vn/san-pham/san-loc-lfe00461/'},
@@ -1992,33 +1994,14 @@
   }
 
   function applyProductFilter(){
-    var q = normalizeText(productSearch ? productSearch.value : '');
     document.querySelectorAll('.swatch').forEach(function(card){
       var seriesMatch = card.dataset.series === activeSeries;
-      var haystack = normalizeText(card.textContent);
-      var searchMatch = !q || haystack.indexOf(q) !== -1;
-      card.classList.toggle('is-hidden', !(seriesMatch && searchMatch));
+      card.classList.toggle('is-hidden', !seriesMatch);
     });
   }
 
   renderSwatches();
 
-  if(searchToggle){
-    searchToggle.addEventListener('click', function(){
-      nav.classList.add('search-open');
-      if(productSearch) setTimeout(function(){ productSearch.focus(); }, 60);
-    });
-  }
-  if(searchClose){
-    searchClose.addEventListener('click', function(){
-      nav.classList.remove('search-open');
-      if(productSearch) productSearch.value = '';
-      applyProductFilter();
-    });
-  }
-  if(productSearch){
-    productSearch.addEventListener('input', applyProductFilter);
-  }
   if(seriesFilter){
     seriesFilter.addEventListener('click', function(e){
       var btn = e.target.closest('.chip');
@@ -2030,6 +2013,16 @@
     });
     applyProductFilter();
   }
+
+  document.querySelectorAll('[data-scroll-target]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.getElementById(btn.dataset.scrollTarget);
+      if(!target) return;
+      var dir = Number(btn.dataset.scrollDir || 1);
+      var distance = Math.max(320, Math.round(target.clientWidth * 0.86));
+      target.scrollBy({left: dir * distance, behavior: 'smooth'});
+    });
+  });
 
   // -------- Swatch zoom icon (inject) --------
   document.querySelectorAll('.swatch .swatch-img').forEach(function(img){
@@ -2048,6 +2041,8 @@
   var lbScenes = document.querySelectorAll('.lb-scene');
   var lbProduct = document.getElementById('lbProduct');
   var lbProductImg = document.getElementById('lbProductImg');
+  var lbSceneProduct = document.getElementById('lbSceneProduct');
+  var lbSceneProductImg = document.getElementById('lbSceneProductImg');
   var lbDownload = document.getElementById('lbDownload');
 
   function setMainImage(src, alt){
@@ -2063,6 +2058,7 @@
 
   function setProductActive(active){
     if(lbProduct) lbProduct.classList.toggle('active', !!active);
+    if(active && lbSceneProduct) lbSceneProduct.classList.remove('active');
   }
 
   function openLb(swatchEl){
@@ -2087,6 +2083,10 @@
     if(lbProductImg){
       lbProductImg.src = imgSrc;
       lbProductImg.alt = 'Sản phẩm LOC ' + code;
+    }
+    if(lbSceneProductImg){
+      lbSceneProductImg.src = sceneSrc || imgSrc;
+      lbSceneProductImg.alt = 'Phối cảnh thực tế LOC ' + code;
     }
     if(lbDownload){
       lbDownload.href = imgSrc;
@@ -2130,6 +2130,15 @@
       clearSceneActive();
       setProductActive(true);
       setMainImage(lbProductImg.src, lbProductImg.alt);
+    });
+  }
+  if(lbSceneProduct){
+    lbSceneProduct.addEventListener('click', function(){
+      if(!lbSceneProductImg || !lbSceneProductImg.src) return;
+      clearSceneActive();
+      setProductActive(false);
+      lbSceneProduct.classList.add('active');
+      setMainImage(lbSceneProductImg.src, lbSceneProductImg.alt);
     });
   }
 
@@ -2197,6 +2206,9 @@
   var contactForm = document.getElementById('contactForm');
   var contactNote = document.getElementById('contactNote');
   var contactName = document.getElementById('contactName');
+  var contactPhone = document.getElementById('contactPhone');
+  var contactEmail = document.getElementById('contactEmail');
+  var contactProject = document.getElementById('contactProject');
 
   function openContact(e){
     if(e) e.preventDefault();
@@ -2225,11 +2237,54 @@
       closeContact();
     }
   });
+  if(contactPhone){
+    contactPhone.addEventListener('input', function(){
+      contactPhone.value = contactPhone.value.replace(/\D/g, '').slice(0, 10);
+      contactPhone.setCustomValidity(contactPhone.value.length === 10 ? '' : 'Vui lòng nhập đúng 10 chữ số.');
+    });
+  }
   if(contactForm){
     contactForm.addEventListener('submit', function(e){
       e.preventDefault();
-      contactNote.textContent = 'Cảm ơn anh/chị. Thông tin đã được ghi nhận trên form.';
-      contactForm.reset();
+      var submitBtn = contactForm.querySelector('[type="submit"]');
+      if(contactPhone && contactPhone.value.length !== 10){
+        contactPhone.setCustomValidity('Vui lòng nhập đúng 10 chữ số.');
+        contactPhone.reportValidity();
+        return;
+      }
+      if(!contactForm.checkValidity()){
+        contactForm.reportValidity();
+        return;
+      }
+      var payload = {
+        name: contactName.value.trim(),
+        phone: contactPhone.value.trim(),
+        email: contactEmail.value.trim(),
+        project: contactProject.value.trim(),
+        sheetUrl: CONTACT_SHEET_URL,
+        recipient: CONTACT_RECIPIENT,
+        source: 'LOC landing page 16:6',
+        submittedAt: new Date().toISOString()
+      };
+      if(!CONTACT_ENDPOINT){
+        contactNote.textContent = 'Form đã sẵn sàng. Vui lòng cấu hình Google Apps Script Web App URL để ghi Sheet và gửi email ' + CONTACT_RECIPIENT + '.';
+        return;
+      }
+      if(submitBtn) submitBtn.disabled = true;
+      contactNote.textContent = 'Đang gửi thông tin...';
+      fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      }).then(function(){
+        contactNote.textContent = 'Cảm ơn anh/chị. Thông tin đã được gửi đến Mao Trung.';
+        contactForm.reset();
+      }).catch(function(){
+        contactNote.textContent = 'Chưa gửi được thông tin. Vui lòng thử lại hoặc liên hệ ' + CONTACT_RECIPIENT + '.';
+      }).finally(function(){
+        if(submitBtn) submitBtn.disabled = false;
+      });
     });
   }
 })();
