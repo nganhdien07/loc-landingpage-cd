@@ -1,6 +1,6 @@
 # LOC Landing Page CDX
 
-Source: `Landing page_CDX/LOC_landingpage_16:6/`
+Source: `Landing page_CDX/`
 
 Desktop: `desktop.html`
 
