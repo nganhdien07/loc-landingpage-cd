@@ -1158,77 +1158,101 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
   .mao-logo{width:190px!important;max-width:72vw!important}
 }
 
-/* Desktop document section repair - final cascade */
+/* Desktop home document section: source layout from Landing page_CDX */
 @media(min-width:901px){
   .lu-doc-access{
-    padding:84px 0!important;
+    padding:74px 0 88px!important;
+    background:#071f3d!important;
     overflow:visible!important;
   }
   .lu-doc-access .page{
-    display:grid!important;
-    grid-template-columns:minmax(560px,1fr) minmax(460px,.74fr)!important;
-    gap:56px!important;
-    align-items:center!important;
+    display:block!important;
+    max-width:1800px!important;
+    padding-left:clamp(64px,6.25vw,128px)!important;
+    padding-right:clamp(64px,6.25vw,128px)!important;
     width:100%!important;
     min-width:0!important;
   }
-  .lu-doc-copy,
-  .lu-tds-preview{
-    min-width:0!important;
-  }
   .lu-doc-copy h2{
-    margin:0 0 34px!important;
+    margin:0 0 82px!important;
     padding:0!important;
     color:#fff!important;
-    font-size:clamp(52px,4.6vw,76px)!important;
-    line-height:1.04!important;
+    font-size:clamp(86px,6.8vw,128px)!important;
+    line-height:.9!important;
     text-transform:uppercase!important;
     white-space:normal!important;
     overflow:visible!important;
   }
   .lu-doc-list{
     display:grid!important;
-    gap:14px!important;
+    gap:32px!important;
   }
   .lu-doc-item{
     display:grid!important;
-    grid-template-columns:minmax(0,1fr) auto!important;
-    gap:18px!important;
+    grid-template-columns:minmax(0,1fr) 164px!important;
+    gap:32px!important;
     align-items:center!important;
-    min-height:82px!important;
-    padding:18px 22px!important;
-    border:1px solid rgba(167,215,244,.22)!important;
-    border-radius:10px!important;
-    background:rgba(255,255,255,.06)!important;
+    min-height:150px!important;
+    padding:18px 30px 18px 34px!important;
+    border:2px solid rgba(167,215,244,.78)!important;
+    border-radius:14px!important;
+    background:rgba(45,95,140,.22)!important;
+    transform:none!important;
+  }
+  .lu-doc-item:hover,
+  .lu-doc-item:focus,
+  .lu-doc-item.active{
+    border-color:rgba(167,215,244,.98)!important;
+    background:rgba(45,95,140,.34)!important;
+    transform:none!important;
   }
   .lu-doc-item strong{
     grid-area:auto!important;
     min-width:0!important;
+    justify-self:start!important;
     color:#fff!important;
-    font-size:20px!important;
-    line-height:1.28!important;
+    font-size:clamp(28px,2vw,36px)!important;
+    line-height:1.2!important;
+    font-weight:800!important;
     text-align:left!important;
   }
   .lu-doc-pdf{
     grid-area:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:center!important;
+    gap:8px!important;
     justify-self:end!important;
     margin:0!important;
-    min-width:74px!important;
-    min-height:38px!important;
-    padding:0 14px!important;
-    border-radius:7px!important;
+    width:164px!important;
+    min-width:164px!important;
+    height:112px!important;
+    min-height:112px!important;
+    padding:0 34px!important;
+    border:2px solid rgba(167,215,244,.36)!important;
+    border-radius:14px!important;
+    background:rgba(255,255,255,.1)!important;
+    color:#fff!important;
+    font-size:22px!important;
+    line-height:1!important;
+    letter-spacing:.08em!important;
     white-space:nowrap!important;
   }
+  .lu-doc-pdf span{
+    display:block!important;
+    grid-area:auto!important;
+    color:#fff!important;
+    font-size:28px!important;
+    font-weight:800!important;
+    line-height:1!important;
+    letter-spacing:.08em!important;
+  }
+  .lu-doc-pdf:hover{
+    background:rgba(167,215,244,.18)!important;
+    color:#fff!important;
+  }
   .lu-tds-preview{
-    align-self:center!important;
-    padding:26px!important;
-    border-radius:18px!important;
-  }
-  .lu-tds-sheet{
-    padding:26px 30px!important;
-  }
-  .lu-tds-sheet div{
-    grid-template-columns:minmax(160px,.9fr) minmax(0,1fr)!important;
-    gap:18px!important;
+    display:none!important;
   }
 }
