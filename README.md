@@ -3,5 +3,3 @@
 Source: `Landing page_CDX/`
 
 Desktop: `desktop.html`
-
-Mobile: `mobile.html`

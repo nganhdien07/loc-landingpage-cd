@@ -14,6 +14,7 @@
   --gutter:64px;
   --sans:Arial, Helvetica, sans-serif;
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--ink);background:var(--warm);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -187,3 +188,888 @@ body{background:#fff}
 @keyframes heroTextSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes heroImageZoom{from{transform:scale(1)}to{transform:scale(1.035)}}
 @media(prefers-reduced-motion:reduce){.hero-media img.active,.hero-copy.is-entering .display,.hero-copy.is-entering .lede{animation:none}.hero-media img.active{transform:scale(1)}}
+
+/* LOC + Universal home refresh 13.07.2026 */
+.unilin-mark{width:118px;height:auto;border-radius:0}.header .logo-wrap{min-width:130px}
+.lu-hero{padding:80px 0 96px;background:#f7f2ea;border-bottom:1px solid var(--line)}
+.lu-hero-head{max-width:1040px;margin:0 auto 44px;text-align:center}.lu-hero-head .kicker{margin-bottom:16px}.lu-hero h1{margin:0;color:var(--navy);font-size:clamp(52px,5vw,84px);line-height:.98;font-weight:500;letter-spacing:-.035em}.lu-hero-head p:not(.kicker){margin:22px auto 0;max-width:850px;color:var(--muted);font-size:19px;line-height:1.68}
+.lu-hero-grid{display:grid;grid-template-columns:1.42fr .7fr;gap:22px;min-height:620px}.lu-hero-side{display:grid;gap:22px}.lu-hero-card{position:relative;overflow:hidden;background:var(--navy);min-height:299px;color:#fff}.lu-hero-card,.lu-hero-card img{border-radius:8px}.lu-hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}.lu-hero-card:hover img{transform:scale(1.035)}.lu-hero-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,15,30,.08),rgba(7,15,30,.76))}.lu-hero-card div{position:absolute;left:30px;right:30px;bottom:28px;z-index:1}.lu-hero-card span,.lu-product-card span,.lu-doc-card span,.lu-project-grid span{display:block;color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.lu-hero-card h2{margin:10px 0 8px;color:#fff;font-size:32px;line-height:1.08;font-weight:500}.lu-hero-card p{margin:0;color:rgba(255,255,255,.78);font-size:16px;line-height:1.52}.lu-hero-card-main{min-height:620px}.lu-hero-card-main h2{font-size:48px}
+.lu-usp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.lu-usp{border:1px solid var(--line);background:#fff;border-radius:999px;padding:18px 24px;display:grid;gap:4px}.lu-usp strong{color:var(--navy);font-size:18px}.lu-usp span{color:var(--muted);font-size:14px;line-height:1.45}
+.lu-section{padding:92px 0;background:#fff;border-bottom:1px solid var(--line)}.lu-section:nth-of-type(even){background:#f7f4ef}.lu-section-head{display:grid;grid-template-columns:.74fr 1fr;gap:72px;align-items:end;margin-bottom:40px}.lu-section-head h2{margin:0;color:var(--navy);font-size:clamp(38px,3.7vw,62px);line-height:1.04;font-weight:500;letter-spacing:-.025em}.lu-section-head p:not(.kicker){margin:0;color:var(--muted);font-size:18px;line-height:1.65}
+.lu-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.lu-product-card{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}.lu-product-card img{width:100%;height:320px;object-fit:cover}.lu-product-card div{padding:28px}.lu-product-card h3{margin:12px 0 14px;color:var(--navy);font-size:27px;line-height:1.12;font-weight:500}.lu-product-card p{margin:0;color:var(--muted);line-height:1.68}
+.lu-doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.lu-doc-card{background:#fff;padding:30px;min-height:330px;display:flex;flex-direction:column}.lu-doc-card h3{margin:16px 0;color:var(--navy);font-size:25px;line-height:1.18}.lu-doc-card ul{margin:0 0 26px;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted)}.lu-doc-card li{padding-left:18px;position:relative}.lu-doc-card li:before{content:'';position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--gold)}.lu-doc-card a,.lu-doc-more{margin-top:auto;color:var(--navy);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}.lu-doc-more{display:inline-flex;margin-top:28px;border:1px solid var(--navy);min-height:52px;align-items:center;padding:0 22px}.lu-doc-more:hover,.lu-doc-card a:hover{color:var(--gold)}
+.lu-reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.lu-reason-grid article{background:#fff;padding:36px;min-height:320px}.lu-reason-grid span{color:var(--gold);font-size:13px;letter-spacing:.18em;font-weight:700}.lu-reason-grid h3{margin:52px 0 16px;color:var(--navy);font-size:28px;line-height:1.1}.lu-reason-grid p{margin:0;color:var(--muted);line-height:1.68}
+.lu-empty-collection{min-height:260px;border:1px dashed var(--line);background:linear-gradient(135deg,rgba(13,46,86,.05),rgba(201,168,76,.08));display:grid;place-items:center;text-align:center;padding:40px}.lu-empty-collection span{color:var(--gold);letter-spacing:.16em;text-transform:uppercase;font-weight:700}.lu-empty-collection p{margin:12px 0 0;color:var(--muted)}
+.lu-project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.lu-project-grid article{background:#fff;border:1px solid var(--line);overflow:hidden}.lu-project-grid img{width:100%;height:300px;object-fit:cover}.lu-project-grid div{padding:24px}.lu-project-grid h3{margin:10px 0 6px;color:var(--navy);font-size:25px}.lu-project-grid p{margin:0;color:var(--muted)}
+.lu-distributor{padding:96px 0;background:#f8f4ee;border-bottom:1px solid var(--line)}.lu-distributor-grid{display:grid;grid-template-columns:1fr .72fr;gap:70px;align-items:center}.lu-distributor h2{margin:0;color:var(--navy);font-size:64px;line-height:1}.lu-distributor-role{margin:12px 0 28px;color:var(--gold);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}.lu-distributor p:not(.kicker):not(.lu-distributor-role){color:var(--muted);font-size:18px;line-height:1.72}.lu-distributor-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}.lu-distributor-stats div{background:#fff;padding:20px}.lu-distributor-stats strong{display:block;color:var(--navy);font-size:24px}.lu-distributor-stats span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.35}.lu-contact-card{background:#fff;border:1px solid var(--line);padding:34px}.lu-contact-card img{width:220px;margin-bottom:34px}.lu-contact-card h3{margin:0 0 8px;color:var(--navy);font-size:31px;letter-spacing:.04em}.lu-contact-card p{margin:0 0 24px;color:var(--muted)}.lu-contact-card ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;color:var(--muted)}.lu-contact-card a{color:var(--navy);font-weight:700}
+.lu-footer.footer{background:#0d2e56}.lu-footer .foot-logo{width:136px;background:#fff;padding:8px}.lu-footer .foot-top>div:first-child p{margin:18px 0 0;color:rgba(255,255,255,.68);line-height:1.6}.unilin-foot-logo{height:auto}.lu-footer .foot-bot{align-items:flex-start;gap:28px}
+@media(max-width:900px){.unilin-mark{width:108px}.lu-hero{padding:52px 0 64px}.lu-hero-head{text-align:left}.lu-hero h1{font-size:44px}.lu-hero-grid,.lu-section-head,.lu-product-grid,.lu-doc-grid,.lu-reason-grid,.lu-project-grid,.lu-distributor-grid{grid-template-columns:1fr}.lu-hero-card-main,.lu-hero-card{min-height:360px}.lu-hero-side{grid-template-columns:1fr}.lu-usp-row{grid-template-columns:1fr}.lu-usp{border-radius:18px}.lu-section{padding:64px 0}.lu-product-card img,.lu-project-grid img{height:260px}.lu-reason-grid article{min-height:auto}.lu-reason-grid h3{margin-top:28px}.lu-distributor h2{font-size:44px}.lu-distributor-stats{grid-template-columns:1fr}.lu-footer .foot-bot{display:grid}.header .logo-wrap{min-width:0}}
+
+/* Wireframe v5 alignment */
+body.lu-home{background:#fbf7f1;color:#0a2018}
+body.lu-home .header{background:#fbf7f1;border-bottom:1px solid #e8e0d3;box-shadow:none}
+body.lu-home .nav a{color:#0a2018}
+body.lu-home .nav a.active,body.lu-home .nav a:hover{color:#1d9e75}
+body.lu-home .kicker{color:#a9b0bd;font-family:Arial,Helvetica,sans-serif;letter-spacing:.22em}
+.lu-hero{padding:62px 0 76px;background:#fbf7f1;border-bottom:0}
+.lu-hero-head{max-width:980px;margin-bottom:38px}
+.lu-hero h1{font-family:Georgia,'Times New Roman',serif;color:#0a2018;font-size:clamp(66px,6vw,106px);line-height:.92;letter-spacing:-.035em}
+.lu-hero h1 em{display:inline-block;color:#1d9e75;font-style:italic;font-weight:400}
+.lu-hero-head p:not(.kicker){max-width:760px;color:#6b6860;font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;line-height:1.48}
+.lu-hero-grid{grid-template-columns:2fr 1fr;gap:24px;min-height:560px}
+.lu-hero-card{border-radius:20px;min-height:268px;background:#0a2018}
+.lu-hero-card,.lu-hero-card img{border-radius:20px}
+.lu-hero-card:after{background:linear-gradient(180deg,rgba(10,32,24,.08),rgba(10,32,24,.74))}
+.lu-hero-card:before{content:'';position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.28));z-index:1;pointer-events:none}
+.lu-hero-card div{left:30px;right:30px;bottom:28px;z-index:2}
+.lu-hero-card span,.lu-product-card span,.lu-doc-card span,.lu-project-grid span{color:#9fe1cb;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em}
+.lu-hero-card h2{font-family:Georgia,'Times New Roman',serif;font-size:31px;font-weight:700}
+.lu-hero-card p{font-family:Arial,Helvetica,sans-serif;color:rgba(255,255,255,.76);font-weight:600}
+.lu-hero-card-main{min-height:560px}
+.lu-hero-card-main h2{font-size:50px}
+.lu-usp-row{max-width:none;margin:34px auto 0;gap:18px}
+.lu-usp{grid-template-columns:auto 1fr;align-items:center;border:2px solid #d8d0c0;border-radius:999px;background:#fffdf9;padding:18px 28px}
+.lu-usp b{font-size:25px;line-height:1}
+.lu-usp strong{font-family:Arial,Helvetica,sans-serif;color:#0a2018;font-size:22px;line-height:1.1}
+.lu-usp span{font-family:Arial,Helvetica,sans-serif;color:#6b6860;font-weight:600;font-size:16px}
+.lu-section{padding:76px 0;background:#fbf7f1;border-bottom:0}
+.lu-section:nth-of-type(even){background:#fff}
+.lu-section-head-center{display:block;text-align:center;max-width:860px;margin:0 auto 36px}
+.lu-section-head-center h2{font-family:Georgia,'Times New Roman',serif;color:#0a2018;font-size:48px}
+.lu-family-label{display:flex;justify-content:center;align-items:center;gap:20px;margin:0 auto 40px;color:#a9b0bd;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.18em;font-weight:800;font-size:13px}
+.lu-family-label strong{border:2px solid #085041;border-radius:7px;color:#085041;padding:7px 16px;letter-spacing:.12em;background:#fbf7f1}
+.lu-product-grid{gap:26px}
+.lu-product-card{position:relative;min-height:520px;border:0;border-radius:18px;overflow:hidden;color:#fff;background:#8d6a4f}
+.lu-product-card:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.18) 0 33%,rgba(255,255,255,.04) 33% 66%,rgba(255,255,255,.22) 66%),linear-gradient(180deg,transparent 38%,rgba(10,32,24,.82))}
+.lu-product-card:after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38;mix-blend-mode:multiply}
+.lu-line-elite:after{background-image:url('assets/product-scenes-corrected/03-elite-LFE00463.png')}
+.lu-line-plus:after{background-image:url('assets/product-scenes-corrected/18-plus-LPV00555AP.png')}
+.lu-line-universal:after{background-image:url('assets_Universal/universal_summit_sietch-brown_scene.png')}
+.lu-line-elite{background:#ad815f}.lu-line-plus{background:#50656c}.lu-line-universal{background:#c19566}
+.lu-product-card div{position:absolute;left:28px;right:28px;bottom:26px;z-index:1;padding:0}
+.lu-product-card small{display:inline-flex;margin-bottom:20px;padding:7px 14px;border-radius:999px;background:#1d9e75;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em}
+.lu-product-card span{color:#9fe1cb;margin-bottom:8px}
+.lu-product-card h3{font-family:Georgia,'Times New Roman',serif;color:#fff;font-size:28px;margin:0 0 12px;line-height:1.15}
+.lu-product-card p{font-family:Arial,Helvetica,sans-serif;color:rgba(255,255,255,.76);font-weight:700;line-height:1.55}
+.lu-product-card em{display:block;margin-top:18px;color:#9fe1cb;font-style:normal;font-family:Arial,Helvetica,sans-serif;font-weight:800}
+.lu-docs,.lu-reasons,.lu-projects{background:#fff}
+.lu-doc-grid,.lu-reason-grid{border-color:#e8e4dc;background:#e8e4dc;border-radius:18px;overflow:hidden}
+.lu-doc-card,.lu-reason-grid article{background:#fbf7f1}
+.lu-doc-card h3,.lu-reason-grid h3,.lu-project-grid h3,.lu-distributor h2,.lu-contact-card h3{font-family:Georgia,'Times New Roman',serif;color:#0a2018}
+.lu-reason-grid article{min-height:300px}
+.lu-empty-collection{border-radius:18px;background:#f5f0e8;border-color:#d8d0c0}
+.lu-project-grid article{border-color:#e8e4dc;border-radius:18px;background:#fbf7f1}
+.lu-project-grid img{height:260px}
+.lu-distributor{background:#f8f4ee}
+.lu-contact-card{border-color:#e8e4dc;border-radius:18px}
+.lu-footer.footer{background:#0a2018}
+@media(max-width:900px){.lu-hero h1{font-size:46px}.lu-hero-grid{grid-template-columns:1fr}.lu-hero-card-main,.lu-hero-card{min-height:330px}.lu-family-label{display:grid;text-align:center;gap:10px}.lu-product-card{min-height:430px}.lu-section-head-center h2{font-size:36px}.lu-usp{border-radius:18px}}
+
+/* LOC home rebuild aligned with LOC-Floor-Wireframe-v5 + Moduleo section rhythm */
+body.lu-home{
+  --navy:#0d2e56;
+  --navy-deep:#071f3d;
+  --blue:#2d5f8c;
+  --blue-soft:#eaf2f8;
+  --blue-line:#d8e3ed;
+  --white:#fff;
+  --paper:#f7fafc;
+  --text:#14243a;
+  --muted:#65758a;
+  --gold:#c9a84c;
+  background:#fff;
+  color:var(--text);
+}
+body.lu-home .header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--blue-line);box-shadow:0 18px 44px rgba(13,46,86,.07);backdrop-filter:blur(16px)}
+body.lu-home .header-inner{height:72px}
+body.lu-home .unilin-mark{width:112px}
+body.lu-home .nav{background:#fff;border-color:var(--blue-line)}
+body.lu-home .nav a{color:var(--navy);border-color:var(--blue-line);padding:10px 16px}
+body.lu-home .nav a.active,body.lu-home .nav a:hover{background:var(--navy);color:#fff}
+body.lu-home .page{max-width:var(--maxw)}
+body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
+
+.lu-home-main{background:#fff}
+.lu-home-main .section{padding:78px 0;border-bottom:1px solid var(--blue-line)}
+.lu-hero{padding:34px 0 66px;background:#fff;border-bottom:1px solid var(--blue-line)}
+.lu-hero-head{max-width:760px;margin:0 auto 28px;text-align:center}
+.lu-hero-head .kicker{margin-bottom:12px;color:#7992ab;font-size:11px}
+.lu-hero h1{margin:0;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.18;font-weight:400;letter-spacing:-.02em}
+.lu-hero h1 em{display:inline;color:var(--blue);font-style:italic;font-weight:400}
+.lu-hero-head p:not(.kicker){max-width:620px;margin:14px auto 0;color:var(--muted);font-family:var(--sans);font-size:14px;line-height:1.65;font-weight:500}
+.lu-hero-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px;height:420px;min-height:0;margin-bottom:22px}
+.lu-hero-side{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.lu-hero-card{position:relative;min-height:0;border-radius:18px;overflow:hidden;background:var(--navy);color:#fff;box-shadow:0 18px 44px rgba(13,46,86,.16)}
+.lu-hero-card,.lu-hero-card img{border-radius:18px}
+.lu-hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.lu-hero-card:hover img{transform:scale(1.035)}
+.lu-hero-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,31,61,.03),rgba(7,31,61,.78))}
+.lu-hero-card:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,46,86,.2),rgba(13,46,86,0));z-index:1;pointer-events:none}
+.lu-hero-card div{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}
+.lu-hero-card span,.lu-product-card span,.lu-project-slide span{display:block;color:#d7e6f5;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.lu-hero-card h2{margin:8px 0 6px;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.12;font-weight:400}
+.lu-hero-card-main h2{font-size:34px}
+.lu-hero-card p{margin:0;color:rgba(255,255,255,.78);font-family:var(--sans);font-size:12px;line-height:1.55;font-weight:600}
+.lu-usp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:none;margin:0 auto}
+.lu-usp{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;border:1px solid var(--blue-line);border-radius:18px;background:var(--paper);padding:18px 20px}
+.lu-usp b{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;letter-spacing:.08em}
+.lu-usp strong{display:block;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.15;font-weight:400}
+.lu-usp span{display:block;margin-top:6px;color:var(--muted);font-family:var(--sans);font-size:12px;line-height:1.5}
+
+.lu-about{background:#fff}
+.lu-about .page{display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:center}
+.lu-about-copy{display:grid;grid-template-columns:.55fr 1fr;gap:36px;align-items:start}
+.lu-about-copy h2,.intro h2{margin:0;color:var(--navy);font-family:var(--sans);font-size:36px;line-height:1.05;font-weight:800;letter-spacing:.01em}
+.lu-about-copy p{margin:0;color:var(--muted);font-size:17px;line-height:1.78}
+.lu-about-image{height:360px;margin:0;border-radius:18px;overflow:hidden;background:var(--blue-soft)}
+.lu-about-image img{width:100%;height:100%;object-fit:cover}
+
+.lu-doc-access{background:#071f3d;color:#fff}
+.lu-doc-access .page{display:grid;grid-template-columns:1fr .96fr;gap:48px;align-items:center}
+.lu-doc-copy .kicker,.lu-tds-preview .kicker{color:#5aa6d8}
+.lu-doc-copy h2{margin:0;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:clamp(46px,4.2vw,70px);line-height:1.08;font-weight:700;letter-spacing:-.025em}
+.lu-doc-copy h2 em{display:block;color:#a7d7f4;font-style:italic;font-weight:400}
+.lu-doc-copy>p:not(.kicker):not(.lu-doc-note){max-width:760px;margin:28px 0 34px;color:rgba(215,230,245,.72);font-size:19px;line-height:1.72;font-weight:700}
+.lu-doc-list{display:grid;gap:14px}
+.lu-doc-list a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"icon title btn" "icon desc btn";gap:6px 18px;align-items:center;min-height:86px;padding:20px 22px;border:1px solid rgba(167,215,244,.16);border-radius:8px;background:rgba(255,255,255,.06);color:#fff;transition:.22s}
+.lu-doc-list a:hover{background:rgba(45,95,140,.28);border-color:rgba(167,215,244,.46);transform:translateY(-2px)}
+.lu-doc-list span{grid-area:icon;font-size:25px}
+.lu-doc-list strong{grid-area:title;color:#fff;font-size:22px;line-height:1.15}
+.lu-doc-list small{grid-area:desc;color:rgba(167,215,244,.64);font-size:14px;font-weight:700;line-height:1.45}
+.lu-doc-list b{grid-area:btn;display:inline-flex;align-items:center;justify-content:center;min-width:78px;min-height:42px;border:1px solid #5aa6d8;border-radius:7px;color:#a7d7f4;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lu-doc-note{margin:34px 0 0;color:rgba(167,215,244,.42);font-size:15px;font-style:italic;font-weight:700}
+.lu-tds-preview{border:1px solid rgba(167,215,244,.16);border-radius:18px;background:rgba(255,255,255,.05);padding:30px}
+.lu-tds-sheet{border-radius:8px;background:#04182f;padding:28px 34px;color:#a7d7f4;font-family:Menlo,Monaco,Consolas,'Courier New',monospace}
+.lu-tds-sheet h3{margin:0 0 26px;color:#fff;font-size:20px;line-height:1.3}
+.lu-tds-sheet dl{margin:0;display:grid;gap:14px}
+.lu-tds-sheet div{display:grid;grid-template-columns:220px 1fr;gap:22px}
+.lu-tds-sheet dt{color:rgba(167,215,244,.46);font-weight:800}
+.lu-tds-sheet dd{margin:0;color:#a7d7f4;font-weight:800}
+.lu-cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+.lu-cert-grid span{min-height:78px;display:grid;place-items:center;text-align:center;border:1px solid rgba(167,215,244,.12);border-radius:8px;background:rgba(90,166,216,.12)}
+.lu-cert-grid strong{display:block;color:#d7e6f5;font-size:17px}
+.lu-cert-grid small{display:block;margin-top:5px;color:rgba(167,215,244,.55);font-size:13px}
+
+.lu-products{background:#fff}
+.lu-products-intro{display:flex;align-items:end;justify-content:space-between;gap:34px;margin-bottom:24px}
+.section-link{color:var(--navy);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.section-link span{color:var(--blue)}
+.lu-family-label{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 24px;color:#7b8fa7;font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+.lu-family-label strong{border:1px solid var(--blue);border-radius:999px;color:var(--blue);background:#fff;padding:6px 13px}
+.lu-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lu-product-card{position:relative;min-height:420px;border:0;border-radius:18px;overflow:hidden;color:#fff;background:var(--navy);box-shadow:0 18px 44px rgba(13,46,86,.14)}
+.lu-product-card:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.17) 0 33%,rgba(255,255,255,.03) 33% 66%,rgba(255,255,255,.14) 66%),linear-gradient(180deg,rgba(13,46,86,.04) 38%,rgba(7,31,61,.88))}
+.lu-product-card:after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:.42;mix-blend-mode:multiply;transition:transform .8s ease}
+.lu-product-card:hover:after{transform:scale(1.035)}
+.lu-line-elite{background:#8a7858}.lu-line-plus{background:#4c6a83}.lu-line-universal{background:#7b5c45}
+.lu-line-elite:after{background-image:url('assets/product-scenes-corrected/03-elite-LFE00463.png')}
+.lu-line-plus:after{background-image:url('assets/product-scenes-corrected/18-plus-LPV00555AP.png')}
+.lu-line-universal:after{background-image:url('assets_Universal/universal_summit_sietch-brown_scene.png')}
+.lu-product-card div{position:absolute;left:24px;right:24px;bottom:24px;z-index:1;padding:0}
+.lu-product-card small{display:inline-flex;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em}
+.lu-product-card h3{margin:8px 0 10px;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:25px;line-height:1.14;font-weight:400}
+.lu-product-card p{margin:0;color:rgba(255,255,255,.78);font-size:13px;line-height:1.58;font-weight:600}
+.lu-product-card em{display:block;margin-top:16px;color:#d7e6f5;font-style:normal;font-size:12px;font-weight:800}
+
+.lu-reasons{background:var(--paper)}
+.lu-section-head{display:grid;grid-template-columns:.7fr 1fr;gap:62px;align-items:end;margin-bottom:32px}
+.lu-section-head h2{margin:0;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:44px;line-height:1.06;font-weight:400;letter-spacing:-.02em}
+.lu-reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-line);border:1px solid var(--blue-line);border-radius:18px;overflow:hidden}
+.lu-reason-grid article{min-height:300px;background:#fff;padding:32px}
+.lu-reason-grid span{color:var(--blue);font-size:12px;letter-spacing:.18em;font-weight:800}
+.lu-reason-grid h3{margin:56px 0 14px;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:27px;line-height:1.12;font-weight:400}
+.lu-reason-grid p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+
+.lu-home-main .lu-projects{padding:0;background:#fff}
+.lu-project-carousel-wrap{display:grid;grid-template-columns:330px minmax(0,1fr);min-height:560px}
+.lu-project-side{background:var(--navy);color:#fff;padding:54px 42px;display:flex;flex-direction:column;justify-content:space-between}
+.lu-project-side h2{margin:0;font-family:var(--sans);font-size:40px;line-height:1.04;letter-spacing:-.02em;font-weight:800}
+.btn.btn-dark{display:inline-flex;width:max-content;align-items:center;gap:10px;min-height:48px;padding:0 18px;background:#fff;color:var(--navy);border:1px solid #fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.lu-project-carousel-shell{overflow:hidden;background:var(--paper);padding:34px}
+.lu-project-carousel-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(310px,36vw);gap:18px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:8px}
+.lu-project-slide{position:relative;height:492px;overflow:hidden;border-radius:18px;background:var(--navy);scroll-snap-align:start}
+.lu-project-slide img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.lu-project-slide:hover img{transform:scale(1.035)}
+.lu-project-slide:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,31,61,0),rgba(7,31,61,.68))}
+.lu-project-slide span{position:absolute;left:22px;right:22px;bottom:22px;z-index:1;color:#fff;font-size:16px;letter-spacing:.02em;text-transform:none}
+
+.lu-mao-home{background:#fff}
+.lu-mao-home-grid{display:grid;grid-template-columns:1fr .9fr;gap:58px;align-items:center}
+.lu-mao-home-logo{width:250px;margin-bottom:26px}
+.lu-mao-home-copy h2{margin:0;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:44px;line-height:1.08;font-weight:400}
+.lu-mao-home-lead{margin:22px 0 0;color:var(--muted);font-size:17px;line-height:1.78}
+.lu-mao-home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-line);border:1px solid var(--blue-line);margin-top:34px}
+.lu-mao-home-stats article{background:var(--paper);padding:22px}
+.lu-mao-home-stats strong{display:block;color:var(--navy);font-size:28px;line-height:1}
+.lu-mao-home-stats span{display:block;margin-top:10px;color:var(--muted);font-size:12px;line-height:1.45}
+.lu-mao-home-visual{margin:0;position:relative;height:430px;border-radius:18px;overflow:hidden;background:var(--blue-soft)}
+.lu-mao-home-visual img{width:100%;height:100%;object-fit:cover}
+.lu-mao-home-visual figcaption{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.9);padding:16px 18px;color:var(--navy)}
+.lu-mao-home-visual strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400}
+.lu-mao-home-visual span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+
+.lu-home-main .lu-contact-section{background:var(--navy);padding:0}
+.lu-footer-detailed{padding:62px 64px;color:#fff}
+.lu-footer-detailed .foot-top{display:grid;grid-template-columns:.9fr 1.25fr 1fr 1fr;gap:46px;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);padding:44px 0}
+.lu-footer-detailed .footer-moduleo-mark{width:138px;background:#fff;padding:10px}
+.lu-footer-detailed .footer-moduleo-mark img{width:100%;height:auto}
+.lu-footer-detailed .foot-col h2{margin:0 0 18px;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400}
+.lu-footer-detailed .foot-col p,.lu-footer-detailed .foot-col a{display:block;margin:0 0 12px;color:rgba(255,255,255,.72);line-height:1.55}
+.lu-footer-detailed .foot-col a:hover{color:#fff}
+.lu-footer-detailed .rep-line strong{color:var(--navy);letter-spacing:.04em}
+.lu-footer-detailed .foot-bot{display:flex;justify-content:flex-end;padding-top:28px;color:rgba(255,255,255,.62)}
+.lu-footer-detailed .footer-distributor{display:flex;align-items:center;gap:14px}
+.lu-footer-detailed .mao-logo{width:220px;background:#fff;padding:7px 10px}
+.lu-footer-detailed .foot-by{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.56)}
+
+@media(max-width:900px){
+  .lu-hero-grid,.lu-usp-row,.lu-about .page,.lu-about-copy,.lu-doc-access .page,.lu-doc-tools,.lu-product-grid,.lu-section-head,.lu-reason-grid,.lu-project-carousel-wrap,.lu-mao-home-grid,.lu-mao-home-stats,.lu-footer-detailed .foot-top{grid-template-columns:1fr}
+  .lu-hero-grid{height:auto}
+  .lu-hero-card{min-height:310px}
+  .lu-hero h1{font-size:42px}
+  .lu-project-carousel-track{grid-auto-columns:82vw}
+  .lu-project-side{min-height:300px}
+  .lu-footer-detailed{padding:48px 22px}
+}
+
+/* Feedback L&U 16.07.26 */
+.lu-hero{padding:28px 0 42px}
+.lu-hero-head{max-width:960px;margin-bottom:24px}
+.lu-hero h1{font-size:clamp(48px,5vw,82px);line-height:1.02}
+.lu-hero-grid{height:500px}
+.lu-hero-card-main h2{font-size:42px}
+.lu-usp-row{gap:10px}
+.lu-usp{min-height:0;padding:12px 16px;border-radius:12px}
+.lu-usp b{width:28px;height:28px;font-size:10px}
+.lu-usp strong{font-size:16px}
+.lu-usp span{font-size:12px;line-height:1.35}
+
+.lu-doc-access{padding:46px 0!important}
+.lu-doc-access .page{grid-template-columns:1.02fr .98fr;gap:36px}
+.lu-doc-copy h2{font-size:clamp(40px,3.5vw,58px);line-height:1.04}
+.lu-doc-copy>p:not(.kicker):not(.lu-doc-note){margin:18px 0 22px;font-size:16px;line-height:1.55}
+.lu-doc-list{gap:10px}
+.lu-doc-list a{min-height:68px;padding:13px 16px;border-radius:7px}
+.lu-doc-list span{font-size:20px}
+.lu-doc-list strong{font-size:18px}
+.lu-doc-list small{font-size:12px;line-height:1.35}
+.lu-doc-list b{min-width:68px;min-height:36px;font-size:11px}
+.lu-doc-note{margin-top:18px;font-size:13px}
+.lu-tds-preview{padding:22px;border-radius:14px}
+.lu-tds-preview .kicker{margin-bottom:14px}
+.lu-tds-sheet{padding:22px 26px}
+.lu-tds-sheet h3{margin-bottom:18px;font-size:17px}
+.lu-tds-sheet dl{gap:9px}
+.lu-tds-sheet div{grid-template-columns:190px 1fr;gap:18px;font-size:13px}
+.lu-cert-grid{gap:10px;margin-top:14px}
+.lu-cert-grid span{min-height:58px}
+.lu-cert-grid strong{font-size:15px}
+.lu-cert-grid small{font-size:11px}
+
+.lu-products-intro{margin-bottom:30px}
+.lu-family-label{display:none}
+
+.lu-project-carousel-wrap{grid-template-columns:330px minmax(0,1fr);min-height:620px}
+.lu-project-side{min-height:620px}
+.lu-project-carousel-shell{padding:0;background:#fff;overflow:hidden}
+.lu-project-carousel-track{height:620px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:initial;grid-auto-columns:initial;gap:0;overflow:hidden;scroll-snap-type:none;padding:0}
+.lu-project-slide{height:620px;border-radius:0;scroll-snap-align:none}
+.lu-project-slide span{bottom:30px;font-size:18px}
+
+.lu-mao-home{padding:78px 0 0!important;background:#fff}
+.lu-mao-heading{margin-bottom:42px}
+.lu-mao-heading img{width:230px;margin-bottom:20px}
+.lu-mao-heading h2{max-width:760px;margin:0;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,4vw,62px);line-height:1.02;font-weight:400}
+.lu-mao-feature{display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:center;margin-bottom:42px}
+.lu-mao-feature-reverse{grid-template-columns:1.08fr .92fr}
+.lu-mao-feature-reverse figure{grid-column:2}
+.lu-mao-feature-reverse div{grid-column:1;grid-row:1}
+.lu-mao-feature figure{margin:0;min-height:360px;background:var(--paper);overflow:hidden}
+.lu-mao-feature figure img{width:100%;height:100%;min-height:360px;object-fit:cover}
+.lu-mao-feature-reverse figure img{object-fit:contain;background:#fff;padding:24px}
+.lu-mao-feature h3{margin:0 0 16px;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.1;font-weight:400}
+.lu-mao-feature p{margin:0;color:var(--muted);font-size:18px;line-height:1.7}
+.lu-logo-marquee{margin-top:44px;background:#fff;border-top:1px solid var(--blue-line);border-bottom:1px solid var(--blue-line);overflow:hidden}
+.lu-logo-track{display:flex;align-items:center;width:max-content;animation:luLogoMarquee 36s linear infinite}
+.lu-logo-track img{display:block;width:auto;max-width:none;height:82px;object-fit:contain;padding:0 20px;background:#fff;border-right:1px solid rgba(13,46,86,.08)}
+@keyframes luLogoMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.lu-mao-home-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.82fr);gap:48px;align-items:center}
+.lu-mao-home-copy{min-width:0}
+.lu-mao-home-logo{display:block;width:185px;height:auto;margin:0 0 18px}
+.lu-mao-home-copy h2{max-width:680px;margin:0;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:clamp(34px,3.5vw,54px);line-height:.98;font-weight:400;letter-spacing:-.03em}
+.lu-mao-home-lead{max-width:650px;margin:16px 0 0;color:var(--muted);font-size:18px;line-height:1.55}
+.lu-mao-home-btn{display:inline-flex;margin-top:24px}
+.lu-mao-home-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+.lu-mao-home-stats article{min-height:104px;padding:18px;background:var(--paper);border:1px solid var(--blue-line)}
+.lu-mao-home-stats strong{display:block;color:var(--navy);font-size:32px;line-height:1;font-weight:700}
+.lu-mao-home-stats span{display:block;margin-top:10px;color:var(--muted);font-size:15px;line-height:1.35}
+.lu-mao-home-visual{margin:0}
+.lu-mao-home-visual>img{display:block;width:100%;height:330px;object-fit:cover;border-radius:14px}
+.lu-mao-home-visual figcaption{margin-top:12px;padding:18px 20px;background:#fff;border:1px solid var(--blue-line);border-radius:14px}
+.lu-mao-home-visual figcaption strong{display:block;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.2;font-weight:400}
+.lu-mao-home-visual figcaption span{display:block;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.4}
+.lu-logo-marquee{margin-top:34px}
+.lu-logo-track{animation-duration:42s}
+
+.lu-footer-detailed{padding:0 64px 42px;color:var(--navy);background:#fff}
+.lu-contact-section{background:#fff!important}
+.lu-footer-detailed .foot-top{border-top:1px solid var(--blue-line);border-bottom:1px solid var(--blue-line);padding:54px 0 48px}
+.lu-footer-detailed .footer-moduleo-mark{background:#fff}
+.lu-footer-detailed .foot-col h2{color:var(--gold);font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.lu-footer-detailed .foot-col p,.lu-footer-detailed .foot-col a{color:#5b5b6e;font-size:18px}
+.lu-footer-detailed .phone-line{white-space:nowrap}
+.lu-footer-detailed .foot-bot{justify-content:center;min-height:150px;padding-top:32px;color:#5b5b6e;background:#fff}
+.lu-footer-detailed .footer-distributor{flex-direction:column;justify-content:center;gap:12px;text-align:center;background:#fff}
+.lu-footer-detailed .mao-logo{width:230px;background:#fff;padding:0}
+.lu-footer-detailed .foot-by{color:#5b5b6e;font-size:16px;font-weight:700;letter-spacing:.18em;text-align:center}
+
+@media(max-width:900px){
+  .lu-hero-grid{height:auto}
+  .lu-doc-access .page,.lu-mao-feature,.lu-mao-feature-reverse,.lu-mao-home-grid{grid-template-columns:1fr}
+  .lu-mao-feature-reverse figure,.lu-mao-feature-reverse div{grid-column:auto;grid-row:auto}
+  .lu-mao-home-stats{grid-template-columns:1fr}
+  .lu-project-carousel-wrap{grid-template-columns:1fr}
+  .lu-project-side{min-height:280px}
+  .lu-project-carousel-track{height:auto;grid-template-columns:1fr}
+  .lu-project-slide{height:360px}
+  .lu-logo-track img{height:68px;padding:0 12px}
+  .lu-footer-detailed{padding:0 22px 36px}
+}
+
+/* Feedback L&U 16.07.26_02 — About desktop redesign */
+.loc-about-redesign .page-hero{padding:72px 0 56px;background:#fff}
+.loc-about-redesign .about-intro{padding:72px 0}
+.loc-about-redesign .about-grid{grid-template-columns:.88fr 1.12fr;gap:58px}
+.loc-about-redesign .about-grid-reverse{grid-template-columns:1.12fr .88fr}
+.loc-about-redesign .about-grid-reverse .about-image{grid-column:1;grid-row:1}
+.loc-about-redesign .about-grid-reverse .about-copy{grid-column:2;grid-row:1}
+.loc-about-redesign .about-image{height:430px;border-radius:18px;background:var(--blue-soft)}
+.loc-about-redesign .about-copy h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(38px,3.8vw,58px);font-weight:400;letter-spacing:-.02em}
+.loc-about-redesign .about-copy p{font-size:18px;line-height:1.68}
+.about-universal-section{background:var(--warm)}
+.about-why-lu{padding:76px 0;background:#fff;border-bottom:1px solid var(--line)}
+.about-why-head{display:grid;grid-template-columns:.72fr 1fr;gap:52px;align-items:end;margin-bottom:38px}
+.about-why-head .section-title{max-width:760px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,4vw,64px);font-weight:400;letter-spacing:-.025em}
+.about-why-list{display:grid;gap:22px}
+.about-why-row{display:grid;grid-template-columns:.88fr 1.12fr;gap:1px;min-height:360px;background:var(--line);border:1px solid var(--line)}
+.about-why-row-reverse{grid-template-columns:1.12fr .88fr}
+.about-why-row-reverse .about-why-copy{grid-column:2}
+.about-why-row-reverse figure{grid-column:1;grid-row:1}
+.about-why-copy{display:flex;flex-direction:column;justify-content:center;background:#fff;padding:42px}
+.about-why-copy span{color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+.about-why-copy h3{margin:24px 0 16px;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1.08;font-weight:400}
+.about-why-copy p{margin:0;color:var(--muted);font-size:17px;line-height:1.7}
+.about-why-row figure{margin:0;min-height:360px;background:var(--blue-soft);overflow:hidden}
+.about-why-row figure img{width:100%;height:100%;object-fit:cover;display:block}
+.loc-about-redesign .environment-section{padding:72px 0}
+.loc-about-redesign .technology-section{padding:78px 0}
+.about-maotrung-distributor{padding:76px 0 84px;background:#f6f8fb;border-bottom:1px solid var(--line)}
+.about-maotrung-head{display:grid;grid-template-columns:1fr auto;gap:42px;align-items:end;margin-bottom:38px}
+.about-maotrung-head .section-title{max-width:760px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,4vw,62px);font-weight:400;letter-spacing:-.025em}
+.about-maotrung-feature{display:grid;grid-template-columns:.92fr 1.08fr;gap:1px;margin-top:22px;background:var(--line);border:1px solid var(--line)}
+.about-maotrung-feature-reverse{grid-template-columns:1.08fr .92fr}
+.about-maotrung-feature-reverse figure{grid-column:2}
+.about-maotrung-feature-reverse div{grid-column:1;grid-row:1}
+.about-maotrung-feature figure{margin:0;min-height:350px;background:#fff;overflow:hidden}
+.about-maotrung-feature figure img{display:block;width:100%;height:100%;object-fit:cover}
+.about-maotrung-feature-reverse figure img{object-fit:contain;padding:24px;background:#fff}
+.about-maotrung-feature>div{display:flex;flex-direction:column;justify-content:center;background:#fff;padding:44px}
+.about-maotrung-feature h3{margin:0 0 18px;color:var(--navy);font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1.1;font-weight:400}
+.about-maotrung-feature p{margin:0;color:var(--muted);font-size:17px;line-height:1.7}
+.about-maotrung-feature .btn{margin-top:26px;align-self:flex-start}
+@media(max-width:900px){
+  .loc-about-redesign .about-grid,
+  .loc-about-redesign .about-grid-reverse,
+  .about-why-head,
+  .about-why-row,
+  .about-why-row-reverse,
+  .about-maotrung-head,
+  .about-maotrung-feature,
+  .about-maotrung-feature-reverse{grid-template-columns:1fr}
+  .loc-about-redesign .about-grid-reverse .about-image,
+  .loc-about-redesign .about-grid-reverse .about-copy,
+  .about-why-row-reverse .about-why-copy,
+  .about-why-row-reverse figure,
+  .about-maotrung-feature-reverse figure,
+  .about-maotrung-feature-reverse div{grid-column:auto;grid-row:auto}
+  .about-maotrung-head .btn{justify-self:start}
+  .loc-about-redesign .about-image,.about-why-row figure,.about-maotrung-feature figure{min-height:280px;height:320px}
+}
+
+/* Feedback L&U 16.07.26_03 — Product, project and document polish */
+.catalog-intro .catalog-layout{margin-top:0}
+.filter-options button[data-filter="Universal"]{border-color:var(--gold);color:var(--navy)}
+.product-card[data-series="Universal"] .product-image{background:#f7f3ed}
+.product-card[data-series="Universal"] .product-image img{object-fit:cover}
+.project-card{position:relative;overflow:hidden}
+.project-card:before{content:'';position:absolute;z-index:2;top:14px;left:14px;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.92) url('LOC_LOGO.png') center/42px auto no-repeat;box-shadow:0 10px 28px rgba(13,46,86,.16);pointer-events:none}
+.project-card.universal-project:before{width:92px;height:54px;border-radius:12px;background:rgba(255,255,255,.94) url('assets/universal-logo.png') center/74px auto no-repeat}
+.project-card img{display:block}
+.document-card[href*="tds-universal-engineer"] .doc-thumb img{object-fit:contain;object-position:center top;background:#f8f8f6}
+
+/* Feedback L&U 17.07.26 — desktop only */
+@media(min-width:901px){
+  :root{--sans:'Montserrat',Arial,sans-serif}
+  body,.btn,.nav a,.kicker,.display,.section-title,h1,h2,h3,h4,h5,p,a,span,small,strong,li,button,input,textarea{font-family:'Montserrat',Arial,sans-serif!important}
+  .header{background:rgba(255,255,255,.96)!important;border-bottom:1px solid var(--blue-line)!important;box-shadow:0 18px 44px rgba(13,46,86,.07)!important;backdrop-filter:blur(16px)}
+  .header-inner{height:72px!important;max-width:var(--maxw);justify-content:flex-start!important;gap:34px}
+  .logo-wrap{min-width:180px!important}
+  .loc-logo,.unilin-mark{width:168px!important;height:auto!important;border-radius:0!important}
+  .nav{display:flex;align-items:stretch;margin-left:auto}
+  .nav a{min-width:118px;padding:18px 18px;font-size:12px;letter-spacing:.12em}
+  .header-distributor-logo,.brand-by{transform:scale(.5);transform-origin:right center}
+  .footer,.lu-contact-section{background:#fff!important;color:var(--navy)!important}
+  .footer .page,.lu-footer-detailed{background:#fff!important;color:var(--navy)!important;padding-left:64px;padding-right:64px}
+  .foot-top,.lu-footer-detailed .foot-top{border-top:1px solid var(--blue-line)!important;border-bottom:1px solid var(--blue-line)!important}
+  .foot-col li,.foot-col a,.foot-col p,.lu-footer-detailed .foot-col p,.lu-footer-detailed .foot-col a{color:#5b5b6e!important;font-size:18px!important;line-height:1.55}
+  .lu-footer-detailed .rep-line strong{color:var(--navy)!important}
+  .foot-col h5,.lu-footer-detailed .foot-col h2{color:var(--gold)!important;font-size:13px!important;font-weight:700!important;letter-spacing:.22em!important;text-transform:uppercase}
+  .foot-logo,.footer-moduleo-mark{width:207px!important;background:#fff!important;padding:0!important}
+  .footer-moduleo-mark img{width:100%!important}
+  .mao-logo,.lu-footer-detailed .mao-logo{width:115px!important;background:#fff!important;padding:0!important}
+  .foot-bot,.lu-footer-detailed .foot-bot{justify-content:center!important;background:#fff!important;color:#5b5b6e!important}
+  .footer-distributor,.lu-footer-detailed .footer-distributor{display:flex!important;flex-direction:column!important;align-items:center!important;gap:8px!important;text-align:center!important}
+  .foot-by,.lu-footer-detailed .foot-by{font-size:12px!important;letter-spacing:.12em!important;color:#5b5b6e!important}
+  .display,.section-title,.lu-hero h1,.lu-doc-copy h2,.lu-product-card h3,.lu-section-head h2,.lu-mao-home-copy h2,.about-copy h2,.about-why-copy h3,.technology-card h3,.about-maotrung-feature h3{font-weight:700!important;letter-spacing:0!important}
+
+  .lu-hero-card span{display:none!important}
+  .lu-doc-copy h2{font-size:clamp(44px,4vw,68px)!important;text-transform:uppercase}
+  .lu-doc-copy>p:not(.kicker):not(.lu-doc-note),.lu-doc-note,.lu-cert-grid{display:none!important}
+  .lu-doc-access .page{grid-template-columns:1fr .82fr!important}
+  .lu-products-intro h2{font-size:clamp(36px,3.6vw,56px)!important;text-transform:uppercase}
+  .lu-product-card small,.lu-product-card span,.lu-product-card em{display:none!important}
+  .lu-product-card h3{font-size:23px!important}
+  .lu-reasons .kicker{display:none!important}
+  .lu-section-head{display:block!important;margin-bottom:30px!important}
+  .lu-section-head h2{text-transform:uppercase;font-size:clamp(36px,3.6vw,56px)!important}
+  .lu-logo-track{animation-duration:68s!important}
+  .lu-logo-track img{height:58px!important;padding:0 14px!important}
+
+  .loc-about-redesign .about-brand-section,.loc-about-redesign .about-universal-section{padding:42px 0!important}
+  .loc-about-redesign .about-grid{grid-template-columns:1fr 1fr!important;gap:34px!important}
+  .loc-about-redesign .about-image{height:300px!important}
+  .loc-about-redesign .about-copy h2{font-size:38px!important;margin-bottom:14px!important}
+  .loc-about-redesign .about-copy p{font-size:16px!important;line-height:1.58!important}
+  .about-duo-note{margin-top:-18px;padding-bottom:34px}
+  .about-duo-note p{max-width:920px;margin:0 auto;color:var(--navy);font-size:18px;line-height:1.55;text-align:center;font-weight:600}
+  .about-why-head .kicker{display:none!important}
+  #environment-title{text-transform:uppercase}
+  #technology-title,#technology-universal-title{font-size:clamp(38px,3.6vw,58px)!important}
+  .technology-universal-section{background:#fff}
+  .universal-tech-grid .technology-card{cursor:default}
+  .about-maotrung-head .kicker{display:none!important}
+
+  .document-card small{display:none!important}
+  .document-card{min-height:190px}
+  .doc-thumb.real{margin-bottom:14px}
+  .document-card[href*="tds-universal-engineer"] .doc-thumb img{object-fit:contain!important;object-position:center top!important;background:#f8f8f6!important}
+  .page-hero.compact .display{text-transform:uppercase}
+}
+
+/* Feedback L&U 17.07.26_02 — desktop only */
+@media(min-width:901px){
+  .header-inner{
+    height:64px!important;
+    display:grid!important;
+    grid-template-columns:190px minmax(620px,auto) 180px!important;
+    align-items:center!important;
+    gap:22px!important;
+  }
+  .logo-wrap{min-width:0!important}
+  .nav{
+    position:static!important;
+    transform:none!important;
+    justify-self:center!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:0!important;
+    border:1px solid var(--blue-line)!important;
+    background:#fff!important;
+  }
+  .nav a{
+    min-width:128px!important;
+    padding:12px 20px!important;
+    white-space:nowrap!important;
+    border-right:1px solid var(--blue-line)!important;
+    background:transparent!important;
+    color:var(--navy)!important;
+    line-height:1!important;
+  }
+  .nav a:last-child{border-right:0!important}
+  .nav a:hover,.nav a.active{background:var(--navy)!important;color:#fff!important}
+  .header-actions{display:flex!important;justify-content:flex-end!important;align-items:center!important}
+  .header-distributor-logo{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    transform:none!important;
+    transform-origin:center!important;
+    width:150px!important;
+    min-width:150px!important;
+    color:#5b5b6e!important;
+    text-align:center!important;
+  }
+  .header-distributor-logo img{display:block!important;width:150px!important;height:auto!important}
+  .header-distributor-logo small{
+    display:block!important;
+    margin-top:2px!important;
+    color:#5b5b6e!important;
+    font-size:8px!important;
+    font-weight:800!important;
+    letter-spacing:.16em!important;
+    line-height:1!important;
+    text-transform:uppercase!important;
+  }
+  .lu-hero h1{
+    font-size:45px!important;
+    line-height:1.12!important;
+    text-transform:uppercase!important;
+    letter-spacing:.01em!important;
+  }
+  .lu-doc-copy h2{
+    margin-bottom:34px!important;
+    padding-bottom:8px!important;
+    font-size:58px!important;
+    line-height:1.18!important;
+  }
+  .lu-doc-list a{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-areas:"title btn"!important;
+    min-height:74px!important;
+    gap:12px 18px!important;
+  }
+  .lu-doc-list span,.lu-doc-list small{display:none!important}
+  .lu-doc-list strong{font-size:18px!important;line-height:1.28!important}
+  .lu-tds-sheet h3{transition:color .2s ease}
+  .lu-product-card:before{display:none!important}
+  .lu-product-card:after{
+    opacity:1!important;
+    mix-blend-mode:normal!important;
+    filter:none!important;
+  }
+  .lu-product-card div{
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    padding:18px 20px!important;
+    border-radius:12px!important;
+    background:rgba(7,31,61,.82)!important;
+    backdrop-filter:blur(10px)!important;
+  }
+  .lu-product-card h3{font-size:22px!important}
+  .loc-about-redesign .about-hero .display{text-transform:uppercase!important}
+  .about-hero-note{
+    max-width:900px;
+    margin:18px auto 0;
+    color:#5b5b6e;
+    font-size:18px;
+    line-height:1.6;
+    font-weight:600;
+  }
+  .about-duo-note{display:none!important}
+  .foot-bot,.lu-footer-detailed .foot-bot{min-height:172px!important}
+  .mao-logo,.lu-footer-detailed .mao-logo{
+    width:210px!important;
+    height:auto!important;
+    background:#fff!important;
+    padding:0!important;
+  }
+}
+
+/* Feedback L&U 18.07.26 */
+@media(min-width:901px){
+  .lu-products .lu-product-card{
+    min-height:350px!important;
+  }
+  .lu-products .lu-product-card div{
+    min-height:auto!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    padding:14px 18px!important;
+  }
+  .lu-products .lu-product-card h3{
+    font-size:20px!important;
+    margin-bottom:8px!important;
+  }
+  .lu-products .lu-product-card p{
+    font-size:12px!important;
+    line-height:1.45!important;
+  }
+  .lu-line-plus:after{
+    background-image:url('assets/brief-1807/home-collection-loc-plus.jpg')!important;
+  }
+  .lu-project-carousel-track{
+    scrollbar-width:none!important;
+    -ms-overflow-style:none!important;
+  }
+  .lu-project-carousel-track::-webkit-scrollbar{
+    display:none!important;
+  }
+  .technology-universal-section .technology-visual img{
+    height:500px!important;
+    object-fit:cover!important;
+  }
+  .universal-tech-grid .technology-card{
+    min-height:240px!important;
+    padding:26px!important;
+    background:var(--warm)!important;
+    cursor:pointer!important;
+  }
+  .universal-tech-grid .technology-card h3{
+    margin:26px 0 12px!important;
+    padding:0!important;
+    font-size:24px!important;
+  }
+  .universal-tech-grid .technology-card p{
+    padding:0!important;
+    font-size:15px!important;
+    line-height:1.62!important;
+  }
+  .universal-tech-grid .technology-card.active{
+    background:#fff!important;
+  }
+}
+
+/* FB Image Content 17.07 */
+@media(min-width:901px){
+  .lu-line-elite:after{background-image:url('assets/brief-1707/collection-elite-pergo-square.jpg')!important}
+  .lu-line-plus:after{background-image:url('assets/brief-1707/collection-plus-clicwall.jpg')!important}
+  .lu-line-universal:after{background-image:url('assets/brief-1707/collection-universal-pergo-fawn-oak.jpg')!important}
+  .lu-product-card:after{
+    background-position:center!important;
+    opacity:1!important;
+  }
+  .lu-product-card div{
+    min-height:136px;
+  }
+  .lu-project-carousel-track{
+    height:620px!important;
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-auto-columns:minmax(300px,25vw)!important;
+    grid-template-columns:none!important;
+    gap:0!important;
+    overflow-x:auto!important;
+    scroll-snap-type:x proximity!important;
+    padding:0!important;
+  }
+  .lu-project-slide{
+    height:620px!important;
+    border-radius:0!important;
+    scroll-snap-align:start!important;
+  }
+  .about-why-copy span,
+  .technology-card span{
+    display:none!important;
+  }
+  .loc-tech-grid{
+    grid-template-columns:repeat(3,1fr)!important;
+  }
+  .loc-tech-grid .technology-card{
+    min-height:220px!important;
+  }
+  .universal-tech-grid{
+    grid-template-columns:repeat(3,1fr)!important;
+  }
+  .universal-tech-grid .technology-card{
+    min-height:360px!important;
+    padding:0!important;
+    overflow:hidden;
+    background:#fff!important;
+  }
+  .universal-tech-grid .technology-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-bottom:1px solid var(--line);
+  }
+  .universal-tech-grid .technology-card h3,
+  .universal-tech-grid .technology-card p{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .universal-tech-grid .technology-card h3{
+    margin-top:20px!important;
+    font-size:20px!important;
+  }
+  .universal-tech-grid .technology-card p{
+    font-size:13px!important;
+    line-height:1.55!important;
+    padding-bottom:22px;
+  }
+}
+
+/* Feedback L&U 17.07.26_03 — desktop refinements */
+@media(min-width:901px){
+  .header-inner{
+    width:100%!important;
+    max-width:var(--maxw)!important;
+    padding-right:var(--gutter)!important;
+    padding-left:var(--gutter)!important;
+  }
+  .nav{
+    border:0!important;
+    background:transparent!important;
+    gap:10px!important;
+  }
+  .nav a{
+    min-width:124px!important;
+    border-right:0!important;
+    border-radius:0!important;
+    padding:13px 18px!important;
+  }
+  .nav a:hover,.nav a.active{background:var(--navy)!important;color:#fff!important}
+  .lu-hero-head{
+    max-width:none!important;
+    width:100%!important;
+  }
+  .lu-hero h1{
+    white-space:nowrap!important;
+    font-size:clamp(30px,3vw,43px)!important;
+    letter-spacing:0!important;
+  }
+  .lu-hero-card:before{display:none!important}
+  .lu-hero-card:after{
+    inset:auto 0 0 0!important;
+    height:52%!important;
+    background:linear-gradient(180deg,rgba(7,31,61,0),rgba(7,31,61,.76) 72%,rgba(7,31,61,.9))!important;
+  }
+  .lu-hero-card img{filter:none!important}
+  .lu-reason-grid article{
+    min-height:210px!important;
+    padding:28px 30px!important;
+  }
+  .lu-reason-grid span{display:none!important}
+  .lu-reason-grid h3{
+    margin:0 0 12px!important;
+    font-size:24px!important;
+  }
+  .lu-reason-grid p{
+    font-size:14px!important;
+    line-height:1.55!important;
+  }
+  .lu-project-slide:after{
+    inset:auto 0 0 0!important;
+    height:48%!important;
+    background:linear-gradient(180deg,rgba(7,31,61,0),rgba(7,31,61,.68) 70%,rgba(7,31,61,.88))!important;
+    pointer-events:none!important;
+  }
+  .lu-project-slide img{
+    filter:none!important;
+    opacity:1!important;
+  }
+  .lu-project-slide span{
+    z-index:2!important;
+    text-shadow:0 10px 28px rgba(0,0,0,.38)!important;
+  }
+}
+
+/* Header balance refinement */
+@media(min-width:901px){
+  .header-inner{
+    height:88px!important;
+    grid-template-columns:280px minmax(640px,1fr) 280px!important;
+    gap:20px!important;
+    align-items:center!important;
+  }
+  .logo-wrap{
+    justify-self:start!important;
+    width:280px!important;
+    min-width:0!important;
+  }
+  .loc-logo,.unilin-mark{
+    width:176px!important;
+    height:auto!important;
+  }
+  .nav{
+    justify-self:center!important;
+    width:auto!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+  .nav a{
+    min-width:122px!important;
+    height:48px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0 16px!important;
+    line-height:1!important;
+  }
+  .header-actions{
+    justify-self:end!important;
+    width:280px!important;
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+  }
+  .header-distributor-logo{
+    width:210px!important;
+    min-width:210px!important;
+    height:70px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  .header-distributor-logo img{
+    width:210px!important;
+    max-height:52px!important;
+    object-fit:contain!important;
+  }
+  .header-distributor-logo small{
+    margin-top:1px!important;
+    font-size:8px!important;
+    letter-spacing:.18em!important;
+  }
+}
+
+/* Feedback L&U 18.07.26 - final override */
+@media(min-width:901px){
+  .lu-products .lu-product-card{min-height:350px!important}
+  .lu-products .lu-product-card div{
+    min-height:auto!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    padding:14px 18px!important;
+  }
+  .lu-products .lu-product-card h3{
+    font-size:20px!important;
+    margin-bottom:8px!important;
+  }
+  .lu-products .lu-product-card p{
+    font-size:12px!important;
+    line-height:1.45!important;
+  }
+  .lu-line-plus:after{background-image:url('assets/brief-1807/home-collection-loc-plus.jpg')!important}
+  .lu-project-carousel-track{
+    scrollbar-width:none!important;
+    -ms-overflow-style:none!important;
+  }
+  .lu-project-carousel-track::-webkit-scrollbar{display:none!important}
+  .technology-universal-section .technology-visual img{
+    height:500px!important;
+    object-fit:cover!important;
+  }
+  .universal-tech-grid .technology-card{
+    min-height:240px!important;
+    padding:26px!important;
+    background:var(--warm)!important;
+    cursor:pointer!important;
+  }
+  .universal-tech-grid .technology-card h3{
+    margin:26px 0 12px!important;
+    padding:0!important;
+    font-size:24px!important;
+  }
+  .universal-tech-grid .technology-card p{
+    padding:0!important;
+    font-size:15px!important;
+    line-height:1.62!important;
+  }
+  .universal-tech-grid .technology-card.active{background:#fff!important}
+}
