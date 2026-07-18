@@ -1157,3 +1157,78 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
   .lu-footer-detailed .rep-line strong{color:var(--navy)!important}
   .mao-logo{width:190px!important;max-width:72vw!important}
 }
+
+/* Desktop document section repair - final cascade */
+@media(min-width:901px){
+  .lu-doc-access{
+    padding:84px 0!important;
+    overflow:visible!important;
+  }
+  .lu-doc-access .page{
+    display:grid!important;
+    grid-template-columns:minmax(560px,1fr) minmax(460px,.74fr)!important;
+    gap:56px!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+  .lu-doc-copy,
+  .lu-tds-preview{
+    min-width:0!important;
+  }
+  .lu-doc-copy h2{
+    margin:0 0 34px!important;
+    padding:0!important;
+    color:#fff!important;
+    font-size:clamp(52px,4.6vw,76px)!important;
+    line-height:1.04!important;
+    text-transform:uppercase!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+  .lu-doc-list{
+    display:grid!important;
+    gap:14px!important;
+  }
+  .lu-doc-item{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:18px!important;
+    align-items:center!important;
+    min-height:82px!important;
+    padding:18px 22px!important;
+    border:1px solid rgba(167,215,244,.22)!important;
+    border-radius:10px!important;
+    background:rgba(255,255,255,.06)!important;
+  }
+  .lu-doc-item strong{
+    grid-area:auto!important;
+    min-width:0!important;
+    color:#fff!important;
+    font-size:20px!important;
+    line-height:1.28!important;
+    text-align:left!important;
+  }
+  .lu-doc-pdf{
+    grid-area:auto!important;
+    justify-self:end!important;
+    margin:0!important;
+    min-width:74px!important;
+    min-height:38px!important;
+    padding:0 14px!important;
+    border-radius:7px!important;
+    white-space:nowrap!important;
+  }
+  .lu-tds-preview{
+    align-self:center!important;
+    padding:26px!important;
+    border-radius:18px!important;
+  }
+  .lu-tds-sheet{
+    padding:26px 30px!important;
+  }
+  .lu-tds-sheet div{
+    grid-template-columns:minmax(160px,.9fr) minmax(0,1fr)!important;
+    gap:18px!important;
+  }
+}
