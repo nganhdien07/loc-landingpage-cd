@@ -39,6 +39,31 @@
       },3000);
     }
   }
+  document.querySelectorAll('.lu-project-carousel-shell').forEach(function(shell){
+    var track=shell.querySelector('.lu-project-carousel-track');
+    if(!track || shell.querySelector('[data-project-next]')) return;
+    var prev=document.createElement('button');
+    var next=document.createElement('button');
+    prev.className='lu-project-arrow lu-project-arrow-prev';
+    next.className='lu-project-arrow lu-project-arrow-next';
+    prev.type='button';
+    next.type='button';
+    prev.setAttribute('aria-label','Dự án trước');
+    next.setAttribute('aria-label','Dự án tiếp theo');
+    prev.setAttribute('data-project-prev','');
+    next.setAttribute('data-project-next','');
+    prev.textContent='‹';
+    next.textContent='›';
+    shell.appendChild(prev);
+    shell.appendChild(next);
+    function moveProject(direction){
+      var slide=track.querySelector('.lu-project-slide');
+      var amount=slide ? slide.getBoundingClientRect().width : track.clientWidth * .8;
+      track.scrollBy({left:direction * amount, behavior:'smooth'});
+    }
+    prev.addEventListener('click', function(){ moveProject(-1); });
+    next.addEventListener('click', function(){ moveProject(1); });
+  });
   document.querySelectorAll('.technology-section').forEach(function(section){
     var techImage=section.querySelector('[data-tech-image]');
     var techCaption=section.querySelector('[data-tech-caption]');
@@ -162,9 +187,24 @@
         return '<div><dt>'+row[0]+'</dt><dd>'+row[1]+'</dd></div>';
       }).join('');
     }
-    document.querySelectorAll('[data-tds-preview]').forEach(function(link){
-      link.addEventListener('mouseenter', function(){ renderTdsPreview(link.dataset.tdsPreview); });
-      link.addEventListener('focus', function(){ renderTdsPreview(link.dataset.tdsPreview); });
+    function activateDocPreview(item){
+      renderTdsPreview(item.dataset.tdsPreview);
+      document.querySelectorAll('[data-tds-preview]').forEach(function(other){ other.classList.remove('active'); });
+      item.classList.add('active');
+    }
+    document.querySelectorAll('[data-tds-preview]').forEach(function(item){
+      item.addEventListener('mouseenter', function(){ activateDocPreview(item); });
+      item.addEventListener('focus', function(){ activateDocPreview(item); });
+      item.addEventListener('click', function(event){
+        if(event.target.closest('.lu-doc-pdf')) return;
+        event.preventDefault();
+        activateDocPreview(item);
+      });
+      item.addEventListener('keydown', function(event){
+        if(event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        activateDocPreview(item);
+      });
     });
   }
   updateCount();

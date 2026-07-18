@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LOC & Universal Floor — Trang chủ</title>
-<link rel="icon" type="image/png" href="assets/unilin-logo-blue.jpg">
+<link rel="icon" type="image/png" href="assets/unilin-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="loc-site.css">
+<link rel="stylesheet" href="loc-site.css?v=20260718-projectarrows">
 </head>
 <body class="lu-home">
 <a class="skip" href="#main">Đi đến nội dung</a>
@@ -70,10 +70,10 @@
       <div class="lu-doc-copy">
         <h2 id="docs-title">TÀI LIỆU</h2>
         <div class="lu-doc-list" aria-label="Tài liệu tải nhanh">
-          <a href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener" data-tds-preview="elite"><strong>Tài liệu kỹ thuật (TDS) LOC Elite</strong><b>↓ PDF</b></a>
-          <a href="assets/loc-certificates/tds-loc-floor-plus.pdf" target="_blank" rel="noopener" data-tds-preview="plus"><strong>Tài liệu kỹ thuật (TDS) LOC Plus</strong><b>↓ PDF</b></a>
-          <a href="assets/loc-certificates/universal-tds-ewf-ewo-noa-2200x165-en.pdf" target="_blank" rel="noopener" data-tds-preview="universal"><strong>Tài liệu kỹ thuật (TDS) Universal</strong><b>↓ PDF</b></a>
-          <a href="LOC_documents.html?type=Certificate" data-tds-preview="certificate"><strong>Chứng chỉ và kiểm định</strong><b>Xem</b></a>
+          <div class="lu-doc-item active" role="button" tabindex="0" data-tds-preview="plus"><strong>Tài liệu kỹ thuật (TDS) LOC Plus</strong><a class="lu-doc-pdf" href="assets/loc-certificates/tds-loc-floor-plus.pdf" target="_blank" rel="noopener">↓ PDF</a></div>
+          <div class="lu-doc-item" role="button" tabindex="0" data-tds-preview="elite"><strong>Tài liệu kỹ thuật (TDS) LOC Elite</strong><a class="lu-doc-pdf" href="assets/loc-certificates/tds-loc-floor-elite.pdf" target="_blank" rel="noopener">↓ PDF</a></div>
+          <div class="lu-doc-item" role="button" tabindex="0" data-tds-preview="universal"><strong>Tài liệu kỹ thuật (TDS) Universal</strong><a class="lu-doc-pdf" href="assets/loc-certificates/universal-tds-ewf-ewo-noa-2200x165-en.pdf" target="_blank" rel="noopener">↓ PDF</a></div>
+          <div class="lu-doc-item" role="button" tabindex="0" data-tds-preview="certificate"><strong>Chứng chỉ và kiểm định</strong><a class="lu-doc-pdf" href="LOC_documents.html?type=Certificate">Xem</a></div>
         </div>
       </div>
       <div class="lu-tds-preview" aria-label="Preview TDS">
@@ -283,6 +283,6 @@
   </section>
 </main>
 <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle"><div class="contact-box"><button class="contact-close" type="button" data-contact-close>×</button><h3 id="contactTitle">Nhận tư vấn dự án</h3><form class="contact-form"><label>Tên<input required></label><label>Số điện thoại<input type="tel" inputmode="numeric" required></label><label>Email<input type="email"></label><label>Mô tả dự án & thông tin cần tư vấn<textarea required></textarea></label><button class="btn" type="submit">Gửi yêu cầu →</button><p class="contact-note"></p></form></div></div>
-<script src="loc-site.js"></script>
+<script src="loc-site.js?v=20260718-projectarrows"></script>
 </body>
 </html>

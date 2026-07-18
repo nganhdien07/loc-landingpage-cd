@@ -15,6 +15,28 @@
   --sans:Arial, Helvetica, sans-serif;
 }
 
+/* Project carousel arrows */
+.lu-project-carousel-shell{position:relative}
+.lu-project-arrow{
+  position:absolute;
+  top:50%;
+  z-index:8;
+  width:48px;
+  height:64px;
+  display:grid;
+  place-items:center;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:999px;
+  background:rgba(13,46,86,.82);
+  color:#fff;
+  box-shadow:0 16px 36px rgba(7,31,61,.22);
+  font-size:34px;
+  line-height:1;
+}
+.lu-project-arrow-prev{left:18px}
+.lu-project-arrow-next{right:18px}
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--ink);background:var(--warm);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -333,6 +355,11 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
 .lu-doc-list{display:grid;gap:14px}
 .lu-doc-list a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"icon title btn" "icon desc btn";gap:6px 18px;align-items:center;min-height:86px;padding:20px 22px;border:1px solid rgba(167,215,244,.16);border-radius:8px;background:rgba(255,255,255,.06);color:#fff;transition:.22s}
 .lu-doc-list a:hover{background:rgba(45,95,140,.28);border-color:rgba(167,215,244,.46);transform:translateY(-2px)}
+.lu-doc-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;align-items:center;min-height:86px;padding:20px 22px;border:1px solid rgba(167,215,244,.16);border-radius:8px;background:rgba(255,255,255,.06);color:#fff;transition:.22s;cursor:pointer}
+.lu-doc-item:hover,.lu-doc-item:focus,.lu-doc-item.active{background:rgba(45,95,140,.28);border-color:rgba(167,215,244,.46);transform:translateY(-2px);outline:0}
+.lu-doc-item strong{color:#fff;font-size:22px;line-height:1.15}
+.lu-doc-pdf{display:inline-flex;align-items:center;justify-content:center;min-width:78px;min-height:42px;border:1px solid #5aa6d8;border-radius:7px;color:#a7d7f4;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.lu-doc-pdf:hover{background:#5aa6d8;color:#04182f;transform:none}
 .lu-doc-list span{grid-area:icon;font-size:25px}
 .lu-doc-list strong{grid-area:title;color:#fff;font-size:22px;line-height:1.15}
 .lu-doc-list small{grid-area:desc;color:rgba(167,215,244,.64);font-size:14px;font-weight:700;line-height:1.45}
@@ -450,10 +477,11 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
 .lu-doc-copy>p:not(.kicker):not(.lu-doc-note){margin:18px 0 22px;font-size:16px;line-height:1.55}
 .lu-doc-list{gap:10px}
 .lu-doc-list a{min-height:68px;padding:13px 16px;border-radius:7px}
+.lu-doc-item{min-height:68px;padding:13px 16px;border-radius:7px}
 .lu-doc-list span{font-size:20px}
-.lu-doc-list strong{font-size:18px}
+.lu-doc-list strong,.lu-doc-item strong{font-size:18px}
 .lu-doc-list small{font-size:12px;line-height:1.35}
-.lu-doc-list b{min-width:68px;min-height:36px;font-size:11px}
+.lu-doc-list b,.lu-doc-pdf{min-width:68px;min-height:36px;font-size:11px}
 .lu-doc-note{margin-top:18px;font-size:13px}
 .lu-tds-preview{padding:22px;border-radius:14px}
 .lu-tds-preview .kicker{margin-bottom:14px}
@@ -1072,4 +1100,60 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
     line-height:1.62!important;
   }
   .universal-tech-grid .technology-card.active{background:#fff!important}
+}
+
+/* Emergency mobile layout stabilization - 18.07.2026 */
+@media(max-width:900px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  body{font-size:15px!important;background:#fff!important}
+  figure{margin:0!important}
+  img,video{max-width:100%!important;height:auto}
+  .page{width:100%!important;max-width:none!important;padding-left:18px!important;padding-right:18px!important}
+  .header{position:sticky!important;top:0!important;z-index:500!important;background:rgba(255,255,255,.98)!important;border-bottom:1px solid var(--line)!important;box-shadow:0 10px 28px rgba(13,46,86,.08)!important}
+  .header-inner{min-height:68px!important;height:auto!important;display:grid!important;grid-template-columns:minmax(0,1fr) 44px!important;align-items:center!important;gap:12px!important;padding:9px 16px!important}
+  .logo-wrap{display:flex!important;align-items:center!important;min-width:0!important}
+  .loc-logo,.unilin-mark{width:118px!important;max-width:42vw!important;height:auto!important;object-fit:contain!important;border-radius:0!important}
+  .header-actions,.brand-by{display:none!important}
+  .mobile-menu-toggle,.menu{width:44px!important;height:44px!important;border:1px solid rgba(13,46,86,.18)!important;background:#fff!important;display:grid!important;place-content:center!important;gap:5px!important}
+  .mobile-menu-toggle span,.menu span{width:20px!important;height:2px!important;background:var(--navy)!important;display:block!important}
+  .nav{position:fixed!important;top:74px!important;left:14px!important;right:14px!important;width:auto!important;display:grid!important;grid-template-columns:1fr!important;gap:0!important;padding:8px!important;margin:0!important;background:#fff!important;border:1px solid var(--line)!important;box-shadow:0 18px 44px rgba(13,46,86,.12)!important;transform:translateY(-12px)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;z-index:510!important}
+  .nav.open{transform:translateY(0)!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+  .nav a{display:block!important;width:100%!important;padding:15px 14px!important;border:0!important;border-bottom:1px solid var(--line)!important;background:#fff!important;color:var(--navy)!important;text-align:left!important;font-size:12px!important;line-height:1.2!important;letter-spacing:.1em!important}
+  .nav a:last-child{border-bottom:0!important}
+  .nav a.active{background:#f6f9fb!important;color:var(--gold)!important}
+  main,section{width:100%!important;max-width:100%!important;overflow:hidden!important}
+  .section,.home-intro,.home-docs,.home-project-feature,.series-feature,.about-intro,.about-feature,.catalog-intro,.projects-library,.document-section,.environment-section,.technology-section,.lu-about,.lu-doc-access,.lu-products,.lu-reasons,.lu-mao-home,.about-why-lu,.about-maotrung-distributor{padding-top:42px!important;padding-bottom:42px!important}
+  .display,.section-title,.lu-hero h1,.page-hero h1{font-size:33px!important;line-height:1.08!important;letter-spacing:0!important;overflow-wrap:break-word!important}
+  .page-hero{padding-top:38px!important;padding-bottom:30px!important}
+  .page-hero-copy,.intro,.lu-section-head,.lu-products-intro,.toolbar,.document-results-head,.lu-hero-grid,.lu-hero-side,.lu-usp-row,.lu-about .page,.lu-about-copy,.lu-doc-access .page,.lu-product-grid,.lu-reason-grid,.lu-project-carousel-wrap,.lu-mao-home-grid,.home-intro-grid,.home-project-card,.series-feature-grid,.about-grid,.about-grid-reverse,.about-why-row,.about-why-row-reverse,.about-maotrung-feature,.about-maotrung-feature-reverse,.environment-layout,.environment-cards,.evidence-grid,.unilin-panel,.catalog-layout,.document-layout,.technology-head,.technology-showcase{display:grid!important;grid-template-columns:1fr!important;gap:16px!important;width:100%!important;min-width:0!important;min-height:0!important}
+  .catalog-layout>*,.document-layout>*,.product-grid>*,.projects-grid>*,.finder-grid>*,.document-grid>*,.lu-hero-grid>*,.lu-about .page>*,.lu-doc-access .page>*,.technology-showcase>*{min-width:0!important;max-width:100%!important}
+  .lu-hero-card,.feature-card{min-height:235px!important;border-radius:14px!important;overflow:hidden!important}
+  .lu-hero-card-main{min-height:310px!important}
+  .lu-hero-card img,.feature-card img{width:100%!important;height:100%!important;object-fit:cover!important}
+  .lu-hero-card div,.feature-card div{left:16px!important;right:16px!important;bottom:16px!important}
+  .lu-hero-card h2{font-size:23px!important;line-height:1.12!important}
+  .lu-hero-card p{display:none!important}
+  .lu-about-image,.home-intro-media,.about-image,.about-why-row figure,.about-maotrung-feature figure,.home-project-card img,.series-feature-card img{width:100%!important;height:250px!important;min-height:250px!important;border-radius:14px!important;overflow:hidden!important;object-fit:cover!important}
+  .technology-visual{position:relative!important;top:auto!important;min-height:0!important;width:100%!important;border:0!important}
+  .technology-visual img,.technology-visual video{width:100%!important;height:260px!important;object-fit:cover!important;border:1px solid var(--line)!important}
+  .technology-grid,.loc-tech-grid,.universal-tech-grid,.product-grid,.projects-grid,.finder-grid,.document-grid,.quick-docs,.portal-grid,.tech-grid{display:grid!important;grid-template-columns:1fr!important;gap:16px!important;background:transparent!important;border:0!important}
+  .technology-card,.product-card,.project-card,.document-card,.finder-card,.portal,.quick-doc,.tech-card,.environment-card,.evidence,.about-why-copy,.about-maotrung-feature>div{width:100%!important;min-width:0!important;min-height:0!important;padding:18px!important;border:1px solid var(--line)!important;background:#fff!important}
+  .product-image{aspect-ratio:1/1!important}
+  .product-image img,.project-card img{width:100%!important;height:100%!important;object-fit:cover!important}
+  .project-card img{height:auto!important;aspect-ratio:1.15!important}
+  .filter-panel:not(.document-filter){position:relative!important;top:auto!important;width:100%!important;min-height:0!important;padding:16px!important;background:#fff!important;border:1px solid var(--line)!important}
+  .filter-options{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;width:100%!important;max-width:100%!important;overflow:visible!important;margin:0!important;padding:0!important}
+  .filter-options button,.filter-panel a{width:100%!important;white-space:normal!important;text-align:left!important;padding:11px 13px!important;border:1px solid var(--line)!important;background:#fff!important}
+  .document-filter-toggle-row{display:block!important;padding-top:0!important;padding-bottom:16px!important}
+  .filter-rail{position:static!important;transform:none!important;writing-mode:horizontal-tb!important;width:100%!important;height:48px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 16px!important;border-radius:12px!important;background:var(--navy)!important;color:#fff!important}
+  .document-filter{position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;width:100%!important;max-height:0!important;min-height:0!important;overflow:hidden!important;transform:none!important;box-shadow:none!important;padding:0 18px!important;border:0!important;background:#f6f7f6!important}
+  .document-filter.open{max-height:760px!important;overflow:auto!important;padding:54px 18px 20px!important;border:1px solid var(--line)!important}
+  .document-results{padding:0!important;border:0!important;background:transparent!important}
+  .doc-thumb.real,.doc-thumb{height:220px!important;padding:12px!important;background:#f5f6f6!important}
+  .doc-thumb.real img,.doc-thumb img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center top!important}
+  .lu-contact-section{padding:0!important;background:#fff!important}
+  .lu-footer-detailed{width:100%!important;max-width:none!important;padding:0 18px 32px!important;background:#fff!important;color:var(--navy)!important}
+  .lu-footer-detailed .foot-top,.foot-top{display:grid!important;grid-template-columns:1fr!important;gap:24px!important;padding:32px 0!important}
+  .lu-footer-detailed .rep-line strong{color:var(--navy)!important}
+  .mao-logo{width:190px!important;max-width:72vw!important}
 }
