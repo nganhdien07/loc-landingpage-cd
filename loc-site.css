@@ -244,7 +244,7 @@ body.lu-home .kicker{color:#a9b0bd;font-family:Arial,Helvetica,sans-serif;letter
 .lu-product-card:after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38;mix-blend-mode:multiply}
 .lu-line-elite:after{background-image:url('assets/product-scenes-corrected/03-elite-LFE00463.png')}
 .lu-line-plus:after{background-image:url('assets/product-scenes-corrected/18-plus-LPV00555AP.png')}
-.lu-line-universal:after{background-image:url('assets_Universal/universal_summit_sietch-brown_scene.png')}
+.lu-line-universal:after{background-image:url('assets 02_universal/phoi-canh-thuc-te/sietch-brown_van-phong-boardroom.png')}
 .lu-line-elite{background:#ad815f}.lu-line-plus{background:#50656c}.lu-line-universal{background:#c19566}
 .lu-product-card div{position:absolute;left:28px;right:28px;bottom:26px;z-index:1;padding:0}
 .lu-product-card small{display:inline-flex;margin-bottom:20px;padding:7px 14px;border-radius:999px;background:#1d9e75;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em}
@@ -364,7 +364,7 @@ body.lu-home .kicker{color:#6f8cab;font-family:var(--sans);letter-spacing:.2em}
 .lu-line-elite{background:#8a7858}.lu-line-plus{background:#4c6a83}.lu-line-universal{background:#7b5c45}
 .lu-line-elite:after{background-image:url('assets/product-scenes-corrected/03-elite-LFE00463.png')}
 .lu-line-plus:after{background-image:url('assets/product-scenes-corrected/18-plus-LPV00555AP.png')}
-.lu-line-universal:after{background-image:url('assets_Universal/universal_summit_sietch-brown_scene.png')}
+.lu-line-universal:after{background-image:url('assets 02_universal/phoi-canh-thuc-te/sietch-brown_van-phong-boardroom.png')}
 .lu-product-card div{position:absolute;left:24px;right:24px;bottom:24px;z-index:1;padding:0}
 .lu-product-card small{display:inline-flex;margin-bottom:18px;padding:7px 13px;border-radius:999px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em}
 .lu-product-card h3{margin:8px 0 10px;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:25px;line-height:1.14;font-weight:400}
